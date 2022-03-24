@@ -12,4 +12,11 @@
             <loc>https://h3yon.github.io/tags/</loc><lastmod>2022-03-25T00:48:03&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://h3yon.github.io/test/</loc><lastmod>2022-03-25T00:48:03&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://h3yon.github.io/def_post/</loc><lastmod>2022-03-24T23:47:51&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://h3yon.github.io/abc_post/</loc><lastmod>2022-03-24T23:47:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url></urlset>
+            <loc>https://h3yon.github.io/tags/cs/</loc><lastmod>2021-08-03T23:47:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://h3yon.github.io/categories/cs/</loc><lastmod>2021-08-03T23:47:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://h3yon.github.io/multi-process-mutex-ipc/</loc><lastmod>2021-08-03T23:47:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://h3yon.github.io/multi-thread/</loc><lastmod>2021-07-22T23:47:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://h3yon.github.io/thread/</loc><lastmod>2021-07-22T23:47:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://h3yon.github.io/categories/mysql/</loc><lastmod>2021-07-11T23:47:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://h3yon.github.io/tags/mysql/</loc><lastmod>2021-07-11T23:47:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://h3yon.github.io/mysql-user/</loc><lastmod>2021-07-11T23:47:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>

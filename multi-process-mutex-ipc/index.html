@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스 - My New Hugo Site</title><meta name="Description" content="This is My New Hugo Site"><meta property="og:title" content="멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스" />
+<meta property="og:description" content="멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스 출처: multi process vs multi thread
+컨텍스트 스위칭 한 task가 끝날 때까지 기다리는 게 아니라 여러 작업을 번갈아가며 동시에 처리한다. 인터럽트 발생 시 프로세스 상태를 PCB에 저장하고 새로운 프로세스 상태를 레지스터에 저장한다. 이때 CPU는 아무런 일을 하지 않기 때문에 잦은 컨텍스트 스위칭은 성능저하를 야기한다.
+멀티 프로세스  장점  자식 프로세스 중 하나에 문제 발생 시 영향이 확산되지 않는다.   단점  IPC(Inter Process Communication)  각각의 독립된 메모리 영역을 할당받았기 때문에 하나의 프로그램에 속하는 프로세스 사이의 변수를 공유할 수 없다   Context Switching에서의 오버헤드  컨텍스트 스위칭 과정에서 캐쉬 메모리 초기화 등 무거운 작업이 진행되고 많은 시간이 소모되는 오버헤드가 발생하게 된다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://h3yon.github.io/multi-process-mutex-ipc/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-03T23:47:34+09:00" />
+<meta property="article:modified_time" content="2021-08-03T23:47:34+09:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스"/>
+<meta name="twitter:description" content="멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스 출처: multi process vs multi thread
+컨텍스트 스위칭 한 task가 끝날 때까지 기다리는 게 아니라 여러 작업을 번갈아가며 동시에 처리한다. 인터럽트 발생 시 프로세스 상태를 PCB에 저장하고 새로운 프로세스 상태를 레지스터에 저장한다. 이때 CPU는 아무런 일을 하지 않기 때문에 잦은 컨텍스트 스위칭은 성능저하를 야기한다.
+멀티 프로세스  장점  자식 프로세스 중 하나에 문제 발생 시 영향이 확산되지 않는다.   단점  IPC(Inter Process Communication)  각각의 독립된 메모리 영역을 할당받았기 때문에 하나의 프로그램에 속하는 프로세스 사이의 변수를 공유할 수 없다   Context Switching에서의 오버헤드  컨텍스트 스위칭 과정에서 캐쉬 메모리 초기화 등 무거운 작업이 진행되고 많은 시간이 소모되는 오버헤드가 발생하게 된다."/>
+<meta name="application-name" content="My New Hugo Site">
+<meta name="apple-mobile-web-app-title" content="My New Hugo Site"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/multi-process-mutex-ipc/" /><link rel="prev" href="https://h3yon.github.io/multi-thread/" /><link rel="next" href="https://h3yon.github.io/def_post/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "멀티 프로세스 \u0026 IPC \u0026 세마포어,뮤텍스",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/h3yon.github.io\/multi-process-mutex-ipc\/"
+        },"genre": "posts","keywords": "cs","wordcount":  329 ,
+        "url": "https:\/\/h3yon.github.io\/multi-process-mutex-ipc\/","datePublished": "2021-08-03T23:47:34+09:00","dateModified": "2021-08-03T23:47:34+09:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx"},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My New Hugo Site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My New Hugo Site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xxxx</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs/"><i class="far fa-folder fa-fw"></i>cs</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-03">2021-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;329 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#멀티-프로세스--ipc--세마포어뮤텍스">멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스</a></li>
+    <li><a href="#컨텍스트-스위칭">컨텍스트 스위칭</a></li>
+    <li><a href="#멀티-프로세스">멀티 프로세스</a></li>
+    <li><a href="#ipc">IPC</a></li>
+    <li><a href="#세마포어">세마포어</a></li>
+    <li><a href="#뮤텍스와-세마포어">뮤텍스와 세마포어</a></li>
+    <li><a href="#페이지-폴트">페이지 폴트</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="멀티-프로세스--ipc--세마포어뮤텍스">멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스</h2>
+<p>출처: <a href="https://github.com/zhsks528/neulsang/blob/c952892547bc2db5fb7f0cadb3b49096a8d62948/content/blog/multi%20process%20vs%20multi%20thread/index.md" target="_blank" rel="noopener noreffer">multi process vs multi thread</a></p>
+<h2 id="컨텍스트-스위칭">컨텍스트 스위칭</h2>
+<p>한 task가 끝날 때까지 기다리는 게 아니라 여러 작업을 번갈아가며 동시에 처리한다. 인터럽트 발생 시 프로세스 상태를 PCB에 저장하고 새로운 프로세스 상태를 레지스터에 저장한다. 이때 CPU는 아무런 일을 하지 않기 때문에 잦은 컨텍스트 스위칭은 성능저하를 야기한다.</p>
+<h2 id="멀티-프로세스">멀티 프로세스</h2>
+<ul>
+<li>장점
+<ul>
+<li>자식 프로세스 중 하나에 문제 발생 시 영향이 확산되지 않는다.</li>
+</ul>
+</li>
+<li>단점
+<ul>
+<li>IPC(Inter Process Communication)
+<ul>
+<li>각각의 독립된 메모리 영역을 할당받았기 때문에 하나의 프로그램에 속하는 프로세스 사이의 변수를 공유할 수 없다</li>
+</ul>
+</li>
+<li>Context Switching에서의 오버헤드
+<ul>
+<li>컨텍스트 스위칭 과정에서 캐쉬 메모리 초기화 등 무거운 작업이 진행되고 많은 시간이 소모되는 오버헤드가 발생하게 된다.</li>
+<li>프로세스는 각각의 독립된 메모리 영역을 할당 받았기 때문에 프로세스 사이에서 공유하는 메모리가 없어, 컨텍스트 스위칭이 발생하면 캐시에 있는 모든 데이터를 리셋하고 다시 캐시 정보를 불러와야 한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="ipc">IPC</h2>
+<p>프로세스 간의 통신 방법을 제공한다.</p>
+<ul>
+<li>
+<p>IPC 기법</p>
+<ul>
+<li>Message Queue</li>
+<li>Shared Memory</li>
+<li>Pipe</li>
+<li>Signal</li>
+<li>Semaphore</li>
+<li>Socket</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>
+<p>Pipe</p>
+<ul>
+<li>단방향 통신</li>
+<li>fork()로 자식 프로세스 만들었을 때 부모와 자식 간의 통신</li>
+<li>pipe는 커널 영역에 존재</li>
+</ul>
+</li>
+<li>
+<p>메시지 큐</p>
+<ul>
+<li>FIFO이며, 양방향. 어떤 프로세스 간이든 데이터 송수신 가능</li>
+</ul>
+</li>
+<li>
+<p>공유 메모리</p>
+<ul>
+<li>커널 공간에 메모리 공간을 만들고 해당 공간을 변수처럼 사용</li>
+<li>메모리 주소를 변수처럼 접근</li>
+<li>공유메모리 key로 여러 프로세스가 접근 가능</li>
+</ul>
+</li>
+<li>
+<p>Signal</p>
+<ul>
+<li>커널 또는 프로세스에서 다른 프로세스에 어떤 이벤트가 발생되었는지를 알려주는 기법</li>
+<li>미리 정의된 이벤트</li>
+<li>프로세스 관련 코드에 관련 시그널 핸들로를 등록해서 해당 시그널 처리 실행</li>
+</ul>
+</li>
+<li>
+<p>소켓</p>
+<ul>
+<li>두 개의 다른 컴퓨터 간의 네트워크 기반 통신 위한 기술</li>
+<li>2개의 프로세스 간 통신 기법으로 사용 가능</li>
+</ul>
+</li>
+<li>
+<p>정리</p>
+<ul>
+<li>대부분의 IPC 기법은 커널 공간 활용
+<ul>
+<li>이유: 커널 공간은 프로세스 간의 공유가 가능</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="세마포어">세마포어</h2>
+<p>스레드 간 전역 변수를 공유하다 보면 동기화 이슈가 발생하는데,
+동기화 이슈 해결 방안에는</p>
+<blockquote>
+<p>상호배제
+동시 접근 막기
+공유 변수에 대해서는 Exclusive Access 필요</p>
+</blockquote>
+<h2 id="뮤텍스와-세마포어">뮤텍스와 세마포어</h2>
+<ul>
+<li>임계 영역에 대한 접근을 막기 위해 LOCKING 메커니즘이 필요하다.
+<ul>
+<li>뮤텍스: 임계영역에 하나의 스레드만 들어갈 수 있다.</li>
+<li>세마포어
+<ul>
+<li>임계 영역에 여러 스레드가 들어갈 수 있다.</li>
+<li>counter를 두어 동시에 리소스에 접근할 수 있는 허용 가능한 스레드 수 제어</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="페이지-폴트">페이지 폴트</h2>
+<ul>
+<li>어떤 페이지가 실제 물리 메모리에 없을 때 일어나는 인터럽트</li>
+<li>운영체제가 페이지 폴트가 일어나면, 해당 페이지를 물리 메모리에 올린다.</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-08-03</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/multi-process-mutex-ipc/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/cs/">cs</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/multi-thread/" class="prev" rel="prev" title="멀티스레드"><i class="fas fa-angle-left fa-fw"></i>멀티스레드</a>
+            <a href="/def_post/" class="next" rel="next" title="Def_post">Def_post<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

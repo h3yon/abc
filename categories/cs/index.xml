@@ -1,23 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - My New Hugo Site</title>
-        <link>https://h3yon.github.io/posts/</link>
-        <description>All Posts | My New Hugo Site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 25 Mar 2022 00:48:03 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Test</title>
-    <link>https://h3yon.github.io/test/</link>
-    <pubDate>Fri, 25 Mar 2022 00:48:03 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://h3yon.github.io/test/</guid>
-    <description><![CDATA[테스트입니다.]]></description>
-</item><item>
-    <title>Def_post</title>
-    <link>https://h3yon.github.io/def_post/</link>
-    <pubDate>Thu, 24 Mar 2022 23:47:51 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://h3yon.github.io/def_post/</guid>
-    <description><![CDATA[def]]></description>
-</item><item>
+        <title>cs - Category - My New Hugo Site</title>
+        <link>https://h3yon.github.io/categories/cs/</link>
+        <description>cs - Category - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 03 Aug 2021 23:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/categories/cs/" rel="self" type="application/rss+xml" /><item>
     <title>멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스</title>
     <link>https://h3yon.github.io/multi-process-mutex-ipc/</link>
     <pubDate>Tue, 03 Aug 2021 23:47:34 &#43;0900</pubDate>
@@ -48,15 +34,5 @@
 UnsafeSequence는 비표준 어노테이션인 @NotThreadSafe를 사용.(@ThreadSafe와 @Immutable도 존재)
  @Immutable은 해당 클래스가 불변 클래스임을 나타내기 때문에 ThreadSafe  만약 @ThreadSafe라고 표시하면 클래스를 사용하는 사람은 멀티스레드 환경에서 문제가 없다는 점을 명확히 알 수 있고, 스레드 안전성이 계속 보장돼야 한다는 점에 주의할 수 있다.
 스레드는 같은 메모리 주소 공간을 공유하고 동시에 실행되기 때문에 다른 스레드가 사용 중일지도 모르는 변수를 읽거나 수정할 수도 있다.]]></description>
-</item><item>
-    <title>MySQL User 추가 및 권한 부여하기</title>
-    <link>https://h3yon.github.io/mysql-user/</link>
-    <pubDate>Sun, 11 Jul 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://h3yon.github.io/mysql-user/</guid>
-    <description><![CDATA[MySQL User 추가 및 권한 부여하기  mysql 사용자 추가하기    사용자 추가(비밀번호 X) $ create user 사용자;
-  사용자 추가 및 패스워드 설정 $ create user 사용자@localhost identified by 비밀번호;
-  사용자 추가 및 패스워드 설정부터 외부에서의 접근 허용 $ create user 사용자@'%' identified by 비밀번호;
-  사용자 삭제1 1  $ drop user 사용자;   사용자 목록 확인 $ select User from user;  사용자에게 데이터베이스 사용권한 부여   DB의 사용자에게 외부 권한 부여하기, 모든 권한 부여 $ GRANT ALL privileges ON DB명.]]></description>
 </item></channel>
 </rss>
