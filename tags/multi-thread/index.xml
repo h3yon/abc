@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>multi thread - Tag - h3yon blog</title>
+        <link>https://h3yon.github.io/tags/multi-thread/</link>
+        <description>multi thread - Tag - h3yon blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 27 Jul 2021 23:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/tags/multi-thread/" rel="self" type="application/rss+xml" /><item>
+    <title>[Nodejs]요청 처리 관점에서 생각해보는 멀티스레드, 멀티코어프로세스</title>
+    <link>https://h3yon.github.io/nodejs-requests/</link>
+    <pubDate>Tue, 27 Jul 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/nodejs-requests/</guid>
+    <description><![CDATA[Nodejs에서의 멀티스레드, 멀티코어프로세스 출처: How to run many parallel HTTP requests using Node.js ?
+nodejs는 싱글 스레드로, 10초가 소요되는 요청 A가 포함되는 경우, 다음 요청을 처리 하기 위해 10초를 기다리는 건 X!
+NodeJS 이벤트 루프가 단일 스레드일 뿐이기 때문. 여러 클라이언트 요청을 수신하여 EventQueue에 배치.
+이벤트루프 NodeJS는 이벤트 중심 아키텍처의 개념으로 구축되었고, 그 예로는 이벤트 리스너에 콜백함수를 등록하는 것!
+NodeJS에는 요청을 수신하고 처리하는 무한 루프인 자체 eventLoop이 존재.
+ EventLoop는 EventQueue의 Listener!]]></description>
+</item></channel>
+</rss>

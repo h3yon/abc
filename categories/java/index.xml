@@ -1,0 +1,49 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>java - Category - h3yon blog</title>
+        <link>https://h3yon.github.io/categories/java/</link>
+        <description>java - Category - h3yon blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 25 Aug 2021 23:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/categories/java/" rel="self" type="application/rss+xml" /><item>
+    <title>[Java]자바의 정석 벼락치기</title>
+    <link>https://h3yon.github.io/hurry-java/</link>
+    <pubDate>Wed, 25 Aug 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/hurry-java/</guid>
+    <description><![CDATA[자바의 정석 벼락치기 정보처리기사 실기 2일인지 3일인지 잘 기억은 안 나는데
+이번에 이틀의 전사? 3일의 전사 기념으로
+자바의 정석도 벼락치기 해도 될 것 같다!
+ch2 변수   명명규칙
+ 대소문자 구분. 길이에 제한 X 예약어 사용해선 X 예약어란? 자바에서 자체적으로 사용하는 단어 - true는 예약어. 하지만 True는 가능 숫자로 시작해선 X 특수문자는 &lsquo;_&lsquo;와 &lsquo;%&rsquo; 허용 클래스 첫글자 대문자 여러 단어 첫글자는 대문자 ex) lastIndexOf 상수 이름은 대문자. 단어는 &lsquo;_&lsquo;로 구분    변수, 상수, 리터럴]]></description>
+</item><item>
+    <title>[TIL] Spring 심화반 1주차 복습일지</title>
+    <link>https://h3yon.github.io/2021-10-03-til-deep-spring1/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/2021-10-03-til-deep-spring1/</guid>
+    <description><![CDATA[[TIL] Spring 심화반 1주차 복습일지 1주차때 배운 내용을 복습해보려고 한다~! 간단한 목차는 아래와 같다!
+세팅 관련  preference에서 auto import 입력  Insert imports on paste: Always Add unambiguous imports on the fly: v로 바꾸기    의존성 주입 생성자 주입 방식으로 의존성 주입하는 부분임을 알 수 있다.
+1 2 3 4 5 6 7 8 9 10  @Controller public class MyController{ private final MyService myService; @Autowired public MyController(MyService myService){ this.]]></description>
+</item><item>
+    <title>[TIL] Spring 심화반 2주차 복습일지</title>
+    <link>https://h3yon.github.io/2021-10-03-til-deep-spring2/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/2021-10-03-til-deep-spring2/</guid>
+    <description><![CDATA[[TIL] Spring 심화반 2주차 복습일지 2주차때 배운 내용을 복습해보려고 한다~!
+간단한 목차는 아래와 같다!
+* 인증과 인가! 인증은 신원 확인!
+인가는 사용자 권한을 확인한다는 의미
+* 스프링 시큐리티? 인증 및 인가를 위해 많은 기능 제공!
+1  implementation &#39;org.springframework.boot:spring-boot-starter-security&#39;   ** 스프링 시큐리티 과정 살펴보기 아래처럼 UserDetails 관련해서 뭔가 작용하는 구조임을 알 수 있다!
+아래 2개 구현을 해준다.
+  UserDetailsService 인터페이스 → UserDetailsServiceImpl 클래스
+UserDetailsServiceImpl에서는 해당하는 유저 이름을 리턴해주도록 구현한다.]]></description>
+</item><item>
+    <title>[TIL] Spring 심화반 3주차 복습일지</title>
+    <link>https://h3yon.github.io/2021-10-03-til-deep-spring3/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/2021-10-03-til-deep-spring3/</guid>
+    <description><![CDATA[[TIL] Spring 심화반 3주차 복습일지 ]]></description>
+</item></channel>
+</rss>

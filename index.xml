@@ -1,64 +1,135 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>My New Hugo Site</title>
+        <title>h3yon blog</title>
         <link>https://h3yon.github.io/</link>
-        <description>This is My New Hugo Site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 25 Mar 2022 00:48:03 &#43;0900</lastBuildDate>
+        <description>Welcome to h3yon 개구리 블로그</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 26 Dec 2021 23:47:34 &#43;0900</lastBuildDate>
             <atom:link href="https://h3yon.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>Test</title>
-    <link>https://h3yon.github.io/test/</link>
-    <pubDate>Fri, 25 Mar 2022 00:48:03 &#43;0900</pubDate>
+    <title>테스트코드의 Mock, MockBean, Autowired, Spy 이해하기</title>
+    <link>https://h3yon.github.io/mock-spy-testcode/</link>
+    <pubDate>Sun, 26 Dec 2021 23:47:34 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://h3yon.github.io/test/</guid>
-    <description><![CDATA[테스트입니다.]]></description>
+    <guid>https://h3yon.github.io/mock-spy-testcode/</guid>
+    <description><![CDATA[Test code +mock과 stub의 차이? 행위 검증을 추구한다는 것. mock은 행위검증을 추구하고, stub은 그렇지 않다
+1. MockBean, Mock, Autowired
+target(mock)으로 보면 되겠다! 예를 들어서 controller 생성자에 service가 필요하다고 가정하면, controller(service)이므로 controller에 @InjectMocks, service에 @Mock을 해준다
+아래를 보면 알겠지만,
+MockBean/SpyBean은 Autowired로 기억됨을 알 수 있다
+@MockBean: mock객체를 스프링 컨텍스트에 등록
+@Autowired: @MockBean으로 등록한 mock 객체를 주입 받아서 의존성 해결
+@MockBean의 의존성 주입 Target을 @InjectMocks로 하려고 하면 실패한다
+2. SpyBean
+@SpyBean: spy 객체를 스프링 context에 등록]]></description>
 </item><item>
-    <title>Def_post</title>
-    <link>https://h3yon.github.io/def_post/</link>
-    <pubDate>Thu, 24 Mar 2022 23:47:51 &#43;0900</pubDate>
+    <title>스프링 mvc 1편 정리</title>
+    <link>https://h3yon.github.io/springmvc1/</link>
+    <pubDate>Thu, 23 Dec 2021 23:47:34 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://h3yon.github.io/def_post/</guid>
-    <description><![CDATA[def]]></description>
+    <guid>https://h3yon.github.io/springmvc1/</guid>
+    <description><![CDATA[스프링 mvc 1편을 듣고 정리한 내용입니다.
+1 Servlet이해하기 서블릿을 자동 등록하는 경우, @ServletComponentScan어노테이션을 사용한다.
+예제를 보면서 이해해보자
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  @WebServlet(name = &#34;helloServlet&#34;, urlPatterns = &#34;/hello&#34;) public class HelloServlet extends HttpServlet { @Override protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { System.out.println(&#34;request = &#34; + request); System.out.println(&#34;response = &#34; + response); String username = request.]]></description>
 </item><item>
-    <title>멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스</title>
-    <link>https://h3yon.github.io/multi-process-mutex-ipc/</link>
-    <pubDate>Tue, 03 Aug 2021 23:47:34 &#43;0900</pubDate>
+    <title>[토비의 스프링] 정리</title>
+    <link>https://h3yon.github.io/toby1/</link>
+    <pubDate>Mon, 01 Nov 2021 23:47:34 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://h3yon.github.io/multi-process-mutex-ipc/</guid>
-    <description><![CDATA[멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스 출처: multi process vs multi thread
-컨텍스트 스위칭 한 task가 끝날 때까지 기다리는 게 아니라 여러 작업을 번갈아가며 동시에 처리한다. 인터럽트 발생 시 프로세스 상태를 PCB에 저장하고 새로운 프로세스 상태를 레지스터에 저장한다. 이때 CPU는 아무런 일을 하지 않기 때문에 잦은 컨텍스트 스위칭은 성능저하를 야기한다.
-멀티 프로세스  장점  자식 프로세스 중 하나에 문제 발생 시 영향이 확산되지 않는다.   단점  IPC(Inter Process Communication)  각각의 독립된 메모리 영역을 할당받았기 때문에 하나의 프로그램에 속하는 프로세스 사이의 변수를 공유할 수 없다   Context Switching에서의 오버헤드  컨텍스트 스위칭 과정에서 캐쉬 메모리 초기화 등 무거운 작업이 진행되고 많은 시간이 소모되는 오버헤드가 발생하게 된다.]]></description>
+    <guid>https://h3yon.github.io/toby1/</guid>
+    <description><![CDATA[토비의 스프링 2차 정리 관심사의 분리? 관심이 같은 것끼리는 하나의 객체 안으로 또는 친한 객체로 모이게 하고
+관심이 다른 것은 가능한 한 따로 덜어져서 서로 영향을 주지 않도록 분리하는 것
+템플릿 메소드 패턴 슈퍼클래스에 기본적인 로직의 흐름을 만들고 기능의 일부를 추상 메소드나 오버라이딩이 가능한 protected 메소드 등으로 만든 뒤
+서브 클래스에서 이런 메소드를 필요로 맞게 구현해서 사용
+ 훅메소드? 슈퍼클래스에서 디폴트 기능을 정의해두거나 비워뒀다가 선택적으로 오버라이드할 수 있도록 만들어둔 메소드  팩토리 메소드 패턴 서브클래스에서 구체적인 오브젝트 생성 방법을 결정하게 하는 것]]></description>
 </item><item>
-    <title>멀티스레드</title>
-    <link>https://h3yon.github.io/multi-thread/</link>
-    <pubDate>Thu, 22 Jul 2021 23:47:34 &#43;0900</pubDate>
+    <title>[스프링 인 액션5] Chapter4~6 내용 정리</title>
+    <link>https://h3yon.github.io/til-sia2/</link>
+    <pubDate>Tue, 19 Oct 2021 23:47:34 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://h3yon.github.io/multi-thread/</guid>
-    <description><![CDATA[출처: [병렬프로그래밍] 프로세스, 스레드 개념 [병렬프로그래밍] 스레드 이해하기
-스레드 리마인드 프로세스는 실행중인 프로그램이며, 하나의 실행 흐름을 스레드라고 한다. 하나의 프로세스 안에 스레드 여러개 있는 것이 멀티 스레드.
-게임/네트워크 프로그래밍에서 멀티 스레드 많이 사용. (캐릭터를 움직이게 하거나, 데이터를 기다릴 때, 흐름 담당할 때 사용)
-멀티 프로그래밍 여러 개의 프로그램들이 단일 CPU 상에서 실행되는 것. 한 프로그램이 일부 실행되고 다른 프로그램이 일부 실행되는 방식으로, 모든 프로그램이 동시에 수행되는 것처럼 보이게 된다.
-자바 스레드의 생성자 1 2 3 4 5 6 7 8  - Thread() : Thread를 상속받은 고유의 클래스 생성 필요.]]></description>
+    <guid>https://h3yon.github.io/til-sia2/</guid>
+    <description><![CDATA[Chapter4 스프링 시큐리티 사용 예시로 알아보기
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22  @EnableWebSecurity public class SecurityConfig extends WebSecurityConfigurerAdapter { //HTTP 보안 구성  @Override protected void configure(HttpSecurity http) throws Exception{ http .authorizeRequests()	// ExpressionInterceptUrlRegistry 객체 반환  .antMatchers(&#34;/design&#34;, &#34;/orders&#34;) // 이 부분은  .access(&#34;hasRole(&#39;ROLE_USER&#39;)&#34;) // 인가 과정  .antMatchers(&#34;/&#34;, &#34;/**&#34;).access(&#34;permitAll&#34;) // 이 부분은 누구나 접속 가능  .]]></description>
 </item><item>
-    <title>스레드</title>
-    <link>https://h3yon.github.io/thread/</link>
-    <pubDate>Thu, 22 Jul 2021 23:47:34 &#43;0900</pubDate>
+    <title>[스프링 핵심 원리 - 기본편] 복습일지3 (컴포넌트 스캔)</title>
+    <link>https://h3yon.github.io/til-spring-core3/</link>
+    <pubDate>Fri, 15 Oct 2021 23:47:34 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://h3yon.github.io/thread/</guid>
-    <description><![CDATA[출처: [병렬프로그래밍] 자바 병렬 프로그래밍 소개
-스레드 사용   안전성 위해 요소
-UnsafeSequence는 비표준 어노테이션인 @NotThreadSafe를 사용.(@ThreadSafe와 @Immutable도 존재)
- @Immutable은 해당 클래스가 불변 클래스임을 나타내기 때문에 ThreadSafe  만약 @ThreadSafe라고 표시하면 클래스를 사용하는 사람은 멀티스레드 환경에서 문제가 없다는 점을 명확히 알 수 있고, 스레드 안전성이 계속 보장돼야 한다는 점에 주의할 수 있다.
-스레드는 같은 메모리 주소 공간을 공유하고 동시에 실행되기 때문에 다른 스레드가 사용 중일지도 모르는 변수를 읽거나 수정할 수도 있다.]]></description>
+    <guid>https://h3yon.github.io/til-spring-core3/</guid>
+    <description><![CDATA[[스프링 핵심 원리 - 기본편] 복습일지3 (컴포넌트 스캔) 컴포넌트 스캔? 컴포넌트 스캔은 스프링이 설정 정보가 없어도
+자동으로 스프링 빈을 등록하는 기능이다
+컴포넌트 스캔을 사용하려면 아래처럼
+@ComponentScan을 설정 정보에 붙여준다.
+아래처럼 제외도 가능하다.
+1 2 3 4 5 6  @Configuration @ComponentScan( excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class) ) public class AutoAppConfig { }   컴포넌트 스캔은 @Component 애노테이션이 붙은 클래스를 스캔 후
+스프링 빈으로 등록한다.
+예시를 한번 봐보자.]]></description>
 </item><item>
-    <title>MySQL User 추가 및 권한 부여하기</title>
-    <link>https://h3yon.github.io/mysql-user/</link>
-    <pubDate>Sun, 11 Jul 2021 23:47:34 &#43;0900</pubDate>
+    <title>[스프링 인 액션5]Chapter1~3 내용 정리</title>
+    <link>https://h3yon.github.io/til-sia1/</link>
+    <pubDate>Thu, 14 Oct 2021 23:47:34 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://h3yon.github.io/mysql-user/</guid>
-    <description><![CDATA[MySQL User 추가 및 권한 부여하기  mysql 사용자 추가하기    사용자 추가(비밀번호 X) $ create user 사용자;
-  사용자 추가 및 패스워드 설정 $ create user 사용자@localhost identified by 비밀번호;
-  사용자 추가 및 패스워드 설정부터 외부에서의 접근 허용 $ create user 사용자@'%' identified by 비밀번호;
-  사용자 삭제1 1  $ drop user 사용자;   사용자 목록 확인 $ select User from user;  사용자에게 데이터베이스 사용권한 부여   DB의 사용자에게 외부 권한 부여하기, 모든 권한 부여 $ GRANT ALL privileges ON DB명.]]></description>
+    <guid>https://h3yon.github.io/til-sia1/</guid>
+    <description><![CDATA[[스프링 인 액션5] Chapter1~3 내용 정리 스프링 인 액션에 대한 내용을 읽으면서
+중요 내용, 한번 더 짚고 넘어가면 좋을 내용에 대해서 써보려고 한다.
+Chapter1 SpringBootApplication 애플리케이션의 부트스트랩 클래스에,
+SpringBootApplication이 있다는 건 다들 봤을 것이다.
+이 SpringBootApplication이 어떤 어노테이션이 결합한 것인지 보자
+  SpringBootConfiguration 현재 클래스를 구성 클래스로 지정한다.(@Configuration)의 특화된 형태
+  EnableAutoConfiguration 스프링 부트 자동-구성을 활성화한다
+  ComponentScan 컴포넌트 검색을 활성화한다. @Component, @Controller, @Service 등의 애노테이션과 함께 클래스를 선언할 수 있게 한다.]]></description>
+</item><item>
+    <title>[스프링 핵심 원리 - 기본편] 복습 일지2 (싱글톤)</title>
+    <link>https://h3yon.github.io/til-spring-core2/</link>
+    <pubDate>Thu, 14 Oct 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/til-spring-core2/</guid>
+    <description><![CDATA[[스프링 핵심 원리 - 기본편] 복습일지2 (싱글톤) 싱글톤 패턴 클래스의 인스턴스가 딱 1개만 생성되는 것을 보장하는 디자인패턴!
+1 2 3 4 5  public class SingleService { private static final SingleService instance = new SingleService(); private SingleService() {} public static SingleService getInstance(){ return instance; } }   이 상태로 single.getInstance를 2번 사용했을 때
+같은 객체가 나옴을 알 수 있다.
+근데 싱글톤 패턴의 문제점도 꽤 많다는 걸 알게 되어서
+나중에 한번 더 복습할 때 정리해야겠다.]]></description>
+</item><item>
+    <title>[스프링 핵심 원리 - 기본편] 복습 일지1 (빈)</title>
+    <link>https://h3yon.github.io/til-spring-core1/</link>
+    <pubDate>Wed, 13 Oct 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/til-spring-core1/</guid>
+    <description><![CDATA[[스프링 핵심 원리 - 기본편] 복습일지1 (빈) 원래 설정 파일 즉, AppConfig에서
+memberService -&gt; memberRepository -&gt; MemoryMemberRepository
+이런 식으로 사용했었다.
+근데 AppConfig를 @Configuration으로 해주고,
+각각 memberService, memberRepository, MemoryMemberRepository에
+@Bean으로 등록해주면 어떻게 되는지 보자.
+@Configuration, @Bean으로 등록했을 때 원래 기존 방식은 아래와 같다.
+1 2  AppConfig appConfig = new AppConfig(); MemberService memberService = appConfig.memberService();   @Configuration, @Bean으로 등록해주면
+위의 부분이 어떻게 바뀌는지 보자.
+1 2  ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.]]></description>
+</item><item>
+    <title>[TIL]스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술</title>
+    <link>https://h3yon.github.io/til-spring-basic/</link>
+    <pubDate>Sun, 03 Oct 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/til-spring-basic/</guid>
+    <description><![CDATA[[TIL] 스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술 (주의) 주관적으로 정리하고 싶은 부분만 정리했습니다!
+요약본을 보고 싶으신 분은 다른 게시글을 보시는 걸 추천합니다~!
+본 강의: 인프런 - 스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술
+  객체를 계속 생성하는 것보다는
+의존성 주입으로 재활용할 부분은 재활용하기
+1 2 3 4 5  private final MemberRepository memberRepository; public MemberService(MemberRepository memberRepository) { this.memberRepository = memberRepository; }     스프링 컨테이너]]></description>
+</item><item>
+    <title>You dont know js up &amp; going 정복하기</title>
+    <link>https://h3yon.github.io/you-dont-know-js/</link>
+    <pubDate>Fri, 24 Sep 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/you-dont-know-js/</guid>
+    <description><![CDATA[title: &ldquo;You dont know js up &amp; going 정복하기&rdquo; except: &ldquo;you dont knnow js!&rdquo;
+toc: true toc_sticky: true
+categories:
+ Javascript tags: Javascript   You dont know js 1st Edition up &amp; going 정복하기 You dont know 책을 접해보게 되었는데,
+뭔가 탄탄해보여서 읽어보기로 결정했다!
+(기본 지식을 가졌다고 가정하고 정리해보겠습니다!)
+Chapter 1: Into Programming   Input
+1 2  let age = prompt(&#34;나이를 입력해주세요&#34;); console.log(age);     Converting Between Types]]></description>
 </item></channel>
 </rss>

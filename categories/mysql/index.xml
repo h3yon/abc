@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>MySQL - Category - My New Hugo Site</title>
+        <title>MySQL - Category - h3yon blog</title>
         <link>https://h3yon.github.io/categories/mysql/</link>
-        <description>MySQL - Category - My New Hugo Site</description>
+        <description>MySQL - Category - h3yon blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 11 Jul 2021 23:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/categories/mysql/" rel="self" type="application/rss+xml" /><item>
     <title>MySQL User 추가 및 권한 부여하기</title>
     <link>https://h3yon.github.io/mysql-user/</link>

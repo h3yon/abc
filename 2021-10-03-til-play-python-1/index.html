@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 1주차 개발일지 - h3yon blog</title><meta name="Description" content="Welcome to h3yon 개구리 블로그"><meta property="og:title" content="[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 1주차 개발일지" />
+<meta property="og:description" content="[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 1주차 개발일지 스파르타코딩클럽에서
+파이썬 혼자놀기 패키지가 있길래 한번 들어보았다!
+오늘의 목표 아래처럼 연예인 사진을 검색해서
+저장해보는 게 오늘의 목표이다!!
+정리한 코드: 코드
+사용 모듈! 사용 모듈은 아래와 같다.
+1 2 3 4  from bs4 import BeautifulSoup from selenium import webdriver import dload import time   일단 chrome driver를 사용해서 검색을 하고,
+해당 페이지의 소스를 req에 담는다.
+사진처럼 div &gt; a &gt; img에 속하므로" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://h3yon.github.io/2021-10-03-til-play-python-1/" /><meta property="article:section" content="posts" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 1주차 개발일지"/>
+<meta name="twitter:description" content="[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 1주차 개발일지 스파르타코딩클럽에서
+파이썬 혼자놀기 패키지가 있길래 한번 들어보았다!
+오늘의 목표 아래처럼 연예인 사진을 검색해서
+저장해보는 게 오늘의 목표이다!!
+정리한 코드: 코드
+사용 모듈! 사용 모듈은 아래와 같다.
+1 2 3 4  from bs4 import BeautifulSoup from selenium import webdriver import dload import time   일단 chrome driver를 사용해서 검색을 하고,
+해당 페이지의 소스를 req에 담는다.
+사진처럼 div &gt; a &gt; img에 속하므로"/>
+<meta name="application-name" content="h3yon blog">
+<meta name="apple-mobile-web-app-title" content="h3yon blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/2021-10-03-til-play-python-1/" /><link rel="prev" href="https://h3yon.github.io/2021-10-03-til-play-python-2/" /><link rel="next" href="https://h3yon.github.io/2021-10-03-til-deep-spring3/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 1주차 개발일지",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/h3yon.github.io\/2021-10-03-til-play-python-1\/"
+        },"genre": "posts","keywords": "Crawling","wordcount":  107 ,
+        "url": "https:\/\/h3yon.github.io\/2021-10-03-til-play-python-1\/","publisher": {
+            "@type": "Organization",
+            "name": "h3yon"},"author": {
+                "@type": "Person",
+                "name": "h3yon"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="h3yon blog">h3yon blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="h3yon blog">h3yon blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 1주차 개발일지</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-category">included in <a href="/categories/crawling/"><i class="far fa-folder fa-fw"></i>Crawling</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;107 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#til-힙한취미코딩-파이썬-혼자놀기-패키지-1주차-개발일지">[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 1주차 개발일지</a></li>
+    <li><a href="#오늘의-목표">오늘의 목표</a></li>
+    <li><a href="#사용-모듈">사용 모듈!</a></li>
+    <li><a href="#후기">후기</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="til-힙한취미코딩-파이썬-혼자놀기-패키지-1주차-개발일지">[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 1주차 개발일지</h2>
+<p>스파르타코딩클럽에서<br>
+파이썬 혼자놀기 패키지가 있길래 한번 들어보았다!</p>
+<h2 id="오늘의-목표">오늘의 목표</h2>
+<p>아래처럼 연예인 사진을 검색해서<br>
+저장해보는 게 오늘의 목표이다!!</p>
+<img src="https://user-images.githubusercontent.com/46602874/135744028-8b379b96-999c-4680-8123-fbc688edb731.png">
+<p>정리한 코드: <a href="https://github.com/h3yon/Crawling-TEST/commit/f4463fc9ab2ed13482d4dec119ededb9223648f7" target="_blank" rel="noopener noreffer">코드</a></p>
+<h2 id="사용-모듈">사용 모듈!</h2>
+<p>사용 모듈은 아래와 같다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">from bs4 import BeautifulSoup
+from selenium import webdriver
+import dload
+import time
+</code></pre></td></tr></table>
+</div>
+</div><p>일단 chrome driver를 사용해서 검색을 하고,<br>
+해당 페이지의 소스를 req에 담는다.</p>
+<img src="https://user-images.githubusercontent.com/46602874/135744199-b1673d56-8940-409b-8901-7a9d3c576dbd.png">
+<p>사진처럼 div &gt; a &gt; img에 속하므로<br>
+soup.select 안에 해당 경로를 넣어준다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">for thumbnail in thumbnails:
+    src = thumbnail[&#34;src&#34;]
+    dload.save(src,f&#39;img_homework/{i}.jpg&#39;)
+    i += 1
+</code></pre></td></tr></table>
+</div>
+</div><p>thumbnails만큼 돌아서 내 디렉토리 안에 넣음을 확인했다~!</p>
+<h2 id="후기">후기</h2>
+<p>좋아하는 배우 얼굴로 눈호강도 하고<br>
+크롤링도 간단하게 접해볼 수 있어서 너무 좋았다!</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2021-10-03-til-play-python-1/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/crawling/">Crawling</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2021-10-03-til-play-python-2/" class="prev" rel="prev" title="[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 2주차 개발일지"><i class="fas fa-angle-left fa-fw"></i>[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 2주차 개발일지</a>
+            <a href="/2021-10-03-til-deep-spring3/" class="next" rel="next" title="[TIL] Spring 심화반 3주차 복습일지">[TIL] Spring 심화반 3주차 복습일지<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

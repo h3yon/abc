@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>멀티스레드 - My New Hugo Site</title><meta name="Description" content="This is My New Hugo Site"><meta property="og:title" content="멀티스레드" />
+        <title>멀티스레드 - h3yon blog</title><meta name="Description" content="Welcome to h3yon 개구리 블로그"><meta property="og:title" content="멀티스레드" />
 <meta property="og:description" content="출처: [병렬프로그래밍] 프로세스, 스레드 개념 [병렬프로그래밍] 스레드 이해하기
 스레드 리마인드 프로세스는 실행중인 프로그램이며, 하나의 실행 흐름을 스레드라고 한다. 하나의 프로세스 안에 스레드 여러개 있는 것이 멀티 스레드.
 게임/네트워크 프로그래밍에서 멀티 스레드 많이 사용. (캐릭터를 움직이게 하거나, 데이터를 기다릴 때, 흐름 담당할 때 사용)
@@ -23,10 +23,10 @@
 게임/네트워크 프로그래밍에서 멀티 스레드 많이 사용. (캐릭터를 움직이게 하거나, 데이터를 기다릴 때, 흐름 담당할 때 사용)
 멀티 프로그래밍 여러 개의 프로그램들이 단일 CPU 상에서 실행되는 것. 한 프로그램이 일부 실행되고 다른 프로그램이 일부 실행되는 방식으로, 모든 프로그램이 동시에 수행되는 것처럼 보이게 된다.
 자바 스레드의 생성자 1 2 3 4 5 6 7 8  - Thread() : Thread를 상속받은 고유의 클래스 생성 필요."/>
-<meta name="application-name" content="My New Hugo Site">
-<meta name="apple-mobile-web-app-title" content="My New Hugo Site"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="application-name" content="h3yon blog">
+<meta name="apple-mobile-web-app-title" content="h3yon blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/multi-thread/" /><link rel="prev" href="https://h3yon.github.io/thread/" /><link rel="next" href="https://h3yon.github.io/multi-process-mutex-ipc/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/multi-thread/" /><link rel="prev" href="https://h3yon.github.io/thread/" /><link rel="next" href="https://h3yon.github.io/nodejs-requests/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -38,9 +38,9 @@
         },"genre": "posts","keywords": "cs","wordcount":  415 ,
         "url": "https:\/\/h3yon.github.io\/multi-thread\/","datePublished": "2021-07-22T23:47:34+09:00","dateModified": "2021-07-22T23:47:34+09:00","publisher": {
             "@type": "Organization",
-            "name": "xxxx"},"author": {
+            "name": "h3yon"},"author": {
                 "@type": "Person",
-                "name": "xxxx"
+                "name": "h3yon"
             },"description": ""
     }
     </script></head>
@@ -49,7 +49,7 @@
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="My New Hugo Site">My New Hugo Site</a>
+            <a href="/" title="h3yon blog">h3yon blog</a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
@@ -62,7 +62,7 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="My New Hugo Site">My New Hugo Site</a>
+                <a href="/" title="h3yon blog">h3yon blog</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -84,7 +84,7 @@
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">멀티스레드</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xxxx</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs/"><i class="far fa-folder fa-fw"></i>cs</a></span></div>
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cs/"><i class="far fa-folder fa-fw"></i>cs</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-22">2021-07-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;415 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -214,12 +214,12 @@ synchronized 키워드를 사용하면 해당 객체의 락을 검사한다. 락
     </div>
 
     <div class="post-nav"><a href="/thread/" class="prev" rel="prev" title="스레드"><i class="fas fa-angle-left fa-fw"></i>스레드</a>
-            <a href="/multi-process-mutex-ipc/" class="next" rel="next" title="멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스">멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/nodejs-requests/" class="next" rel="next" title="[Nodejs]요청 처리 관점에서 생각해보는 멀티스레드, 멀티코어프로세스">[Nodejs]요청 처리 관점에서 생각해보는 멀티스레드, 멀티코어프로세스<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>[Github]올라간 파일/디렉토리 삭제하기 - h3yon blog</title><meta name="Description" content="Welcome to h3yon 개구리 블로그"><meta property="og:title" content="[Github]올라간 파일/디렉토리 삭제하기" />
+<meta property="og:description" content="커밋 되돌리기 일단 로그를 먼저 봐야 한다. 아래 명령어를 쳐서 되돌아갈 부분을 보자.
+1 2 3 4 5 6 7  % git log --oneline 4170f95 (HEAD -&gt; master, origin/master) Delete replication/slave/data directory dd16435 Delete replication/master/data directory b2e987b .gitignore 8a550be .gitignore 4ce5b09 feat: replication 4f40e6f fin: server   나는 b2e987b로 돌아가면 된다. 여러가지 옵션이 있는데, 아래 부분을 보고 하나 정해서 돌아가보자.
+  reset
+1 2  $ git reset [돌아갈 부분] # ex) git reset b2e987b   git reset origin 이후의 커밋들이 전부 사라진다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://h3yon.github.io/revert-commit/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-26T23:47:34+09:00" />
+<meta property="article:modified_time" content="2021-08-26T23:47:34+09:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[Github]올라간 파일/디렉토리 삭제하기"/>
+<meta name="twitter:description" content="커밋 되돌리기 일단 로그를 먼저 봐야 한다. 아래 명령어를 쳐서 되돌아갈 부분을 보자.
+1 2 3 4 5 6 7  % git log --oneline 4170f95 (HEAD -&gt; master, origin/master) Delete replication/slave/data directory dd16435 Delete replication/master/data directory b2e987b .gitignore 8a550be .gitignore 4ce5b09 feat: replication 4f40e6f fin: server   나는 b2e987b로 돌아가면 된다. 여러가지 옵션이 있는데, 아래 부분을 보고 하나 정해서 돌아가보자.
+  reset
+1 2  $ git reset [돌아갈 부분] # ex) git reset b2e987b   git reset origin 이후의 커밋들이 전부 사라진다."/>
+<meta name="application-name" content="h3yon blog">
+<meta name="apple-mobile-web-app-title" content="h3yon blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/revert-commit/" /><link rel="prev" href="https://h3yon.github.io/hurry-java/" /><link rel="next" href="https://h3yon.github.io/delete-file/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[Github]올라간 파일/디렉토리 삭제하기",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/h3yon.github.io\/revert-commit\/"
+        },"genre": "posts","keywords": "github","wordcount":  141 ,
+        "url": "https:\/\/h3yon.github.io\/revert-commit\/","datePublished": "2021-08-26T23:47:34+09:00","dateModified": "2021-08-26T23:47:34+09:00","publisher": {
+            "@type": "Organization",
+            "name": "h3yon"},"author": {
+                "@type": "Person",
+                "name": "h3yon"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="h3yon blog">h3yon blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="h3yon blog">h3yon blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">[Github]올라간 파일/디렉토리 삭제하기</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-category">included in <a href="/categories/github/"><i class="far fa-folder fa-fw"></i>github</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-26">2021-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;141 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#커밋-되돌리기">커밋 되돌리기</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="커밋-되돌리기">커밋 되돌리기</h3>
+<p>일단 로그를 먼저 봐야 한다.
+아래 명령어를 쳐서 되돌아갈 부분을 보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">% git log --oneline
+4170f95 (HEAD -&gt; master, origin/master) Delete replication/slave/data directory
+dd16435 Delete replication/master/data directory
+b2e987b .gitignore
+8a550be .gitignore
+4ce5b09 feat: replication
+4f40e6f fin: server
+</code></pre></td></tr></table>
+</div>
+</div><p>나는 b2e987b로 돌아가면 된다.
+여러가지 옵션이 있는데, 아래 부분을 보고 하나 정해서 돌아가보자.</p>
+<ol>
+<li>
+<p>reset</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ git reset [돌아갈 부분]
+# ex) git reset b2e987b
+</code></pre></td></tr></table>
+</div>
+</div><p>git reset origin 이후의 커밋들이 전부 사라진다.</p>
+</li>
+<li>
+<p>soft</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ git reset --soft [돌아갈 부분]
+# ex) git reset --soft b2e987b
+</code></pre></td></tr></table>
+</div>
+</div><p>log에서 커밋 내용은 사라지나,<br>
+리셋 이후 수정 내용도 동일하게 존재.<br>
+해당 내용이 staging area에 존재.</p>
+</li>
+<li>
+<p>hard</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ git reset --hard [돌아갈 부분]
+# ex) git reset --hard b2e987b
+</code></pre></td></tr></table>
+</div>
+</div><p>해당 커밋 이후 내용 모조리 날림<br>
+삭제한 부분을 되돌렸을 때 삭제한 게 바로 나타남을 알 수 있다.<br></p>
+</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-08-26</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/revert-commit/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/github/">github</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/hurry-java/" class="prev" rel="prev" title="[Java]자바의 정석 벼락치기"><i class="fas fa-angle-left fa-fw"></i>[Java]자바의 정석 벼락치기</a>
+            <a href="/delete-file/" class="next" rel="next" title="[Github]올라간 파일/디렉토리 삭제하기">[Github]올라간 파일/디렉토리 삭제하기<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>database - Category - h3yon blog</title>
+        <link>https://h3yon.github.io/categories/database/</link>
+        <description>database - Category - h3yon blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 19 Aug 2021 23:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/categories/database/" rel="self" type="application/rss+xml" /><item>
+    <title>h2 database 에러 해결하기</title>
+    <link>https://h3yon.github.io/h2-error/</link>
+    <pubDate>Thu, 19 Aug 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/h2-error/</guid>
+    <description><![CDATA[h2 database 에러 해결하기 오늘 아래의 에러가 계속 괴롭혀서 해결 방법을 써보고자 한다
+1  h2 Database not found, either pre-create it or allow remote database creation (not recommended in secure environments)   jdbc:h2:tcp://localhost/~/test를 아래처럼 계속 눌렀는데,
+이 에러가 계속 나타났다.
+1  h2 Database not found, either pre-create it or allow remote database creation (not recommended in secure environments)   시도했던 방법은 아래와 같은데,
+하나같이 다 안 됐다.]]></description>
+</item></channel>
+</rss>

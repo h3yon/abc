@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>spy - Tag - h3yon blog</title>
+        <link>https://h3yon.github.io/tags/spy/</link>
+        <description>spy - Tag - h3yon blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 26 Dec 2021 23:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/tags/spy/" rel="self" type="application/rss+xml" /><item>
+    <title>테스트코드의 Mock, MockBean, Autowired, Spy 이해하기</title>
+    <link>https://h3yon.github.io/mock-spy-testcode/</link>
+    <pubDate>Sun, 26 Dec 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/mock-spy-testcode/</guid>
+    <description><![CDATA[Test code +mock과 stub의 차이? 행위 검증을 추구한다는 것. mock은 행위검증을 추구하고, stub은 그렇지 않다
+1. MockBean, Mock, Autowired
+target(mock)으로 보면 되겠다! 예를 들어서 controller 생성자에 service가 필요하다고 가정하면, controller(service)이므로 controller에 @InjectMocks, service에 @Mock을 해준다
+아래를 보면 알겠지만,
+MockBean/SpyBean은 Autowired로 기억됨을 알 수 있다
+@MockBean: mock객체를 스프링 컨텍스트에 등록
+@Autowired: @MockBean으로 등록한 mock 객체를 주입 받아서 의존성 해결
+@MockBean의 의존성 주입 Target을 @InjectMocks로 하려고 하면 실패한다
+2. SpyBean
+@SpyBean: spy 객체를 스프링 context에 등록]]></description>
+</item></channel>
+</rss>

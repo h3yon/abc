@@ -1,0 +1,49 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Crawling - Tag - h3yon blog</title>
+        <link>https://h3yon.github.io/tags/crawling/</link>
+        <description>Crawling - Tag - h3yon blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://h3yon.github.io/tags/crawling/" rel="self" type="application/rss+xml" /><item>
+    <title>[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 1주차 개발일지</title>
+    <link>https://h3yon.github.io/2021-10-03-til-play-python-1/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/2021-10-03-til-play-python-1/</guid>
+    <description><![CDATA[[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 1주차 개발일지 스파르타코딩클럽에서
+파이썬 혼자놀기 패키지가 있길래 한번 들어보았다!
+오늘의 목표 아래처럼 연예인 사진을 검색해서
+저장해보는 게 오늘의 목표이다!!
+정리한 코드: 코드
+사용 모듈! 사용 모듈은 아래와 같다.
+1 2 3 4  from bs4 import BeautifulSoup from selenium import webdriver import dload import time   일단 chrome driver를 사용해서 검색을 하고,
+해당 페이지의 소스를 req에 담는다.
+사진처럼 div &gt; a &gt; img에 속하므로]]></description>
+</item><item>
+    <title>[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 2주차 개발일지</title>
+    <link>https://h3yon.github.io/2021-10-03-til-play-python-2/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/2021-10-03-til-play-python-2/</guid>
+    <description><![CDATA[[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 2주차 개발일지 스파르타코딩클럽에서
+파이썬 혼자놀기 패키지가 있어서 2주차를 들어보았다!
+오늘의 목표 아래처럼 썸네일을 포함해 기사를 크롤링해서 자신에게 메일 보내기!
+ 정리한 코드: 코드  사용 모듈! 사용 모듈은 아래와 같다.
+1 2 3 4 5 6 7 8 9 10 11  # 이메일 관련 모듈 import smtplib from email.mime.multipart import MIMEMultipart from email.mime.base import MIMEBase from email.mime.text import MIMEText from email import encoders # 크롤링 및 엑셀 변환 모듈 from openpyxl import Workbook from bs4 import BeautifulSoup from selenium import webdriver   모듈의 쓰임을 간단하게 살펴보면,]]></description>
+</item><item>
+    <title>[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 3주차 개발일지</title>
+    <link>https://h3yon.github.io/2021-10-03-til-play-python-3/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/2021-10-03-til-play-python-3/</guid>
+    <description><![CDATA[[TIL] 힙한취미코딩! 파이썬 혼자놀기 패키지 3주차 개발일지 스파르타코딩클럽에서
+파이썬 혼자놀기 패키지가 있어서 3주차를 들어보았다!
+오늘의 목표 word 클라우드를
+아래처럼 만들어보기다!
+정리 코드: 코드
+사용 모듈 살펴보기 wordcloud, random, Image 등의
+라이브러리를 사용함을 알 수 있다.
+1 2 3 4  from wordcloud import WordCloud from PIL import Image import numpy as np import random   방법 일단 아무거나 카카오톡에서 csv를 추출한다.
+나는 이모지가 많고 예쁜 스파르타코딩클럽과의 톡으로 해봤다!
+1 2 3 4 5 6  with open(&#34;kakao.]]></description>
+</item></channel>
+</rss>

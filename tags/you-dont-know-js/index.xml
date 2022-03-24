@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>you dont know js - Tag - h3yon blog</title>
+        <link>https://h3yon.github.io/tags/you-dont-know-js/</link>
+        <description>you dont know js - Tag - h3yon blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 24 Sep 2021 23:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/tags/you-dont-know-js/" rel="self" type="application/rss+xml" /><item>
+    <title>You dont know js up &amp; going 정복하기</title>
+    <link>https://h3yon.github.io/you-dont-know-js/</link>
+    <pubDate>Fri, 24 Sep 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/you-dont-know-js/</guid>
+    <description><![CDATA[title: &ldquo;You dont know js up &amp; going 정복하기&rdquo; except: &ldquo;you dont knnow js!&rdquo;
+toc: true toc_sticky: true
+categories:
+ Javascript tags: Javascript   You dont know js 1st Edition up &amp; going 정복하기 You dont know 책을 접해보게 되었는데,
+뭔가 탄탄해보여서 읽어보기로 결정했다!
+(기본 지식을 가졌다고 가정하고 정리해보겠습니다!)
+Chapter 1: Into Programming   Input
+1 2  let age = prompt(&#34;나이를 입력해주세요&#34;); console.log(age);     Converting Between Types]]></description>
+</item></channel>
+</rss>

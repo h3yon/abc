@@ -1,0 +1,28 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>github - Tag - h3yon blog</title>
+        <link>https://h3yon.github.io/tags/github/</link>
+        <description>github - Tag - h3yon blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 26 Aug 2021 23:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/tags/github/" rel="self" type="application/rss+xml" /><item>
+    <title>[Github]올라간 파일/디렉토리 삭제하기</title>
+    <link>https://h3yon.github.io/delete-file/</link>
+    <pubDate>Thu, 26 Aug 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/delete-file/</guid>
+    <description><![CDATA[올라간 파일/디렉토리 삭제하기 .gitignore에 안 올릴 파일을 명시하고 올렸어야 했는데,
+까먹고 그냥 올려버렸다.
+  로컬 디렉토리와 git 저장소에서 모두 삭제
+1 2 3  $ git rm a.txt $ git commit -m &#34;chore: delete a.txt&#34; $ git push     git에서만 삭제 로컬 디렉토리에서는 유지해야 할 때
+1 2 3  $ git rm --cached a.txt $ git commit -m &#34;chore: delete a.txt in git&#34; $ git push     ]]></description>
+</item><item>
+    <title>[Github]올라간 파일/디렉토리 삭제하기</title>
+    <link>https://h3yon.github.io/revert-commit/</link>
+    <pubDate>Thu, 26 Aug 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/revert-commit/</guid>
+    <description><![CDATA[커밋 되돌리기 일단 로그를 먼저 봐야 한다. 아래 명령어를 쳐서 되돌아갈 부분을 보자.
+1 2 3 4 5 6 7  % git log --oneline 4170f95 (HEAD -&gt; master, origin/master) Delete replication/slave/data directory dd16435 Delete replication/master/data directory b2e987b .gitignore 8a550be .gitignore 4ce5b09 feat: replication 4f40e6f fin: server   나는 b2e987b로 돌아가면 된다. 여러가지 옵션이 있는데, 아래 부분을 보고 하나 정해서 돌아가보자.
+  reset
+1 2  $ git reset [돌아갈 부분] # ex) git reset b2e987b   git reset origin 이후의 커밋들이 전부 사라진다.]]></description>
+</item></channel>
+</rss>

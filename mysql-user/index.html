@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>MySQL User 추가 및 권한 부여하기 - My New Hugo Site</title><meta name="Description" content="This is My New Hugo Site"><meta property="og:title" content="MySQL User 추가 및 권한 부여하기" />
+        <title>MySQL User 추가 및 권한 부여하기 - h3yon blog</title><meta name="Description" content="Welcome to h3yon 개구리 블로그"><meta property="og:title" content="MySQL User 추가 및 권한 부여하기" />
 <meta property="og:description" content="MySQL User 추가 및 권한 부여하기  mysql 사용자 추가하기    사용자 추가(비밀번호 X) $ create user 사용자;
   사용자 추가 및 패스워드 설정 $ create user 사용자@localhost identified by 비밀번호;
   사용자 추가 및 패스워드 설정부터 외부에서의 접근 허용 $ create user 사용자@&#39;%&#39; identified by 비밀번호;
@@ -21,10 +21,10 @@
   사용자 추가 및 패스워드 설정 $ create user 사용자@localhost identified by 비밀번호;
   사용자 추가 및 패스워드 설정부터 외부에서의 접근 허용 $ create user 사용자@&#39;%&#39; identified by 비밀번호;
   사용자 삭제1 1  $ drop user 사용자;   사용자 목록 확인 $ select User from user;  사용자에게 데이터베이스 사용권한 부여   DB의 사용자에게 외부 권한 부여하기, 모든 권한 부여 $ GRANT ALL privileges ON DB명."/>
-<meta name="application-name" content="My New Hugo Site">
-<meta name="apple-mobile-web-app-title" content="My New Hugo Site"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="application-name" content="h3yon blog">
+<meta name="apple-mobile-web-app-title" content="h3yon blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/mysql-user/" /><link rel="next" href="https://h3yon.github.io/thread/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/mysql-user/" /><link rel="prev" href="https://h3yon.github.io/spring-kakao-login/" /><link rel="next" href="https://h3yon.github.io/javascript-basic/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -36,9 +36,9 @@
         },"genre": "posts","keywords": "mysql","wordcount":  184 ,
         "url": "https:\/\/h3yon.github.io\/mysql-user\/","datePublished": "2021-07-11T23:47:34+09:00","dateModified": "2021-07-11T23:47:34+09:00","publisher": {
             "@type": "Organization",
-            "name": "xxxx"},"author": {
+            "name": "h3yon"},"author": {
                 "@type": "Person",
-                "name": "xxxx"
+                "name": "h3yon"
             },"description": ""
     }
     </script></head>
@@ -47,7 +47,7 @@
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="My New Hugo Site">My New Hugo Site</a>
+            <a href="/" title="h3yon blog">h3yon blog</a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
@@ -60,7 +60,7 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="My New Hugo Site">My New Hugo Site</a>
+                <a href="/" title="h3yon blog">h3yon blog</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -82,7 +82,7 @@
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">MySQL User 추가 및 권한 부여하기</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xxxx</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw"></i>MySQL</a></span></div>
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw"></i>MySQL</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-11">2021-07-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;184 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -181,13 +181,13 @@ $ revoke all on DB명.테이블명 from 사용자;</p>
         </section>
     </div>
 
-    <div class="post-nav">
-            <a href="/thread/" class="next" rel="next" title="스레드">스레드<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/spring-kakao-login/" class="prev" rel="prev" title="SpringFramework kakao api 구현하기"><i class="fas fa-angle-left fa-fw"></i>SpringFramework kakao api 구현하기</a>
+            <a href="/javascript-basic/" class="next" rel="next" title="Javascript 기초지식 쌓기">Javascript 기초지식 쌓기<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>[Java]자바의 정석 벼락치기 - h3yon blog</title><meta name="Description" content="Welcome to h3yon 개구리 블로그"><meta property="og:title" content="[Java]자바의 정석 벼락치기" />
+<meta property="og:description" content="자바의 정석 벼락치기 정보처리기사 실기 2일인지 3일인지 잘 기억은 안 나는데
+이번에 이틀의 전사? 3일의 전사 기념으로
+자바의 정석도 벼락치기 해도 될 것 같다!
+ch2 변수   명명규칙
+ 대소문자 구분. 길이에 제한 X 예약어 사용해선 X 예약어란? 자바에서 자체적으로 사용하는 단어 - true는 예약어. 하지만 True는 가능 숫자로 시작해선 X 특수문자는 &lsquo;_&lsquo;와 &lsquo;%&rsquo; 허용 클래스 첫글자 대문자 여러 단어 첫글자는 대문자 ex) lastIndexOf 상수 이름은 대문자. 단어는 &lsquo;_&lsquo;로 구분    변수, 상수, 리터럴" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://h3yon.github.io/hurry-java/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-25T23:47:34+09:00" />
+<meta property="article:modified_time" content="2021-08-25T23:47:34+09:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[Java]자바의 정석 벼락치기"/>
+<meta name="twitter:description" content="자바의 정석 벼락치기 정보처리기사 실기 2일인지 3일인지 잘 기억은 안 나는데
+이번에 이틀의 전사? 3일의 전사 기념으로
+자바의 정석도 벼락치기 해도 될 것 같다!
+ch2 변수   명명규칙
+ 대소문자 구분. 길이에 제한 X 예약어 사용해선 X 예약어란? 자바에서 자체적으로 사용하는 단어 - true는 예약어. 하지만 True는 가능 숫자로 시작해선 X 특수문자는 &lsquo;_&lsquo;와 &lsquo;%&rsquo; 허용 클래스 첫글자 대문자 여러 단어 첫글자는 대문자 ex) lastIndexOf 상수 이름은 대문자. 단어는 &lsquo;_&lsquo;로 구분    변수, 상수, 리터럴"/>
+<meta name="application-name" content="h3yon blog">
+<meta name="apple-mobile-web-app-title" content="h3yon blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/hurry-java/" /><link rel="prev" href="https://h3yon.github.io/h2-error/" /><link rel="next" href="https://h3yon.github.io/revert-commit/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[Java]자바의 정석 벼락치기",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/h3yon.github.io\/hurry-java\/"
+        },"genre": "posts","keywords": "java","wordcount":  202 ,
+        "url": "https:\/\/h3yon.github.io\/hurry-java\/","datePublished": "2021-08-25T23:47:34+09:00","dateModified": "2021-08-25T23:47:34+09:00","publisher": {
+            "@type": "Organization",
+            "name": "h3yon"},"author": {
+                "@type": "Person",
+                "name": "h3yon"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="h3yon blog">h3yon blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="h3yon blog">h3yon blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">[Java]자바의 정석 벼락치기</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-25">2021-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;202 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#자바의-정석-벼락치기">자바의 정석 벼락치기</a>
+          <ul>
+            <li><a href="#ch2-변수">ch2 변수</a></li>
+            <li><a href="#ch3-연산자">ch3 연산자</a></li>
+          </ul>
+        </li>
+        <li><a href="#ch4-조건문과-반복문">ch4 조건문과 반복문</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="자바의-정석-벼락치기">자바의 정석 벼락치기</h3>
+<p>정보처리기사 실기 2일인지 3일인지 잘 기억은 안 나는데<br>
+이번에 이틀의 전사? 3일의 전사 기념으로<br>
+자바의 정석도 벼락치기 해도 될 것 같다!<br></p>
+<h4 id="ch2-변수">ch2 변수</h4>
+<ol>
+<li>
+<p>명명규칙</p>
+<ul>
+<li>대소문자 구분. 길이에 제한 X</li>
+<li>예약어 사용해선 X
+예약어란? 자바에서 자체적으로 사용하는 단어 - true는 예약어. 하지만 True는 가능</li>
+<li>숫자로 시작해선 X</li>
+<li>특수문자는 &lsquo;_&lsquo;와 &lsquo;%&rsquo; 허용</li>
+<li>클래스 첫글자 대문자</li>
+<li>여러 단어 첫글자는 대문자 ex) lastIndexOf</li>
+<li>상수 이름은 대문자. 단어는 &lsquo;_&lsquo;로 구분</li>
+</ul>
+</li>
+<li>
+<p>변수, 상수, 리터럴</p>
+<ul>
+<li>변수: 하나의 값을 저장하기 위한 공간</li>
+<li>상수: 한 번만 값을 저장할 수 있는 공간</li>
+<li>리터럴: 그 자체로 값을 의미하는 것</li>
+</ul>
+</li>
+<li>
+<p>변수의 기본값과 초기화</p>
+<p>bolean의 기본값 = false<br>
+char -&gt; &lsquo;\u0000&rsquo;<br>
+byte, short, int -&gt; 0<br>
+long -&gt; 0L<br>
+float -&gt; 0.0f<br>
+double -&gt; 0.0d or 0.0<br>
+참조현변수 -&gt; null<br></p>
+</li>
+<li>
+<p>정수의 오버플로우</p>
+<p>byte를 예로 들면,<br>
+최대값 127, 최소값 -128이다. 그래서 -128에서 1이 감소하면 최대값127이다.<br></p>
+</li>
+<li>
+<p>형변환</p>
+<p>값의 타입을 다른 타입으로 변환하는 것<br>
+boolean을 제외한 7개의 기본형은 서로 형변환이 가능<br></p>
+</li>
+</ol>
+<h4 id="ch3-연산자">ch3 연산자</h4>
+<ol>
+<li>
+<p>연산자?</p>
+<ul>
+<li>연산자: 어떠한 기능을 수행하는 기호</li>
+<li>피연산자: 연산자의 작업 대상(변수,상수,리터럴,수식)</li>
+</ul>
+</li>
+<li>
+<p>연산자의 우선순위</p>
+</li>
+</ol>
+<img src="https://user-images.githubusercontent.com/46602874/130643181-08450463-7b0d-469c-805d-1e1650fb4da1.png">
+<ol start="3">
+<li>
+<p>쉬프트 연산자</p>
+<ul>
+<li>x &laquo; n 은 x * 2^n</li>
+<li>x &raquo; n 은 x / 2^n</li>
+<li>8 &laquo; 2 는 8 * 2^2</li>
+<li>8 &raquo; 2 는 8 / 2^2</li>
+</ul>
+</li>
+</ol>
+<h3 id="ch4-조건문과-반복문">ch4 조건문과 반복문</h3>
+<pre><code>1. 조건문 - if, switch
+
+&lt;img src=&quot;https://user-images.githubusercontent.com/46602874/130646982-26091697-95eb-4d4e-9cda-7a7de60711f5.png&quot;&gt;
+</code></pre>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-08-25</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/hurry-java/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/h2-error/" class="prev" rel="prev" title="h2 database 에러 해결하기"><i class="fas fa-angle-left fa-fw"></i>h2 database 에러 해결하기</a>
+            <a href="/revert-commit/" class="next" rel="next" title="[Github]올라간 파일/디렉토리 삭제하기">[Github]올라간 파일/디렉토리 삭제하기<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

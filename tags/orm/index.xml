@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>orm - Tag - h3yon blog</title>
+        <link>https://h3yon.github.io/tags/orm/</link>
+        <description>orm - Tag - h3yon blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 12 Aug 2021 23:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/tags/orm/" rel="self" type="application/rss+xml" /><item>
+    <title>Node.js의 ORM, sequelize</title>
+    <link>https://h3yon.github.io/nodejs-sequelize/</link>
+    <pubDate>Thu, 12 Aug 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/nodejs-sequelize/</guid>
+    <description><![CDATA[title: &ldquo;Node.js의 ORM, sequelize&rdquo; excerpt: &ldquo;Node.js의 ORM, sequeliz&rdquo;
+toc: true toc_sticky: true
+categories:
+ Javascript tags: Javascript   Node.js의 ORM, sequelize 다들 ORM에 대해서 들어봤을 것 같다.
+ORM이란?  Object-Relational Mapping으로 객체와 관계형 데이터베이스의 데이터를 매핑(연결)시켜주는 것
+ ORM은 객체-관계 매핑의 줄임말이다. 객체 개념을 구현한 class와 RDB(Relational DB)에서 쓰이는 테이블을 자동으로 매핑하는 것이다.
+ORM 프레임워크의 경우,
+ JPA/Hibernate JPA(Java Persistence API)는 자바의 ORM 기술 표준으로 인터페이스의 모음이다. 이러한 JPA 표준 명세를 구현한 구현체가 Hibernate Sequelize Sequelize는 Postgres, MySQL, MariaDB, SQLite를 지원하는 Promise에 기반한 비동기로 동작하는 Node.]]></description>
+</item></channel>
+</rss>

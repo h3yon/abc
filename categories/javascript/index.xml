@@ -1,0 +1,82 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>javascript - Category - h3yon blog</title>
+        <link>https://h3yon.github.io/categories/javascript/</link>
+        <description>javascript - Category - h3yon blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 24 Sep 2021 23:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/categories/javascript/" rel="self" type="application/rss+xml" /><item>
+    <title>You dont know js up &amp; going 정복하기</title>
+    <link>https://h3yon.github.io/you-dont-know-js/</link>
+    <pubDate>Fri, 24 Sep 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/you-dont-know-js/</guid>
+    <description><![CDATA[title: &ldquo;You dont know js up &amp; going 정복하기&rdquo; except: &ldquo;you dont knnow js!&rdquo;
+toc: true toc_sticky: true
+categories:
+ Javascript tags: Javascript   You dont know js 1st Edition up &amp; going 정복하기 You dont know 책을 접해보게 되었는데,
+뭔가 탄탄해보여서 읽어보기로 결정했다!
+(기본 지식을 가졌다고 가정하고 정리해보겠습니다!)
+Chapter 1: Into Programming   Input
+1 2  let age = prompt(&#34;나이를 입력해주세요&#34;); console.log(age);     Converting Between Types]]></description>
+</item><item>
+    <title>[Javascript]자바스크립트 100문제 again2</title>
+    <link>https://h3yon.github.io/javascript-jeju-coding-again2/</link>
+    <pubDate>Sat, 11 Sep 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/javascript-jeju-coding-again2/</guid>
+    <description><![CDATA[title: &ldquo;[Javascript]자바스크립트 Again2&rdquo; excerpt: &ldquo;[Javascript]자바스크립트 Again2&rdquo;
+toc: true toc_sticky: true
+categories:
+ Javascript tags: Javascript   자바스크립트 복습2 출처: 제주코딩베이스캠프
+ merge sort 병합정렬(merge sort)은 대표적인 정렬 알고리즘 중 하나로 다음과 같이 동작합니다.
+  리스트의 길이가 0 또는 1이면 이미 정렬된 것으로 본다. 그렇지 않은 경우에는 정렬되지 않은 리스트를 절반으로 잘라 비슷한 크기의 두 부분 리스트로 나눈다. 각 부분 리스트를 재귀적으로 합병 정렬을 이용해 정렬한다. 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다.]]></description>
+</item><item>
+    <title>[Javascript]자바스크립트 100문제 again</title>
+    <link>https://h3yon.github.io/javascript-jeju-coding-again/</link>
+    <pubDate>Fri, 10 Sep 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/javascript-jeju-coding-again/</guid>
+    <description><![CDATA[자바스크립트 복습 출처: 제주코딩베이스캠프
+  중간에 추가하기
+아래처럼 만드려면?
+1 2  var arr = [200, 100, 300]; [200, 100, 10000, 300];   답: arr.splice(2,0,10000);
+  다음 출력 값으로 올바른 것은?
+1 2  var arr = [100, 200, 300]; console.log(typeof arr);   답: object
+  객체의 키 이름 중복
+1 2 3 4 5 6  var d = { &#34;height&#34;: 180, &#34;weight&#34;: 78, &#34;weight&#34;: 84, }; console.]]></description>
+</item><item>
+    <title>[javascript] forEach, map, filter, reduce 총정리</title>
+    <link>https://h3yon.github.io/javascript-map-filter-reduce/</link>
+    <pubDate>Wed, 21 Jul 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/javascript-map-filter-reduce/</guid>
+    <description><![CDATA[Javascript - forEach, map, filter, reduce 총정리 참고 자료:  ES6의 map, filter, reduce 정리 reduce 참고 링크   forEach 가장 기본적인 Loop 메소드
+1 2 3 4 5 6  const arr = [&#34;a&#34;, &#34;bb&#34;, &#34;ccc&#34;, &#34;ddddd&#34;]; var arr2 = []; arr.forEach(function (str) { arr2.push(str.length); }); console.log(arr2); // [1, 2, 3, 5]]   forEach문과 아래 map() 기능이 완전 똑같음을 알 수 있다. 그럼 map과의 차이점이 대체 뭘까?]]></description>
+</item><item>
+    <title>Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone)</title>
+    <link>https://h3yon.github.io/javascript-variable/</link>
+    <pubDate>Tue, 20 Jul 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/javascript-variable/</guid>
+    <description><![CDATA[출처 자바스크립트 변수 선언 방식 차이: var/let/const TDZ(Temporal Dead Zone)이란? Hoisting and TDZ
+Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone) 오늘은 기초적인 var, let, const에 대한 차이를 알아보았다 일단 변수 선언의 3단계는 선언 -&gt; 초기화 -&gt; 할당 과정으로 이루어져 있다.
+ 선언: 변수를 실행 context의 변수 객체에 등록하는 단계. 해당 변수 객체는 scope가 참조하는 대상이 됨 \n 초기화: 선언 단계의 변수를 위한 메모리를 만드는 단계. 할당된 메모리에는 undefined로 초기화 \n 할당: undefined로 초기화된 메모리의 다른 값을 할당 \n]]></description>
+</item><item>
+    <title>Javascript 기초지식 쌓기</title>
+    <link>https://h3yon.github.io/javascript-basic/</link>
+    <pubDate>Sun, 18 Jul 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/javascript-basic/</guid>
+    <description><![CDATA[출처: https://velog.io/@dongha1992/javascript-%EB%82%B4%EB%B6%80%ED%95%A8%EC%88%98-%EC%99%B8%EB%B6%80%ED%95%A8%EC%88%98
+자바스크립트 기초 지식 쌓기 아래의 코드가 있다고 가정하자.
+ -- 1 2 3 4 5 6 7 8 9  function out(){ const name = &#34;aaa&#34; return function(){ console.log(name); } } const in = out() in()    함수 안에 함수가 있을 때 응집성이 높아진다. 위의 코드를 보면 out()은 외부함수, in()은 내부함수를 말한다. in()함수에서 name에 대한 로그를 찍는데, name은 out()에만 있기 대문에 외부 함수에서 변수를 찾는다. 이를 closure라고 한다.]]></description>
+</item><item>
+    <title>Javascript 객체지향</title>
+    <link>https://h3yon.github.io/javascript-oop/</link>
+    <pubDate>Sun, 06 Jun 2021 23:47:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/javascript-oop/</guid>
+    <description><![CDATA[Javascript 배우기 Javascript는 웹 브라우저에서 실행된다.(클라이언트 측) JSP, Servlet, ASP는 웹서버에서 해석되고 실행되어 결과만 HTML로 변환되어 웹 브라우저에 보여준다.(서버측) 웹서버에서 실행되기 때문에 즉각적인 반응을 하지 못하고 시간이 오래 걸린다.
+프로토타입 기반 객체 지향 자바스크립트는 프로토타입 기반 객체지향 언어로, 자바처럼 클래스로부터 내용을 상속 받아서 객체 만드는 것이 아니라, 그냥 간단하게 객체를 생성하고, 속성과 값을 추가, 변경, 삭제 가능하다.
+1 2 3 4 5 6  var person = { name: &#34;h3yon&#34;, age: 20 }; console.]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>[Jenkins]AWS EC2 Ubuntu에 Jenkins 연동하기 - h3yon blog</title><meta name="Description" content="Welcome to h3yon 개구리 블로그"><meta property="og:title" content="[Jenkins]AWS EC2 Ubuntu에 Jenkins 연동하기" />
+<meta property="og:description" content="1. AWS EC2 Ubuntu에 Jenkins를 연동해보자 관련 패키지 설치   Jenkins 설치를 위해 Repository key 추가
+1  $ wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -     서버의 sources.list에 Jenkins 패키지 저장소를 추가
+1 2  $ sudo sh -c &#39;echo deb https://pkg.jenkins.io/debian-stable binary/ &gt; \ /etc/apt/sources.list.d/jenkins.list&#39;     패키지 업데이트 및 Jenkins 설치
+1 2  $ sudo apt-get update $ sudo apt-get install jenkins     Java JDK 8 설치" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://h3yon.github.io/jenkins-ec2/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-15T23:47:34+09:00" />
+<meta property="article:modified_time" content="2021-09-15T23:47:34+09:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[Jenkins]AWS EC2 Ubuntu에 Jenkins 연동하기"/>
+<meta name="twitter:description" content="1. AWS EC2 Ubuntu에 Jenkins를 연동해보자 관련 패키지 설치   Jenkins 설치를 위해 Repository key 추가
+1  $ wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -     서버의 sources.list에 Jenkins 패키지 저장소를 추가
+1 2  $ sudo sh -c &#39;echo deb https://pkg.jenkins.io/debian-stable binary/ &gt; \ /etc/apt/sources.list.d/jenkins.list&#39;     패키지 업데이트 및 Jenkins 설치
+1 2  $ sudo apt-get update $ sudo apt-get install jenkins     Java JDK 8 설치"/>
+<meta name="application-name" content="h3yon blog">
+<meta name="apple-mobile-web-app-title" content="h3yon blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/jenkins-ec2/" /><link rel="prev" href="https://h3yon.github.io/javascript-jeju-coding-again2/" /><link rel="next" href="https://h3yon.github.io/you-dont-know-js/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[Jenkins]AWS EC2 Ubuntu에 Jenkins 연동하기",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/h3yon.github.io\/jenkins-ec2\/"
+        },"genre": "posts","keywords": "nodejs, jenkins, aws","wordcount":  322 ,
+        "url": "https:\/\/h3yon.github.io\/jenkins-ec2\/","datePublished": "2021-09-15T23:47:34+09:00","dateModified": "2021-09-15T23:47:34+09:00","publisher": {
+            "@type": "Organization",
+            "name": "h3yon"},"author": {
+                "@type": "Person",
+                "name": "h3yon"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="h3yon blog">h3yon blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="h3yon blog">h3yon blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">[Jenkins]AWS EC2 Ubuntu에 Jenkins 연동하기</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-category">included in <a href="/categories/nodejs/"><i class="far fa-folder fa-fw"></i>nodejs</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-15">2021-09-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;322 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-aws-ec2-ubuntu에-jenkins를-연동해보자">1. AWS EC2 Ubuntu에 Jenkins를 연동해보자</a>
+          <ul>
+            <li><a href="#관련-패키지-설치">관련 패키지 설치</a></li>
+            <li><a href="#jenkins-실행">Jenkins 실행</a></li>
+            <li><a href="#jenkins-관련-설정">Jenkins 관련 설정</a></li>
+            <li><a href="#jenkins-접속">Jenkins 접속</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="1-aws-ec2-ubuntu에-jenkins를-연동해보자">1. AWS EC2 Ubuntu에 Jenkins를 연동해보자</h3>
+<h4 id="관련-패키지-설치">관련 패키지 설치</h4>
+<ol>
+<li>
+<p>Jenkins 설치를 위해 Repository key 추가</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>서버의 sources.list에 Jenkins 패키지 저장소를 추가</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo sh -c &#39;echo deb https://pkg.jenkins.io/debian-stable binary/ &gt; \
+    /etc/apt/sources.list.d/jenkins.list&#39;
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>패키지 업데이트 및 Jenkins 설치</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo apt-get update
+$ sudo apt-get install jenkins
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Java JDK 8 설치</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo apt-get install openjdk-8-jdk
+$ java -version
+</code></pre></td></tr></table>
+</div>
+</div><p><code>java -version</code>으로 1.8.0_*이 뜨는지 확인한다.</p>
+</li>
+</ol>
+<h4 id="jenkins-실행">Jenkins 실행</h4>
+<p>아래 명령어로 젠킨스를 실행하고,<br>
+상태를 체크해본다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo systemctl start jenkins
+$ sudo systemctl status jenkins
+</code></pre></td></tr></table>
+</div>
+</div><img src="https://user-images.githubusercontent.com/46602874/133364949-3a21085d-4445-402d-b12f-7e553bbdaad1.png">
+<p>위의 이미지처럼 상태가 잘 나타남을 알 수 있다.</p>
+<h4 id="jenkins-관련-설정">Jenkins 관련 설정</h4>
+<ul>
+<li>
+<p>Jenkins 포트 변경</p>
+  <img src="https://user-images.githubusercontent.com/46602874/133365091-60f1d9d6-14e8-423d-8230-25196710ede1.png">
+  ```
+  $ sudo vi /etc/default/jenkins
+  ```
+  jenkins 부분을 vi 편집기로 열어서  
+  `HTTP_PORT=[다른 포트 번호]`로 바꿔준다.  
+  8080을 많이 사용하다보니 충돌이 일어날 것 같기 때문이다.
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo systemctl restart jenkins
+</code></pre></td></tr></table>
+</div>
+</div><p>위의 명령어로 Jenkins를 재실행해준다.</p>
+</li>
+<li>
+<p>방화벽 설정</p>
+<p>ufw를 사용하여 9090 포트로 접근 가능하게 한다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo ufw allow 9090
+$ sudo ufw status
+</code></pre></td></tr></table>
+</div>
+</div><p>만약 아래처럼 inactive가 나타나면<br>
+아래처럼 따라해주자</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo ufw status
+Status: inactive
+$ sudo ufw enable
+Command may disrupt existing ssh connections. Proceed with operation (y|n)?y
+Firewall is active and enabled on system startup
+$ sudo ufw allow 443 # 이 부분은 선택적으로! 저는 80, 443 추가해주었습니다
+$ sudo ufw status
+</code></pre></td></tr></table>
+</div>
+</div><p>그럼 status에서 80, 443, 9090 등 잘 추가된 부분을 확인할 수 있다.</p>
+<ul>
+<li>추가
+<img src="https://user-images.githubusercontent.com/46602874/133367016-ee87620a-24dc-47ff-8032-7124b7c6af70.png"></li>
+</ul>
+<p>혹시 접속하려는 젠킨스 포트가 인바운드 규칙에<br>
+추가되어 있지 않다면 꼭 추가해주자</p>
+</li>
+</ul>
+<h4 id="jenkins-접속">Jenkins 접속</h4>
+<p><code>http://(public IP or hostname):9090</code>으로 접속하면<br>
+아래와 같은 화면이 나온다.</p>
+<img src="https://user-images.githubusercontent.com/46602874/133367143-63d31f03-0c91-4a21-9fab-5db6efc2eb36.png">
+<p>비밀번호를 알아야되기 때문에 사진에 나온 것처럼<br>
+아래의 명령어로 비밀번호를 알아내고 넣어주자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+aaabdc~~
+</code></pre></td></tr></table>
+</div>
+</div><p>그럼 다음 화면으로<br>
+플러그인 설치 화면이 나온다.<br>
+대충 왼쪽 부분을 눌러주자.</p>
+<img src="https://user-images.githubusercontent.com/46602874/133367376-76cc42a3-8146-474b-bb9c-86fc453ad2b9.png">
+<p>Create First Admin User이 나오고,<br>
+앞으로 로그인해야되기 때문에<br>
+많이 사용하는 계정 정보를 넣어주자</p>
+<img src="https://user-images.githubusercontent.com/46602874/133370174-7c42b0fc-04e3-4f36-a672-7f72e56cd804.png">
+<p>그럼 이렇게 잘 접속됨을 확인할 수 있다!</p>
+<img src="https://user-images.githubusercontent.com/46602874/133370432-073fec58-49fe-4cfe-bca5-3175395aa95e.png">
+<p>출처: <a href="https://imbf.github.io/devops/2020/11/26/Install-Jenkins-in-Ubuntu%2818.04%29.html" target="_blank" rel="noopener noreffer">https://imbf.github.io/devops/2020/11/26/Install-Jenkins-in-Ubuntu(18.04).html</a></p>
+<p>(추가)nodejs, jenkins ec2 환경 구축 시 참고하면 좋은 부분: <a href="https://velog.io/@dlawogus/AWS-ec2-%EC%84%9C%EB%B2%84-%EB%93%B1%EB%A1%9D" target="_blank" rel="noopener noreffer">https://velog.io/@dlawogus/AWS-ec2-%EC%84%9C%EB%B2%84-%EB%93%B1%EB%A1%9D</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-09-15</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/jenkins-ec2/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nodejs/">nodejs</a>,&nbsp;<a href="/tags/jenkins/">jenkins</a>,&nbsp;<a href="/tags/aws/">aws</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/javascript-jeju-coding-again2/" class="prev" rel="prev" title="[Javascript]자바스크립트 100문제 again2"><i class="fas fa-angle-left fa-fw"></i>[Javascript]자바스크립트 100문제 again2</a>
+            <a href="/you-dont-know-js/" class="next" rel="next" title="You dont know js up &amp; going 정복하기">You dont know js up &amp; going 정복하기<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
