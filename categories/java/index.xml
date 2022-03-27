@@ -3,7 +3,16 @@
         <title>java - Category - h3yon blog</title>
         <link>https://h3yon.github.io/categories/java/</link>
         <description>java - Category - h3yon blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 25 Aug 2021 23:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/categories/java/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 28 Mar 2022 01:50:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/categories/java/" rel="self" type="application/rss+xml" /><item>
+    <title>이펙티브 자바 벼락치기</title>
+    <link>https://h3yon.github.io/effective-java/</link>
+    <pubDate>Mon, 28 Mar 2022 01:50:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/effective-java/</guid>
+    <description><![CDATA[이펙티브 자바 Item1. 생성자 대신 정적 팩토리 메서드를 고려하라** 정적 팩토리 메서드(static factory method)는 그 클래스의 인스턴스를 반환하는 단순한 정적 메서드이다.
+1 2 3 4 5  //생성자 Boolean a = Boolean(&#34;true&#34;) //정적 팩토리 메서드 Boolean a= Boolean.valueOf(&#34;true&#34;);   아래와 같은 장점을 가질 수 있다.
+ 생성자와 달리 이름을 가질 수 있다. 호출될 때마다 인스턴스를 새로 생성하지 않아도 된다. 반환 타입의 하위 타입 객체를 반환할 수 있다. Java8 이전에는 인스턴스에 static 메서드를 선언할 수 없어 Companion class를 만들어 거기에 정의를 했어야 했다.]]></description>
+</item><item>
     <title>[Java]자바의 정석 벼락치기</title>
     <link>https://h3yon.github.io/hurry-java/</link>
     <pubDate>Wed, 25 Aug 2021 23:47:34 &#43;0900</pubDate>

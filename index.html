@@ -73,6 +73,13 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/h3yon" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://linkedin.com/in/xxxx" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw"></i></a><a href="mailto:khykhy1006@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/effective-java/">이펙티브 자바 벼락치기</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-03-28">2022-03-28</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">이펙티브 자바 Item1. 생성자 대신 정적 팩토리 메서드를 고려하라** 정적 팩토리 메서드(static factory method)는 그 클래스의 인스턴스를 반환하는 단순한 정적 메서드이다.
+1 2 3 4 5  //생성자 Boolean a = Boolean(&#34;true&#34;) //정적 팩토리 메서드 Boolean a= Boolean.valueOf(&#34;true&#34;);   아래와 같은 장점을 가질 수 있다.
+ 생성자와 달리 이름을 가질 수 있다. 호출될 때마다 인스턴스를 새로 생성하지 않아도 된다. 반환 타입의 하위 타입 객체를 반환할 수 있다. Java8 이전에는 인스턴스에 static 메서드를 선언할 수 없어 Companion class를 만들어 거기에 정의를 했어야 했다.</div><div class="post-footer">
+        <a href="/effective-java/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/mock-spy-testcode/">테스트코드의 Mock, MockBean, Autowired, Spy 이해하기</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-12-26">2021-12-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw"></i>spring</a></span></div><div class="content">Test code +mock과 stub의 차이? 행위 검증을 추구한다는 것. mock은 행위검증을 추구하고, stub은 그렇지 않다
 1. MockBean, Mock, Autowired
@@ -121,18 +128,6 @@ MockBean/SpyBean은 Autowired로 기억됨을 알 수 있다
 예시를 한번 봐보자.</div><div class="post-footer">
         <a href="/til-spring-core3/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/til/">TIL</a>,&nbsp;<a href="/tags/spring/">spring</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/til-sia1/">[스프링 인 액션5]Chapter1~3 내용 정리</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-10-14">2021-10-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw"></i>spring</a></span></div><div class="content">[스프링 인 액션5] Chapter1~3 내용 정리 스프링 인 액션에 대한 내용을 읽으면서
-중요 내용, 한번 더 짚고 넘어가면 좋을 내용에 대해서 써보려고 한다.
-Chapter1 SpringBootApplication 애플리케이션의 부트스트랩 클래스에,
-SpringBootApplication이 있다는 건 다들 봤을 것이다.
-이 SpringBootApplication이 어떤 어노테이션이 결합한 것인지 보자
-  SpringBootConfiguration 현재 클래스를 구성 클래스로 지정한다.(@Configuration)의 특화된 형태
-  EnableAutoConfiguration 스프링 부트 자동-구성을 활성화한다
-  ComponentScan 컴포넌트 검색을 활성화한다. @Component, @Controller, @Service 등의 애노테이션과 함께 클래스를 선언할 수 있게 한다.</div><div class="post-footer">
-        <a href="/til-sia1/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring-in-action/">spring in action</a>,&nbsp;<a href="/tags/spring/">spring</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>

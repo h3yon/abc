@@ -73,6 +73,15 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/h3yon" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://linkedin.com/in/xxxx" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw"></i></a><a href="mailto:khykhy1006@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/spring-naver-login/">SpringFramework Naver Login 구현하기</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-08-14">2021-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw"></i>spring</a></span></div><div class="content">스프링부트 Naver Login 구현하기 출처:
+ 이동욱 님의 스프링 부트와 AWS로 혼자 구현하는 웹 서비스 스프링 부트와 OAuth2 Naver  사용한 방식 저번에 카카오 로그인을 구현하였을 때는 restTemplate을 사용했었다. 그런데 이번에는 spring-security-oauth2 부분을 알아보고 사용해보고자 했다.
+라이브러리 중에 spring-security-auth2-autoconfigure이 있는데, 스프링부트2에서 기존 설정을 그대로 사용할 수 있어 많은 개발자가 이 방식을 사용했다고 한다.
+하지만 책에서는 spring-boot-starter-oauth2-client 라이브러리를 사용했다. 그 이유는 아래와 같다.
+ 스프링 팀에서 신규 기능은 oauth2 라이브러리에서만 지원하겠다고 선언 스프링부트용 라이브러리가 출시 기존에 사용되던 방식은 확장 포인트가 적절하게 open되어 있지 않아 직접 상속하거나, 오버라이딩 해야하고, 신규 라이브러리의 경우 확장 포인트를 고려해서 설계된 상태  직접 구현할 때 관련 자료를 찾아보면,</div><div class="post-footer">
+        <a href="/spring-naver-login/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a>,&nbsp;<a href="/tags/oauth/">oauth</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/nodejs-sequelize/">Node.js의 ORM, sequelize</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-08-12">2021-08-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nodejs/"><i class="far fa-folder fa-fw"></i>nodejs</a></span></div><div class="content">title: &ldquo;Node.js의 ORM, sequelize&rdquo; excerpt: &ldquo;Node.js의 ORM, sequeliz&rdquo;
 toc: true toc_sticky: true
@@ -119,12 +128,6 @@ UnsafeSequence는 비표준 어노테이션인 @NotThreadSafe를 사용.(@Thread
 스레드는 같은 메모리 주소 공간을 공유하고 동시에 실행되기 때문에 다른 스레드가 사용 중일지도 모르는 변수를 읽거나 수정할 수도 있다.</div><div class="post-footer">
         <a href="/thread/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/cs/">cs</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/javascript-map-filter-reduce/">[javascript] forEach, map, filter, reduce 총정리</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-21">2021-07-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/javascript/"><i class="far fa-folder fa-fw"></i>javascript</a></span></div><div class="content">Javascript - forEach, map, filter, reduce 총정리 참고 자료:  ES6의 map, filter, reduce 정리 reduce 참고 링크   forEach 가장 기본적인 Loop 메소드
-1 2 3 4 5 6  const arr = [&#34;a&#34;, &#34;bb&#34;, &#34;ccc&#34;, &#34;ddddd&#34;]; var arr2 = []; arr.forEach(function (str) { arr2.push(str.length); }); console.log(arr2); // [1, 2, 3, 5]]   forEach문과 아래 map() 기능이 완전 똑같음을 알 수 있다. 그럼 map과의 차이점이 대체 뭘까?</div><div class="post-footer">
-        <a href="/javascript-map-filter-reduce/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/javascript/">javascript</a>,&nbsp;<a href="/tags/grammer/">grammer</a>,&nbsp;<a href="/tags/map/">map</a>,&nbsp;<a href="/tags/filter/">filter</a>,&nbsp;<a href="/tags/reduce/">reduce</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

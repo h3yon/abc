@@ -73,6 +73,12 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/h3yon" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://linkedin.com/in/xxxx" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw"></i></a><a href="mailto:khykhy1006@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/javascript-map-filter-reduce/">[javascript] forEach, map, filter, reduce 총정리</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-21">2021-07-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/javascript/"><i class="far fa-folder fa-fw"></i>javascript</a></span></div><div class="content">Javascript - forEach, map, filter, reduce 총정리 참고 자료:  ES6의 map, filter, reduce 정리 reduce 참고 링크   forEach 가장 기본적인 Loop 메소드
+1 2 3 4 5 6  const arr = [&#34;a&#34;, &#34;bb&#34;, &#34;ccc&#34;, &#34;ddddd&#34;]; var arr2 = []; arr.forEach(function (str) { arr2.push(str.length); }); console.log(arr2); // [1, 2, 3, 5]]   forEach문과 아래 map() 기능이 완전 똑같음을 알 수 있다. 그럼 map과의 차이점이 대체 뭘까?</div><div class="post-footer">
+        <a href="/javascript-map-filter-reduce/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/javascript/">javascript</a>,&nbsp;<a href="/tags/grammer/">grammer</a>,&nbsp;<a href="/tags/map/">map</a>,&nbsp;<a href="/tags/filter/">filter</a>,&nbsp;<a href="/tags/reduce/">reduce</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/http2/">[Nodejs]http2 적용과 발생한 에러</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-21">2021-07-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nodejs/"><i class="far fa-folder fa-fw"></i>nodejs</a></span></div><div class="content">[node.js]http2 적용과 발생한 에러 리액트 웹페이지에 적용시킬 백엔드 서버를 구동하는 코드를 원래는 아래처럼 작성해놓았었다.
 1 2 3 4  # index.js ... express().listen(PORT); console.info(`${NODE_ENV}- API Server Start At Port ${PORT}`);   http2의 장점을 알고, 해당 코드를 http2로 변경해주었다.
@@ -111,16 +117,6 @@ Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone) 오늘은 기초
   사용자 삭제1 1  $ drop user 사용자;   사용자 목록 확인 $ select User from user;  사용자에게 데이터베이스 사용권한 부여   DB의 사용자에게 외부 권한 부여하기, 모든 권한 부여 $ GRANT ALL privileges ON DB명.</div><div class="post-footer">
         <a href="/mysql-user/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mysql/">mysql</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/spring-kakao-login/">SpringFramework kakao api 구현하기</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-02">2021-07-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw"></i>spring</a></span></div><div class="content">스프링부트로 kakao API 구현해보기 https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api
-일단, 위의 사이트에서 kakao API의 흐름을 살펴보자. 보면 인가코드를 우선 받아야 함을 알 수 있다.
-일단 그러면 어플리케이션 키를 받아야 한다. 위의 이미지처럼 상단의 &lsquo;내 애플리케이션&rsquo; 버튼을 누른다.
-아무 애플리케이션이나 만들고, 원하는 앱키를 복사해놓는다.
-또 옆에 플랫폼으로 들어가, 원하는 플랫폼에 대한 플랫폼을 등록한다. 위처럼 등록해도 되고, (8080번 localhost를 사용하는 경우) 만약 다 설정하였다면, &lsquo;등록하러 가기&rsquo;를 누른다.
-아래 사용할 callback uri를 위에 사진처럼 넣는다. _ 상태 -&gt; 활성화 필수!</div><div class="post-footer">
-        <a href="/spring-kakao-login/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a>,&nbsp;<a href="/tags/oauth/">oauth</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

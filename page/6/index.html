@@ -73,6 +73,16 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/h3yon" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://linkedin.com/in/xxxx" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw"></i></a><a href="mailto:khykhy1006@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/spring-kakao-login/">SpringFramework kakao api 구현하기</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-02">2021-07-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw"></i>spring</a></span></div><div class="content">스프링부트로 kakao API 구현해보기 https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api
+일단, 위의 사이트에서 kakao API의 흐름을 살펴보자. 보면 인가코드를 우선 받아야 함을 알 수 있다.
+일단 그러면 어플리케이션 키를 받아야 한다. 위의 이미지처럼 상단의 &lsquo;내 애플리케이션&rsquo; 버튼을 누른다.
+아무 애플리케이션이나 만들고, 원하는 앱키를 복사해놓는다.
+또 옆에 플랫폼으로 들어가, 원하는 플랫폼에 대한 플랫폼을 등록한다. 위처럼 등록해도 되고, (8080번 localhost를 사용하는 경우) 만약 다 설정하였다면, &lsquo;등록하러 가기&rsquo;를 누른다.
+아래 사용할 callback uri를 위에 사진처럼 넣는다. _ 상태 -&gt; 활성화 필수!</div><div class="post-footer">
+        <a href="/spring-kakao-login/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a>,&nbsp;<a href="/tags/oauth/">oauth</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/daily-engineer-information/">정보처리기사 실기 벼락치기</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-02">2021-07-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/diary/"><i class="far fa-folder fa-fw"></i>diary</a></span></div><div class="content">정보처리기사 실기 벼락치기 시도해보기 요구사항 확인   현행 시스템 파악: 현재 개발하고자 하는 시스템의 개발 범위를 설정하기 위해 구성과 기능, 연계 정보, 소프트웨어, 하드웨어, 네트워크 구성을 파악하는 과정
   현행시스템 파악 절차
@@ -110,19 +120,6 @@ https://gmlwjd9405.github.io/2019/01/04/logging-with-slf4j.html
 세팅 관련  preference에서 auto import 입력  Insert imports on paste: Always Add unambiguous imports on the fly: v로 바꾸기    의존성 주입 생성자 주입 방식으로 의존성 주입하는 부분임을 알 수 있다.
 1 2 3 4 5 6 7 8 9 10  @Controller public class MyController{ private final MyService myService; @Autowired public MyController(MyService myService){ this.</div><div class="post-footer">
         <a href="/2021-10-03-til-deep-spring1/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/2021-10-03-til-deep-spring2/">[TIL] Spring 심화반 2주차 복습일지</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">[TIL] Spring 심화반 2주차 복습일지 2주차때 배운 내용을 복습해보려고 한다~!
-간단한 목차는 아래와 같다!
-* 인증과 인가! 인증은 신원 확인!
-인가는 사용자 권한을 확인한다는 의미
-* 스프링 시큐리티? 인증 및 인가를 위해 많은 기능 제공!
-1  implementation &#39;org.springframework.boot:spring-boot-starter-security&#39;   ** 스프링 시큐리티 과정 살펴보기 아래처럼 UserDetails 관련해서 뭔가 작용하는 구조임을 알 수 있다!
-아래 2개 구현을 해준다.
-  UserDetailsService 인터페이스 → UserDetailsServiceImpl 클래스
-UserDetailsServiceImpl에서는 해당하는 유저 이름을 리턴해주도록 구현한다.</div><div class="post-footer">
-        <a href="/2021-10-03-til-deep-spring2/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">

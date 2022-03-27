@@ -3,7 +3,16 @@
         <title>All Posts - h3yon blog</title>
         <link>https://h3yon.github.io/posts/</link>
         <description>All Posts | h3yon blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 26 Dec 2021 23:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 28 Mar 2022 01:50:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>이펙티브 자바 벼락치기</title>
+    <link>https://h3yon.github.io/effective-java/</link>
+    <pubDate>Mon, 28 Mar 2022 01:50:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/effective-java/</guid>
+    <description><![CDATA[이펙티브 자바 Item1. 생성자 대신 정적 팩토리 메서드를 고려하라** 정적 팩토리 메서드(static factory method)는 그 클래스의 인스턴스를 반환하는 단순한 정적 메서드이다.
+1 2 3 4 5  //생성자 Boolean a = Boolean(&#34;true&#34;) //정적 팩토리 메서드 Boolean a= Boolean.valueOf(&#34;true&#34;);   아래와 같은 장점을 가질 수 있다.
+ 생성자와 달리 이름을 가질 수 있다. 호출될 때마다 인스턴스를 새로 생성하지 않아도 된다. 반환 타입의 하위 타입 객체를 반환할 수 있다. Java8 이전에는 인스턴스에 static 메서드를 선언할 수 없어 Companion class를 만들어 거기에 정의를 했어야 했다.]]></description>
+</item><item>
     <title>테스트코드의 Mock, MockBean, Autowired, Spy 이해하기</title>
     <link>https://h3yon.github.io/mock-spy-testcode/</link>
     <pubDate>Sun, 26 Dec 2021 23:47:34 &#43;0900</pubDate>
@@ -115,19 +124,5 @@ memberService -&gt; memberRepository -&gt; MemoryMemberRepository
   객체를 계속 생성하는 것보다는
 의존성 주입으로 재활용할 부분은 재활용하기
 1 2 3 4 5  private final MemberRepository memberRepository; public MemberService(MemberRepository memberRepository) { this.memberRepository = memberRepository; }     스프링 컨테이너]]></description>
-</item><item>
-    <title>You dont know js up &amp; going 정복하기</title>
-    <link>https://h3yon.github.io/you-dont-know-js/</link>
-    <pubDate>Fri, 24 Sep 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://h3yon.github.io/you-dont-know-js/</guid>
-    <description><![CDATA[title: &ldquo;You dont know js up &amp; going 정복하기&rdquo; except: &ldquo;you dont knnow js!&rdquo;
-toc: true toc_sticky: true
-categories:
- Javascript tags: Javascript   You dont know js 1st Edition up &amp; going 정복하기 You dont know 책을 접해보게 되었는데,
-뭔가 탄탄해보여서 읽어보기로 결정했다!
-(기본 지식을 가졌다고 가정하고 정리해보겠습니다!)
-Chapter 1: Into Programming   Input
-1 2  let age = prompt(&#34;나이를 입력해주세요&#34;); console.log(age);     Converting Between Types]]></description>
 </item></channel>
 </rss>
