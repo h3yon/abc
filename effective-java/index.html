@@ -235,8 +235,6 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </li>
 <li>
 <p>1)public static 멤버를 하나 마련하여 유일하게 인스턴스에 접근하게 하거나,</p>
-</li>
-</ol>
 <p>(권한이 있는 클라이언트는 리플렉션 API인 AccessibleObject.setAccessible로 private 생성자를 호출할 수 있다.)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -248,9 +246,9 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SingleFruit</span><span class="o">{</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">SingleFruit</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SingleFruit</span><span class="o">();</span>
-	<span class="kd">private</span> <span class="nf">SingleFruit</span><span class="o">(){</span> <span class="o">...</span> <span class="o">}</span>
-	<span class="o">...</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">SingleFruit</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SingleFruit</span><span class="o">();</span>
+    <span class="kd">private</span> <span class="nf">SingleFruit</span><span class="o">(){</span> <span class="o">...</span> <span class="o">}</span>
+    <span class="o">...</span>
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -266,10 +264,10 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SingleFruit</span><span class="o">{</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">SingleFruit</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SingleFruit</span><span class="o">();</span>
-	<span class="kd">private</span> <span class="nf">SingleFruit</span><span class="o">(){</span> <span class="o">...</span> <span class="o">}</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="n">SingleFruit</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">INSTANCE</span><span class="o">;</span> <span class="o">}</span>
-	<span class="o">...</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">SingleFruit</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SingleFruit</span><span class="o">();</span>
+    <span class="kd">private</span> <span class="nf">SingleFruit</span><span class="o">(){</span> <span class="o">...</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">SingleFruit</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">INSTANCE</span><span class="o">;</span> <span class="o">}</span>
+    <span class="o">...</span>
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -283,12 +281,14 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">enum</span> <span class="n">SingleFruit</span><span class="o">{</span>
-	<span class="n">INSTANCE</span><span class="o">;</span>
-	<span class="o">...</span>
+    <span class="n">INSTANCE</span><span class="o">;</span>
+    <span class="o">...</span>
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>대부분 3번째 방법이 좋다.</p>
+</li>
+</ol>
 <h2 id="item4-인스턴스화를-막으려거든-private-생성자를-사용하라">Item4. 인스턴스화를 막으려거든 private 생성자를 사용하라.</h2>
 <h2 id="item5-자원을-직접-명시하지-말고-의존-객체-주입을-사용하라">Item5. 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라.</h2>
 <p>정적 유틸리티를 사용할 때,</p>
