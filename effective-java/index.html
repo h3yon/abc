@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>이펙티브 자바 벼락치기 - h3yon blog</title><meta name="Description" content="Welcome to h3yon 개구리 블로그"><meta property="og:title" content="이펙티브 자바 벼락치기" />
+        <title>이펙티브 자바 1~30 - h3yon blog</title><meta name="Description" content="Welcome to h3yon 개구리 블로그"><meta property="og:title" content="이펙티브 자바 1~30" />
 <meta property="og:description" content="이펙티브 자바 Item1. 생성자 대신 정적 팩토리 메서드를 고려하라 정적 팩토리 메서드(static factory method)는 그 클래스의 인스턴스를 반환하는 단순한 정적 메서드이다.
 1 2 3 4 5  //생성자 Boolean a = Boolean(&#34;true&#34;) //정적 팩토리 메서드 Boolean a= Boolean.valueOf(&#34;true&#34;);   아래와 같은 장점을 가질 수 있다.
  생성자와 달리 이름을 가질 수 있다. 호출될 때마다 인스턴스를 새로 생성하지 않아도 된다. 반환 타입의 하위 타입 객체를 반환할 수 있다. Java8 이전에는 인스턴스에 static 메서드를 선언할 수 없어 Companion class를 만들어 거기에 정의를 했어야 했다." />
@@ -15,7 +15,7 @@
 <meta property="article:modified_time" content="2022-03-28T01:50:34+09:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="이펙티브 자바 벼락치기"/>
+<meta name="twitter:title" content="이펙티브 자바 1~30"/>
 <meta name="twitter:description" content="이펙티브 자바 Item1. 생성자 대신 정적 팩토리 메서드를 고려하라 정적 팩토리 메서드(static factory method)는 그 클래스의 인스턴스를 반환하는 단순한 정적 메서드이다.
 1 2 3 4 5  //생성자 Boolean a = Boolean(&#34;true&#34;) //정적 팩토리 메서드 Boolean a= Boolean.valueOf(&#34;true&#34;);   아래와 같은 장점을 가질 수 있다.
  생성자와 달리 이름을 가질 수 있다. 호출될 때마다 인스턴스를 새로 생성하지 않아도 된다. 반환 타입의 하위 타입 객체를 반환할 수 있다. Java8 이전에는 인스턴스에 static 메서드를 선언할 수 없어 Companion class를 만들어 거기에 정의를 했어야 했다."/>
@@ -26,12 +26,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "이펙티브 자바 벼락치기",
+        "headline": "이펙티브 자바 1~30",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/h3yon.github.io\/effective-java\/"
-        },"genre": "posts","keywords": "java","wordcount":  1406 ,
+        },"genre": "posts","keywords": "java","wordcount":  1901 ,
         "url": "https:\/\/h3yon.github.io\/effective-java\/","datePublished": "2022-03-28T01:50:34+09:00","dateModified": "2022-03-28T01:50:34+09:00","publisher": {
             "@type": "Organization",
             "name": "h3yon"},"author": {
@@ -79,10 +79,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">이펙티브 자바 벼락치기</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">이펙티브 자바 1~30</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-28">2022-03-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1406 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-28">2022-03-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1901 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;9 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -107,6 +107,16 @@
     <li><a href="#item11-14-재정의-comparable">Item11-14 재정의, Comparable</a></li>
     <li><a href="#item15-16-클래스와-멤버">Item15-16 클래스와 멤버</a></li>
     <li><a href="#item18-22-상속">Item18-22 상속</a></li>
+    <li><a href="#item24-멤버-클래스는-되도록-static으로-만들라">Item24. 멤버 클래스는 되도록 static으로 만들라</a></li>
+    <li><a href="#item25-톱레벨-클래스는-한-파일에-하나만-담으라">Item25. 톱레벨 클래스는 한 파일에 하나만 담으라</a></li>
+    <li><a href="#item26-로-타입은-사용하지-말라">Item26. 로 타입은 사용하지 말라</a>
+      <ul>
+        <li><a href="#타입">타입</a></li>
+      </ul>
+    </li>
+    <li><a href="#item27-비검사-경고를-제거하라">Item27. 비검사 경고를 제거하라</a></li>
+    <li><a href="#item28-배열보다는-리스트를-사용하라">Item28. 배열보다는 리스트를 사용하라</a></li>
+    <li><a href="#item29-30-이왕이면-제네릭-타입으로-만들라">Item29-30. 이왕이면 제네릭 타입으로 만들라</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="이펙티브-자바">이펙티브 자바</h1>
@@ -617,6 +627,187 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 <p>Point, Rectangle, Circle을 한 클래스에 몰아넣는 것보다는, 따로 분리하여 abstract class Point, class Rectangle 처럼 계층 구조로 활용하자.</p>
 </li>
 </ul>
+<h2 id="item24-멤버-클래스는-되도록-static으로-만들라">Item24. 멤버 클래스는 되도록 static으로 만들라</h2>
+<p><strong>정규화된 this</strong>? 클래스명.this 형태로 바깥 클래스 이름을 명시하는 용법</p>
+<p><strong>중첩 클래스</strong>란 다른 클래스 안에 정의된 클래스를 말한다.</p>
+<ul>
+<li>
+<p>정적 멤버 클래스</p>
+<p>다른 클래스 안에 선언되고, 바깥 클래스의 private 멤버에도 접근 가능하다.</p>
+<p><code>바깥 인스턴스에 접근할 일이 없다면 무조건 static을 붙여 정적 멤버 클래스로 만들자</code>.</p>
+</li>
+</ul>
+<p>&lt;아래 3가지 = <strong>내부 클래스</strong>&gt;</p>
+<ul>
+<li>
+<p>(비정적) 멤버 클래스</p>
+<p>어댑터를 쓸 때 자주 쓰인다. 멤버 클래스가 인스턴스화할 때 바깥 인스턴스 사이의 관계과 확립되며, 변경 불가능하다.</p>
+<p>참조가 명시적이지 않아 <code>메모리 누수</code>가 생길 수 있다.</p>
+<p><code>멤버 클래스의 인스턴스 각각이 바깥 인스턴스를 참조한다면 비정적으로 만들자</code></p>
+</li>
+<li>
+<p>익명 클래스</p>
+<p>쓰이는 시점에 선언과 인스턴스가 만들어진다. 어디서든 만들 수 있다.</p>
+<p>이제는 <code>람다로</code> 자리를 물려줬다.</p>
+</li>
+<li>
+<p>지역 클래스</p>
+<p>가장 드물게 사용된다. 지역변수 선언 가능한 곳이면 어디든 사용 가능하며, 유효범위도 지역변수와 같다.</p>
+</li>
+</ul>
+<h2 id="item25-톱레벨-클래스는-한-파일에-하나만-담으라">Item25. 톱레벨 클래스는 한 파일에 하나만 담으라</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Fruit</span><span class="o">{</span>
+	<span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">MARKET</span> <span class="o">=</span> <span class="s">&#34;Fruit Market&#34;</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Furniture</span><span class="o">{</span>
+	<span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">MARKET</span> <span class="o">=</span> <span class="s">&#34;Furniture Market&#34;</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>위처럼 쓰지 말고, 다른 소스 파일로 분리해서 사용하자.</p>
+<p>만약에 다른 java 파일에서 Fruit, Furniture 클래스를 작성하면 컴파일러가 이 상황을 캐치하지 못하고 Fruit.MARKET을 사용할 때마다 다른 값이 나올 수 있다.</p>
+<p>굳이 위처럼 한 파일에 2개 클래스를 넣고 싶다면, 정적 멤버 클래스를 사용하는 방법을 고민할 수 있다.</p>
+<h2 id="item26-로-타입은-사용하지-말라">Item26. 로 타입은 사용하지 말라</h2>
+<p><code>로타입</code>? <strong>타입 매개변수가 없는 제테릭 타입</strong>. 로타입을 쓰면 제네릭이 안겨주는 안전성과 표현력을 모두 잃게 된다.</p>
+<p>로타입의 예로 <strong>List, Collection, Object</strong> 가 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">final</span> <span class="n">Collection</span> <span class="n">stamps</span> <span class="o">=</span> <span class="o">...;</span>
+<span class="n">stamps</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Coin</span><span class="o">(...));</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>타입을 Collection으로 정하면 아무거나 다 넣을 수 있다.
+하지만 위 예제처럼 stamps에서 Coin을 꺼내면 런타임 시 문제가 발생한다.</p>
+<p>우리는 원소 타입을 몰라도 되는 로타입을 쓰고 싶어질 수 있다.</p>
+<p>그때, <strong>비한정적 와일드카드 타입</strong>을 대신 사용하는 게 좋다.(로타입은 안전하지 않지만 와일드카드는 안전하다)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">static</span> <span class="kt">int</span> <span class="nf">FruitCounts</span><span class="o">(</span><span class="n">Set</span><span class="o">&lt;?&gt;</span> <span class="n">s1</span><span class="o">,</span> <span class="n">Set</span><span class="o">&lt;?&gt;</span> <span class="n">s2</span><span class="o">){</span> <span class="o">...</span> <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>비한정적 와일드카드 타입</code>? <strong><code>List&lt;?&gt;</code>, Set&lt;?&gt;</strong></p>
+<h3 id="타입">타입</h3>
+<table>
+<thead>
+<tr>
+<th>한글 용어</th>
+<th>예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매개변수화 타입</td>
+<td>List<String></td>
+</tr>
+<tr>
+<td>제네릭 타입</td>
+<td>List<E></td>
+</tr>
+<tr>
+<td>정규 타입 매개변수</td>
+<td>E</td>
+</tr>
+<tr>
+<td>비한정적 와일드카드 타입</td>
+<td>List&lt;?&gt;</td>
+</tr>
+<tr>
+<td>한정적 와일드카드 타입</td>
+<td><E extends Number></td>
+</tr>
+<tr>
+<td>로 타입</td>
+<td>List</td>
+</tr>
+<tr>
+<td>재귀적 타입 한정</td>
+<td>&lt;T extends Comparable<T>&gt;</td>
+</tr>
+<tr>
+<td>제네릭 메서드</td>
+<td>static <E> List<E> asList(E[] a)</td>
+</tr>
+<tr>
+<td>타입 토큰</td>
+<td>String.class</td>
+</tr>
+</tbody>
+</table>
+<h2 id="item27-비검사-경고를-제거하라">Item27. 비검사 경고를 제거하라</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&#34;unchecked&#34;</span><span class="o">)</span>
+<span class="n">T</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">elements</span><span class="o">,</span> <span class="n">size</span><span class="o">,</span> <span class="n">a</span><span class="o">.</span><span class="na">getClass</span><span class="o">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="item28-배열보다는-리스트를-사용하라">Item28. 배열보다는 리스트를 사용하라</h2>
+<ol>
+<li>
+<p>배열은 저장되는 값을 런타임에야 알게 되지만, 리스트는 컴파일할 때 바로 알 수 있다.</p>
+</li>
+<li>
+<p>배열은 실체화되어 런타임에 한 원소의 타입을 인지하고 확인한다. → 실체화
+제네릭은 타입 정보가 런타임 시 소거되어 런타임에는 알 수 없다. → 실체화 불가 타입</p>
+<p>비검사 형변환 경고를 제거하려면 배열 대신 리스트를 쓰면 된다.</p>
+</li>
+</ol>
+<p>배열, 리스트를 섞어쓰다 컴파일 오류/경고를 만나면 배열을 리스트로 대체하는 방법을 시도해보자</p>
+<h2 id="item29-30-이왕이면-제네릭-타입으로-만들라">Item29-30. 이왕이면 제네릭 타입으로 만들라</h2>
+<p>직접 형변환하는 타입보다 제네릭 타입이 더 안전하고 쓰기 편하다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Fruit</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;{</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="n">T</span><span class="o">[]</span> <span class="n">FruitArray</span><span class="o">;</span>
+	<span class="o">...</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>클래스, 메서드 모두 제네릭으로 만들 수 있다.</p>
+<p><code>타입 매개변수 목록은 메서드의 제한자와 반환 타입 사이에 온다</code>.</p>
+<p>아래에서 <E> = 타입 매개변수 목록, Set<E> = 반환 타입</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="nf">union</span><span class="o">(</span><span class="n">Set</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">s1</span><span class="o">,</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">s2</span><span class="o">){</span>
+	<span class="n">Set</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;(</span><span class="n">s1</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>이 메서드는 경고 없이 컴파일되며, 타입 안전하고 쓰기도 쉽다.</p>
+<p>타입, 메서드 모두 형변환 없이 사용할 수 있는 편이 좋으며 그렇게 하려면 제네릭을 사용해야 한다.</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
