@@ -3,7 +3,19 @@
         <title>spring - Tag - h3yon blog</title>
         <link>https://h3yon.github.io/tags/spring/</link>
         <description>spring - Tag - h3yon blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 26 Dec 2021 23:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/tags/spring/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 14 Apr 2022 23:56:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/tags/spring/" rel="self" type="application/rss+xml" /><item>
+    <title>스프링 핵심 원리 복습 일지#1</title>
+    <link>https://h3yon.github.io/spring-core1/</link>
+    <pubDate>Thu, 14 Apr 2022 23:56:34 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://h3yon.github.io/spring-core1/</guid>
+    <description><![CDATA[스프링 핵심 원리(기본편) 생성일: 2022년 4월 10일 오후 5:00
+0. 객체 지향 설계와 스프링 EJB(Enterprise Java Beans)
+ 트랜잭션이 좋다. 분산 기술이 좋았다. 엔티티빈(JPA ORM)도 가지고 있었다. 비용이 비싸다. 어렵고 복잡하고 느리다(EJB에 의존적으로 코드를 짜야 한다, 컨테이너 띄우는 게 느리다).  → 순수하게 자바로 돌아가자. (POJO Plain Old Java Object)
+로드존슨이 EJB를 비판하면서 미래 스프링의 기틀을 다져준다. 링킹이 Hibernate 등장. 자바 표준 JPA 구현체로 사용될 수 있다.
+JPA(인터페이스)
+→ Hibernate, EclipseLink, 기타, &hellip;]]></description>
+</item><item>
     <title>테스트코드의 Mock, MockBean, Autowired, Spy 이해하기</title>
     <link>https://h3yon.github.io/mock-spy-testcode/</link>
     <pubDate>Sun, 26 Dec 2021 23:47:34 &#43;0900</pubDate>
@@ -115,16 +127,5 @@ memberService -&gt; memberRepository -&gt; MemoryMemberRepository
   객체를 계속 생성하는 것보다는
 의존성 주입으로 재활용할 부분은 재활용하기
 1 2 3 4 5  private final MemberRepository memberRepository; public MemberService(MemberRepository memberRepository) { this.memberRepository = memberRepository; }     스프링 컨테이너]]></description>
-</item><item>
-    <title>SpringFramework Naver Login 구현하기</title>
-    <link>https://h3yon.github.io/spring-naver-login/</link>
-    <pubDate>Sat, 14 Aug 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://h3yon.github.io/spring-naver-login/</guid>
-    <description><![CDATA[스프링부트 Naver Login 구현하기 출처:
- 이동욱 님의 스프링 부트와 AWS로 혼자 구현하는 웹 서비스 스프링 부트와 OAuth2 Naver  사용한 방식 저번에 카카오 로그인을 구현하였을 때는 restTemplate을 사용했었다. 그런데 이번에는 spring-security-oauth2 부분을 알아보고 사용해보고자 했다.
-라이브러리 중에 spring-security-auth2-autoconfigure이 있는데, 스프링부트2에서 기존 설정을 그대로 사용할 수 있어 많은 개발자가 이 방식을 사용했다고 한다.
-하지만 책에서는 spring-boot-starter-oauth2-client 라이브러리를 사용했다. 그 이유는 아래와 같다.
- 스프링 팀에서 신규 기능은 oauth2 라이브러리에서만 지원하겠다고 선언 스프링부트용 라이브러리가 출시 기존에 사용되던 방식은 확장 포인트가 적절하게 open되어 있지 않아 직접 상속하거나, 오버라이딩 해야하고, 신규 라이브러리의 경우 확장 포인트를 고려해서 설계된 상태  직접 구현할 때 관련 자료를 찾아보면,]]></description>
 </item></channel>
 </rss>

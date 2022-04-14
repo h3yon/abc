@@ -73,6 +73,18 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/h3yon" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://linkedin.com/in/xxxx" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw"></i></a><a href="mailto:khykhy1006@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/til-spring-core3/">[스프링 핵심 원리 - 기본편] 복습일지3 (컴포넌트 스캔)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-10-15">2021-10-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw"></i>spring</a></span></div><div class="content">[스프링 핵심 원리 - 기본편] 복습일지3 (컴포넌트 스캔) 컴포넌트 스캔? 컴포넌트 스캔은 스프링이 설정 정보가 없어도
+자동으로 스프링 빈을 등록하는 기능이다
+컴포넌트 스캔을 사용하려면 아래처럼
+@ComponentScan을 설정 정보에 붙여준다.
+아래처럼 제외도 가능하다.
+1 2 3 4 5 6  @Configuration @ComponentScan( excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class) ) public class AutoAppConfig { }   컴포넌트 스캔은 @Component 애노테이션이 붙은 클래스를 스캔 후
+스프링 빈으로 등록한다.
+예시를 한번 봐보자.</div><div class="post-footer">
+        <a href="/til-spring-core3/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/til/">TIL</a>,&nbsp;<a href="/tags/spring/">spring</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/til-sia1/">[스프링 인 액션5]Chapter1~3 내용 정리</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-10-14">2021-10-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw"></i>spring</a></span></div><div class="content">[스프링 인 액션5] Chapter1~3 내용 정리 스프링 인 액션에 대한 내용을 읽으면서
 중요 내용, 한번 더 짚고 넘어가면 좋을 내용에 대해서 써보려고 한다.
@@ -129,14 +141,6 @@ Chapter 1: Into Programming   Input
 1 2  let age = prompt(&#34;나이를 입력해주세요&#34;); console.log(age);     Converting Between Types</div><div class="post-footer">
         <a href="/you-dont-know-js/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/javascript/">javascript</a>,&nbsp;<a href="/tags/you-dont-know-js/">you dont know js</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/jenkins-ec2/">[Jenkins]AWS EC2 Ubuntu에 Jenkins 연동하기</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-15">2021-09-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nodejs/"><i class="far fa-folder fa-fw"></i>nodejs</a></span></div><div class="content">1. AWS EC2 Ubuntu에 Jenkins를 연동해보자 관련 패키지 설치   Jenkins 설치를 위해 Repository key 추가
-1  $ wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -     서버의 sources.list에 Jenkins 패키지 저장소를 추가
-1 2  $ sudo sh -c &#39;echo deb https://pkg.jenkins.io/debian-stable binary/ &gt; \ /etc/apt/sources.list.d/jenkins.list&#39;     패키지 업데이트 및 Jenkins 설치
-1 2  $ sudo apt-get update $ sudo apt-get install jenkins     Java JDK 8 설치</div><div class="post-footer">
-        <a href="/jenkins-ec2/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nodejs/">nodejs</a>,&nbsp;<a href="/tags/jenkins/">jenkins</a>,&nbsp;<a href="/tags/aws/">aws</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

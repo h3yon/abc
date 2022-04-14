@@ -73,6 +73,15 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/h3yon" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://linkedin.com/in/xxxx" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw"></i></a><a href="mailto:khykhy1006@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/thread/">스레드</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-22">2021-07-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cs/"><i class="far fa-folder fa-fw"></i>cs</a></span></div><div class="content">출처: [병렬프로그래밍] 자바 병렬 프로그래밍 소개
+스레드 사용   안전성 위해 요소
+UnsafeSequence는 비표준 어노테이션인 @NotThreadSafe를 사용.(@ThreadSafe와 @Immutable도 존재)
+ @Immutable은 해당 클래스가 불변 클래스임을 나타내기 때문에 ThreadSafe  만약 @ThreadSafe라고 표시하면 클래스를 사용하는 사람은 멀티스레드 환경에서 문제가 없다는 점을 명확히 알 수 있고, 스레드 안전성이 계속 보장돼야 한다는 점에 주의할 수 있다.
+스레드는 같은 메모리 주소 공간을 공유하고 동시에 실행되기 때문에 다른 스레드가 사용 중일지도 모르는 변수를 읽거나 수정할 수도 있다.</div><div class="post-footer">
+        <a href="/thread/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/cs/">cs</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/javascript-map-filter-reduce/">[javascript] forEach, map, filter, reduce 총정리</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-21">2021-07-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/javascript/"><i class="far fa-folder fa-fw"></i>javascript</a></span></div><div class="content">Javascript - forEach, map, filter, reduce 총정리 참고 자료:  ES6의 map, filter, reduce 정리 reduce 참고 링크   forEach 가장 기본적인 Loop 메소드
 1 2 3 4 5 6  const arr = [&#34;a&#34;, &#34;bb&#34;, &#34;ccc&#34;, &#34;ddddd&#34;]; var arr2 = []; arr.forEach(function (str) { arr2.push(str.length); }); console.log(arr2); // [1, 2, 3, 5]]   forEach문과 아래 map() 기능이 완전 똑같음을 알 수 있다. 그럼 map과의 차이점이 대체 뭘까?</div><div class="post-footer">
@@ -109,14 +118,6 @@ Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone) 오늘은 기초
  -- 1 2 3 4 5 6 7 8 9  function out(){ const name = &#34;aaa&#34; return function(){ console.log(name); } } const in = out() in()    함수 안에 함수가 있을 때 응집성이 높아진다. 위의 코드를 보면 out()은 외부함수, in()은 내부함수를 말한다. in()함수에서 name에 대한 로그를 찍는데, name은 out()에만 있기 대문에 외부 함수에서 변수를 찾는다. 이를 closure라고 한다.</div><div class="post-footer">
         <a href="/javascript-basic/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/javascript/">javascript</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/mysql-user/">MySQL User 추가 및 권한 부여하기</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-11">2021-07-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw"></i>MySQL</a></span></div><div class="content">MySQL User 추가 및 권한 부여하기  mysql 사용자 추가하기    사용자 추가(비밀번호 X) $ create user 사용자;
-  사용자 추가 및 패스워드 설정 $ create user 사용자@localhost identified by 비밀번호;
-  사용자 추가 및 패스워드 설정부터 외부에서의 접근 허용 $ create user 사용자@'%' identified by 비밀번호;
-  사용자 삭제1 1  $ drop user 사용자;   사용자 목록 확인 $ select User from user;  사용자에게 데이터베이스 사용권한 부여   DB의 사용자에게 외부 권한 부여하기, 모든 권한 부여 $ GRANT ALL privileges ON DB명.</div><div class="post-footer">
-        <a href="/mysql-user/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mysql/">mysql</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
