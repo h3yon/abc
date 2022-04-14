@@ -37,7 +37,7 @@ JPA(인터페이스)
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/h3yon.github.io\/spring-core1\/"
-        },"genre": "posts","keywords": "spring","wordcount":  1534 ,
+        },"genre": "posts","keywords": "spring","wordcount":  1540 ,
         "url": "https:\/\/h3yon.github.io\/spring-core1\/","datePublished": "2022-04-14T23:56:34+09:00","dateModified": "2022-04-14T23:56:34+09:00","publisher": {
             "@type": "Organization",
             "name": "h3yon"},"author": {
@@ -87,7 +87,7 @@ JPA(인터페이스)
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">스프링 핵심 원리 복습 일지#1</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw"></i>spring</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-04-14">2022-04-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1534 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-04-14">2022-04-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1540 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;8 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -133,11 +133,11 @@ JPA(인터페이스)
 <li>스프링 오픈소스 제안 → EJB란 겨울을 넘어 새로운 시작으로 지음</li>
 </ul>
 <p><strong>스프링 역사</strong></p>
-<p>2003~2006. (Spring Framework 1.0~2.0) - XML
-2009~2013. (Spring Framework 3.0~4.0) - 자바
-2014. Spring Boot 1.0 출시
-2017. Spring Framework 5.0, Spring Boot 2.0(리액티브 프로그래밍 지원)
-2020. Spring Framework 5.2, Spring Boot 2.3.x</p>
+<p>2003-2006 -&gt; (Spring Framework 1.0~2.0) - XML
+2009-2013 -&gt; (Spring Framework 3.0~4.0) - 자바
+2014 -&gt; Spring Boot 1.0 출시
+2017 -&gt; Spring Framework 5.0, Spring Boot 2.0(리액티브 프로그래밍 지원)
+2020 -&gt; Spring Framework 5.2, Spring Boot 2.3.x</p>
 <p><strong>스프링</strong></p>
 <p><a href="https://spring.io/projects" target="_blank" rel="noopener noreffer">https://spring.io/projects</a></p>
 <ul>
@@ -160,48 +160,8 @@ etc</li>
 </thead>
 <tbody>
 <tr>
-<td>핵심: DI Container, AOP, event</td>
-<td></td>
-</tr>
-<tr>
-<td>웹: MVC, WebFlux</td>
-<td></td>
-</tr>
-<tr>
-<td>데이터 접근: Transaction, JDBC, ORM, XML</td>
-<td></td>
-</tr>
-<tr>
-<td>기술통합</td>
-<td></td>
-</tr>
-<tr>
-<td>테스트</td>
-<td></td>
-</tr>
-<tr>
-<td>언어</td>
-<td>(스프링 부트를 통해 스프링 프레임워크 사용하는 게 다수)</td>
-</tr>
-<tr>
-<td>Tomcat 같은 웹서버 내장</td>
-<td></td>
-</tr>
-<tr>
-<td>starter 종속성 제공(손쉬운 빌드)</td>
-<td></td>
-</tr>
-<tr>
-<td>스프링과 써드 라이브러리 자동 구성(외부 라이브러리 버전)</td>
-<td></td>
-</tr>
-<tr>
-<td>production 준비 기능(상태 확인, 매트릭모니터링)</td>
-<td></td>
-</tr>
-<tr>
-<td>간결한 설정</td>
-<td></td>
+<td>핵심: DI Container, AOP, event </br> 웹: MVC, WebFlux </br> 데이터 접근: Transaction, JDBC, ORM, XML </br> 기술통합 </br> 테스트 </br> 언어</td>
+<td>(스프링 부트를 통해 스프링 프레임워크 사용하는 게 다수) </br> Tomcat 같은 웹서버 내장 </br> starter 종속성 제공(손쉬운 빌드) </br> 스프링과 써드 라이브러리 자동 구성(외부 라이브러리 버전) </br> production 준비 기 </br> (상태 확인, 매트릭모니터링) </br> 간결한 설정</td>
 </tr>
 </tbody>
 </table>
@@ -330,22 +290,22 @@ private Car car = new K3();
 <span class="n">1</span><span class="o">.</span> <span class="n">모든</span> <span class="n">빈</span> <span class="n">출력</span>
 <span class="n">String</span><span class="o">[]</span> <span class="n">beanDefinitionNames</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="na">getBeanDefinitionNames</span><span class="o">();</span>
 
-<span class="n">2</span><span class="o">.</span> <span class="n">직접</span> <span class="n">등록한</span> <span class="n">빈인지</span> <span class="n">확인</span>
+<span class="n">1</span><span class="o">.</span> <span class="n">직접</span> <span class="n">등록한</span> <span class="n">빈인지</span> <span class="n">확인</span>
 <span class="nf">if</span><span class="o">(</span><span class="n">beanDefinition</span><span class="o">.</span><span class="na">getRole</span><span class="o">()</span> <span class="o">==</span> <span class="n">BeanDefinition</span><span class="o">.</span><span class="na">ROLE_APPLICATION</span><span class="o">)</span>
 
-<span class="n">3</span><span class="o">.</span> <span class="n">빈</span> <span class="n">객체</span> <span class="n">조회</span>
+<span class="n">1</span><span class="o">.</span> <span class="n">빈</span> <span class="n">객체</span> <span class="n">조회</span>
 <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="n">빈이름</span><span class="o">,</span> <span class="n">타입</span><span class="o">)</span> <span class="o">/</span> <span class="o">(</span><span class="n">타입</span><span class="o">)</span>
 <span class="n">ex</span><span class="o">)</span> <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;memberService&#34;</span><span class="o">,</span><span class="n">MemberService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 
-<span class="n">4</span><span class="o">.</span> <span class="n">특정</span> <span class="n">타입</span> <span class="n">빈</span> <span class="n">모두</span> <span class="n">조회</span>
+<span class="n">1</span><span class="o">.</span> <span class="n">특정</span> <span class="n">타입</span> <span class="n">빈</span> <span class="n">모두</span> <span class="n">조회</span>
 <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">MemberRepository</span><span class="o">&gt;</span> <span class="n">beansOfType</span> <span class="o">=</span>
 	<span class="n">ac</span><span class="o">.</span><span class="na">getBeansOfType</span><span class="o">(</span><span class="n">MemberRepository</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 
-<span class="n">5</span><span class="o">.</span> <span class="n">부모</span> <span class="n">타입으로</span> <span class="n">조회시</span><span class="o">,</span> <span class="n">자식이</span> <span class="n">둘</span> <span class="n">이상</span> <span class="n">있으면</span><span class="o">,</span> <span class="n">중복</span> <span class="n">오류가</span> <span class="n">발생</span>
+<span class="n">1</span><span class="o">.</span> <span class="n">부모</span> <span class="n">타입으로</span> <span class="n">조회시</span><span class="o">,</span> <span class="n">자식이</span> <span class="n">둘</span> <span class="n">이상</span> <span class="n">있으면</span><span class="o">,</span> <span class="n">중복</span> <span class="n">오류가</span> <span class="n">발생</span>
 <span class="nf">assertThrows</span><span class="o">(</span><span class="n">NoUniqueBeanDefinitionException</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span>
 	<span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="n">DiscountPolicy</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
 
-<span class="n">6</span><span class="o">.</span> <span class="n">부모</span> <span class="n">타입으로</span> <span class="n">조회시</span><span class="o">,</span> <span class="n">자식이</span> <span class="n">둘</span> <span class="n">이상</span> <span class="n">있으면</span><span class="o">,</span> <span class="n">빈</span> <span class="n">이름을</span> <span class="n">지정하면</span> <span class="n">된다</span>
+<span class="n">1</span><span class="o">.</span> <span class="n">부모</span> <span class="n">타입으로</span> <span class="n">조회시</span><span class="o">,</span> <span class="n">자식이</span> <span class="n">둘</span> <span class="n">이상</span> <span class="n">있으면</span><span class="o">,</span> <span class="n">빈</span> <span class="n">이름을</span> <span class="n">지정하면</span> <span class="n">된다</span>
 <span class="n">DiscountPolicy</span> <span class="n">rateDiscountPolicy</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;rateDiscountPolicy&#34;</span><span class="o">,</span>
 	<span class="n">DiscountPolicy</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 <span class="n">assertThat</span><span class="o">(</span><span class="n">rateDiscountPolicy</span><span class="o">).</span><span class="na">isInstanceOf</span><span class="o">(</span><span class="n">RateDiscountPolicy</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
