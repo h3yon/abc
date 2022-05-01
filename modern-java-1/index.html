@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>모던 자바 인 액션 1~6장 스트림 - h3yon blog</title><meta name="Description" content="Welcome to h3yon 개구리 블로그"><meta property="og:title" content="모던 자바 인 액션 1~6장 스트림" />
+<meta property="og:description" content="모던 자바 인 액션 읽고 정리하기 아는 내용은 정리 생략해서
+자세한 내용을 원하시는 분은 다른 포스팅 보기를 추천 드립니다!
+1장 자바 8, 9, 10, 11? 자바 8에서는 메서드를 값으로 취급할 수 있도록 했다. 이 기능은 스트림 같은 다른 기능의 토대를 제공했다.
+ 외부 반복?
+기존 컬렉션 API에서 for-each로 반복 과정 직접 처리 내부 반복?
+스트림 API 사용함으로써 API 내부에서 모든 데이터가 처리된다.  자바 8에서는 Optional도 제공한다.
+2장 동작 파라미터화 코드 전달하기   동작 파라미터?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://h3yon.github.io/modern-java-1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-04-26T01:50:34+09:00" />
+<meta property="article:modified_time" content="2022-04-26T01:50:34+09:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="모던 자바 인 액션 1~6장 스트림"/>
+<meta name="twitter:description" content="모던 자바 인 액션 읽고 정리하기 아는 내용은 정리 생략해서
+자세한 내용을 원하시는 분은 다른 포스팅 보기를 추천 드립니다!
+1장 자바 8, 9, 10, 11? 자바 8에서는 메서드를 값으로 취급할 수 있도록 했다. 이 기능은 스트림 같은 다른 기능의 토대를 제공했다.
+ 외부 반복?
+기존 컬렉션 API에서 for-each로 반복 과정 직접 처리 내부 반복?
+스트림 API 사용함으로써 API 내부에서 모든 데이터가 처리된다.  자바 8에서는 Optional도 제공한다.
+2장 동작 파라미터화 코드 전달하기   동작 파라미터?"/>
+<meta name="application-name" content="h3yon blog">
+<meta name="apple-mobile-web-app-title" content="h3yon blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/modern-java-1/" /><link rel="prev" href="https://h3yon.github.io/spring-core1/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "모던 자바 인 액션 1~6장 스트림",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/h3yon.github.io\/modern-java-1\/"
+        },"genre": "posts","keywords": "java","wordcount":  1037 ,
+        "url": "https:\/\/h3yon.github.io\/modern-java-1\/","datePublished": "2022-04-26T01:50:34+09:00","dateModified": "2022-04-26T01:50:34+09:00","publisher": {
+            "@type": "Organization",
+            "name": "h3yon"},"author": {
+                "@type": "Person",
+                "name": "h3yon"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="h3yon blog">h3yon blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="h3yon blog">h3yon blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">모던 자바 인 액션 1~6장 스트림</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-04-26">2022-04-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1037 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1장-자바-8-9-10-11">1장 자바 8, 9, 10, 11?</a></li>
+    <li><a href="#2장-동작-파라미터화-코드-전달하기">2장 동작 파라미터화 코드 전달하기</a></li>
+    <li><a href="#3장-람다-표현식">3장 람다 표현식</a>
+      <ul>
+        <li><a href="#람다-활용-실행-어라운드-패턴">람다 활용: 실행 어라운드 패턴</a></li>
+        <li><a href="#함수형-인터페이스-사용">함수형 인터페이스 사용</a></li>
+        <li><a href="#메서드-참조">메서드 참조</a></li>
+      </ul>
+    </li>
+    <li><a href="#4장-스트림-소개">4장 스트림 소개</a></li>
+    <li><a href="#5장-스트림-활용">5장 스트림 활용</a>
+      <ul>
+        <li><a href="#배열로-스트림-만들기">배열로 스트림 만들기</a></li>
+        <li><a href="#무한-스트림-만들기">무한 스트림 만들기</a>
+          <ul>
+            <li><a href="#generate-메서드">generate 메서드</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#6장-스트림으로-데이터-수집">6장 스트림으로 데이터 수집</a>
+      <ul>
+        <li><a href="#65-collector-인터페이스">6.5 Collector 인터페이스</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="모던-자바-인-액션-읽고-정리하기">모던 자바 인 액션 읽고 정리하기</h1>
+<p>아는 내용은 정리 생략해서<br>
+자세한 내용을 원하시는 분은 다른 포스팅 보기를 추천 드립니다!</p>
+<h2 id="1장-자바-8-9-10-11">1장 자바 8, 9, 10, 11?</h2>
+<p>자바 8에서는 메서드를 값으로 취급할 수 있도록 했다. 이 기능은 스트림 같은 다른 기능의 토대를 제공했다.</p>
+<ul>
+<li>외부 반복?<br>
+기존 컬렉션 API에서 for-each로 반복 과정 직접 처리</li>
+<li>내부 반복?<br>
+스트림 API 사용함으로써 API 내부에서 모든 데이터가 처리된다.</li>
+</ul>
+<p>자바 8에서는 Optional도 제공한다.</p>
+<h2 id="2장-동작-파라미터화-코드-전달하기">2장 동작 파라미터화 코드 전달하기</h2>
+<blockquote>
+<dl>
+<dt>동작 파라미터?</dt>
+<dd>아직은 어떻게 실행할 것인지 결정하지 않은 코드</dd>
+</dl>
+</blockquote>
+<p>동작 파라미터화를 사용해서 원하는 사과를 필터링한다고 가정한다.</p>
+<ol>
+<li>
+<p>for 문으로 색 파라미터화하면서 원하는 사과 찾기</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Apple</span><span class="o">&gt;</span> <span class="nf">filterApplesByColor</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Apple</span><span class="o">&gt;</span> <span class="n">inventory</span><span class="o">,</span> <span class="n">Color</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span> 
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Apple</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span> 
+<span class="k">for</span> <span class="o">(</span><span class="n">Apple</span> <span class="n">apple</span> <span class="o">:</span> <span class="n">inventory</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="k">if</span> <span class="o">(</span><span class="n">apple</span><span class="o">.</span><span class="na">getColor</span><span class="o">()</span> <span class="o">==</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">apple</span><span class="o">);</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+<span class="k">return</span> <span class="n">result</span><span class="o">;</span> 
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Predicate를 사용해서 각 필터링을 다르게 하는 방법
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://user-images.githubusercontent.com/46602874/165311593-191097b0-9c2f-4300-9fcb-5bd12676b0b9.png"
+        data-srcset="https://user-images.githubusercontent.com/46602874/165311593-191097b0-9c2f-4300-9fcb-5bd12676b0b9.png, https://user-images.githubusercontent.com/46602874/165311593-191097b0-9c2f-4300-9fcb-5bd12676b0b9.png 1.5x, https://user-images.githubusercontent.com/46602874/165311593-191097b0-9c2f-4300-9fcb-5bd12676b0b9.png 2x"
+        data-sizes="auto"
+        alt="https://user-images.githubusercontent.com/46602874/165311593-191097b0-9c2f-4300-9fcb-5bd12676b0b9.png"
+        title="image" /></p>
+</li>
+<li>
+<p>익명 클래스 또는 람다식 사용</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">Apple</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">filterApples</span><span class="o">(</span><span class="n">inventory</span><span class="o">,</span> 
+    <span class="o">(</span><span class="n">Apple</span> <span class="n">apple</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">RED</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">apple</span><span class="o">.</span><span class="na">getColor</span><span class="o">())</span>
+<span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="3장-람다-표현식">3장 람다 표현식</h2>
+<blockquote>
+<p><code>함수형 인터페이스</code> = 정확히 <code>하나의 추상 메서드</code>를 지정하는 인터페이스 ex) Comparator, Runnable etc</p>
+</blockquote>
+<p>람다 표현식으로 추상메서드 구현을 직접 전달할 수 있다.</p>
+<h3 id="람다-활용-실행-어라운드-패턴">람다 활용: 실행 어라운드 패턴</h3>
+<blockquote>
+<p>실행 어라운드 패턴: 설정-작업-형식의 코드. 예시는 아래와 같다.</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">String</span> <span class="nf">processFile</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span> 
+    <span class="k">try</span> <span class="o">(</span><span class="n">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferReader</span><span class="o">(</span><span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="s">&#34;data.txt&#34;</span><span class="o">)))</span> <span class="o">{</span> 
+        <span class="k">return</span> <span class="n">br</span><span class="o">.</span><span class="na">readline</span><span class="o">();</span>
+    <span class="o">}</span> 
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://user-images.githubusercontent.com/46602874/165314253-adac2d91-09b2-4962-8965-79ae6052f559.png"
+        data-srcset="https://user-images.githubusercontent.com/46602874/165314253-adac2d91-09b2-4962-8965-79ae6052f559.png, https://user-images.githubusercontent.com/46602874/165314253-adac2d91-09b2-4962-8965-79ae6052f559.png 1.5x, https://user-images.githubusercontent.com/46602874/165314253-adac2d91-09b2-4962-8965-79ae6052f559.png 2x"
+        data-sizes="auto"
+        alt="https://user-images.githubusercontent.com/46602874/165314253-adac2d91-09b2-4962-8965-79ae6052f559.png"
+        title="image" /></p>
+<h3 id="함수형-인터페이스-사용">함수형 인터페이스 사용</h3>
+<ul>
+<li>함수 디스크립터: 함수형 인터페이스의 추상 메서드 시그니처</li>
+</ul>
+<ol>
+<li>Predicate 인터페이스<br>
+test 추상 메서드를 정의한다. boolean을 반환한다.</li>
+<li>Consumer 인터페이스
+accept 추상 메서드를 정의한다. 객체를 받아 어떤 동작을 수행하고 싶을 때 사용할 수 있다.</li>
+<li>Function 인터페이스
+apply 추상 메서드를 정의한다. 입력을 받아 출력으로 매핑하는 람다를 정의할 때 활용 가능하다.</li>
+</ol>
+<h3 id="메서드-참조">메서드 참조</h3>
+<p>메서드 참조를 활용해 정렬할 경우,<br>
+1번 코드를 3번 코드로 사용할 수 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">//1번
+</span><span class="c1"></span><span class="n">inventory</span><span class="o">.</span><span class="na">sort</span><span class="o">((</span><span class="n">Apple</span> <span class="n">a1</span><span class="o">,</span> <span class="n">Apple</span> <span class="n">a2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">a1</span><span class="o">.</span><span class="na">getWeight</span><span class="o">().</span><span class="na">compareTo</span><span class="o">(</span><span class="n">a2</span><span class="o">.</span><span class="na">getWeight</span><span class="o">()));</span>
+<span class="c1">//2번
+</span><span class="c1"></span><span class="n">inventory</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">comparing</span><span class="o">(</span><span class="n">apple</span> <span class="o">-&gt;</span> <span class="n">apple</span><span class="o">.</span><span class="na">getWeight</span><span class="o">());</span>
+<span class="c1">//3번
+</span><span class="c1"></span><span class="n">inventory</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">comparing</span><span class="o">(</span><span class="n">Apple</span><span class="o">::</span><span class="n">getWeight</span><span class="o">));</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="4장-스트림-소개">4장 스트림 소개</h2>
+<p>왼쪽 자바7, 오른쪽 자바8을 봐보자.
+<img width="1163" alt="image" src="https://user-images.githubusercontent.com/46602874/165319768-a9b7f4fb-539c-4d82-98fc-ccf8d28d97d8.png"></p>
+<p>이걸 보고 스트림이 중요함을 한번 더 깨달을 수 있었다!
+스트림에는 2가지 중요 특징이 있다.</p>
+<ol>
+<li>파이프라이닝
+스트림 연산끼리 연결해서 스트림 자신을 반환한다. 그 덕분에 laziness, short circuiting 같은 <code>최적화</code>도 얻을 수 있다.</li>
+<li>내부 반복
+반복자로 반복하는 컬렉션과 달리 스트림은 <code>내부 반복</code>을 지원한다.</li>
+</ol>
+<h2 id="5장-스트림-활용">5장 스트림 활용</h2>
+<ol>
+<li>필터링</li>
+<li>고유 요소(distinct)</li>
+<li>슬라이싱
+takeWhile, dropWhile(java9) -&gt; 반복 작업 중단 가능</li>
+<li>limit, skip</li>
+<li>각 요소에 함수 적용 (map)</li>
+<li>스트림 안에 map하면서 배열 생길 경우 -&gt; flatMap</li>
+<li>일치하는지 검사(anyMatch(), allMatch(), noneMatch())</li>
+<li>요소 검색(findAny(), findFirst())</li>
+<li>reducing
+함수형 프로그래밍에서는 <code>fold</code>라 부른다. 초기값을 정해서 연산할 수 있다. 초기값 없으면 Optional! 최대값 찾을 때 사용도 가능하다. ex) &hellip;stream().reduce(Integer::max);</li>
+<li>rangeClosed(1, 100)<br>
+range 메서드는 시작값과 종료값이 결과에 포함되지 않지만, rangeClosed는 결과에 포함된다.</li>
+</ol>
+<h3 id="배열로-스트림-만들기">배열로 스트림 만들기</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span> <span class="o">=</span> <span class="o">{</span><span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">5</span><span class="o">,</span> <span class="n">6</span><span class="o">};</span>
+<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">numbers</span><span class="o">).</span><span class="na">sum</span><span class="o">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>이렇게 Array에 대해 스트림을 만들 수 있다.</p>
+<h3 id="무한-스트림-만들기">무한 스트림 만들기</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Stream</span><span class="o">.</span><span class="na">iterate</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span> <span class="o">+</span> <span class="n">2</span><span class="o">)</span>
+   <span class="o">.</span><span class="na">limit</span><span class="o">(</span><span class="n">10</span><span class="o">)</span>
+   <span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>iterate 메서드는 새로운 값을 끊임없이 생산할 수 있다.<br>
+이걸 <code>unbound 스트림</code>, <code>무한 스트림</code> 이라고 한다.</p>
+<p>또 filter는 언제 작업을 중단해야 하는지 알 수 없다.<br>
+<code>takeWhile</code> 메서드를 사용하면 중단 가능하다.</p>
+<h4 id="generate-메서드">generate 메서드</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Stream</span><span class="o">.</span><span class="na">generate</span><span class="o">(</span><span class="n">Math</span><span class="o">::</span><span class="n">random</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">limit</span><span class="o">(</span><span class="n">5</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>generate는 생산된 각 값을 연속적으로 계산하는 게 아니라, Supplier<T>를 인수로 받아서 새로운 값을 생산한다.</p>
+<h2 id="6장-스트림으로-데이터-수집">6장 스트림으로 데이터 수집</h2>
+<p>마지막 연산을 살펴보자.</p>
+<ol>
+<li>
+<p>counting 메서드 ex) people.stream().count()</p>
+</li>
+<li>
+<p>최대값과 최소값 검색</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">ageComparator</span> <span class="o">=</span> <span class="n">Comparator</span><span class="o">.</span><span class="na">comparingInt</span><span class="o">(</span><span class="n">Personn</span><span class="o">::</span><span class="n">getAge</span><span class="o">);</span> 
+<span class="n">Optional</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">olderPerson</span> <span class="o">=</span> <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">maxBy</span><span class="o">(</span><span class="n">ageComparator</span><span class="o">));</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>요약 연산</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">totalAge</span> <span class="o">=</span> <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">summingInt</span><span class="o">(</span><span class="n">Person</span><span class="o">::</span><span class="n">getAge</span><span class="o">));</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>summarizingInt</code>,<code>summingInt</code> 를 사용해 합계 외에도 다양한 연산도 요약 기능으로 제공된다.</p>
+</li>
+<li>
+<p>문자열 연결</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">peopleNames</span> <span class="o">=</span> <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">Person</span><span class="o">::</span><span class="n">getAge</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">joining</span><span class="o">(</span><span class="s">&#34;,&#34;</span><span class="o">));</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>리듀싱 요약 연산</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">totalAge</span> <span class="o">=</span> <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">reducing</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">Person</span><span class="o">::</span><span class="n">getAge</span><span class="o">,</span> <span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">totalAge</span> <span class="o">=</span> <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">reducing</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">Person</span><span class="o">::</span><span class="n">getAge</span><span class="o">,</span> <span class="n">Integer</span><span class="o">::</span><span class="n">sum</span><span class="o">));</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>그룹핑된 요소 조작</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Map</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Job</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;&gt;</span> <span class="n">peopleByJob</span> <span class="o">=</span> <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">groupingBy</span><span class="o">(</span><span class="n">Person</span><span class="o">::</span><span class="n">getJob</span><span class="o">));</span> 
+<span class="c1">//peopleByJob : {DESIGNER=[sally, daimon], DEVELOPER = [ten, med], OTHERS=[hwasa, lisa, jason, laim]}
+</span></code></pre></td></tr></table>
+</div>
+</div><p>직업에 따라 그룹핑할 수 있다.<br>
+age가 30 이상인 사람만 필터링하고 싶을 때 그냥 filter(조건)을 사용하면 해당하지 않는 Job은 아예 보이지 않는다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Map</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Job</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;&gt;</span> <span class="n">peopleByJob</span> <span class="o">=</span> 
+    <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">groupingBy</span><span class="o">(</span><span class="n">Person</span><span class="o">::</span><span class="n">getJob</span><span class="o">),</span> <span class="n">filtering</span><span class="o">(</span><span class="n">dish</span> <span class="o">-&gt;</span> <span class="n">getCalrories</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">500</span><span class="o">,</span> <span class="n">toList</span><span class="o">()));</span> 
+<span class="c1">//peopleByJob : {DESIGNER=[sally, daimon], DEVELOPER = [ten, med], OTHERS=[]}
+</span></code></pre></td></tr></table>
+</div>
+</div><p>그럼 조건에 맞지 않는 사람들도 잘 필터링 되었고, OTHERS도 잘 보이는 걸 알 수 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Map</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Salary</span><span class="o">,</span> <span class="n">Job</span><span class="o">&gt;,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;&gt;</span> <span class="n">peopleByJob</span> <span class="o">=</span> 
+    <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">groupingBy</span><span class="o">(</span><span class="n">Person</span><span class="o">::</span><span class="n">getJob</span><span class="o">),</span> 
+        <span class="n">groupingBy</span><span class="o">(</span><span class="n">person</span> <span class="o">-&gt;</span> <span class="o">{</span> 
+            <span class="k">if</span> <span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getSalary</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="n">2500</span><span class="o">)</span> <span class="k">return</span> <span class="n">Salary</span><span class="o">.</span><span class="na">A</span><span class="o">;</span> 
+            <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getSalary</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="n">5000</span><span class="o">)</span> <span class="k">return</span> <span class="n">Salary</span><span class="o">.</span><span class="na">B</span><span class="o">;</span> 
+            <span class="k">else</span> <span class="k">return</span> <span class="n">Salary</span><span class="o">.</span><span class="na">C</span><span class="o">;</span> <span class="o">})</span>
+        <span class="o">);</span> 
+<span class="c1">//{DESIGNER={A=[sally], B=[daimon]}, DEVELOPER={A=[ten], B=[med]}, OTHERS={...}}
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>서브 그룹으로 데이터 수집</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Map</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">.</span><span class="na">Job</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="n">jobCount</span> <span class="o">=</span> <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">groupingBy</span><span class="o">(</span><span class="n">Person</span><span class="o">::</span><span class="n">getJob</span><span class="o">,</span> <span class="n">counting</span><span class="o">()));</span>
+<span class="c1">//{DESIGNER=2, DEVELOPER=2, OTHERS=4}
+</span><span class="c1"></span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">.</span><span class="na">Job</span><span class="o">,</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;&gt;</span> <span class="n">mostSalaryByJob</span> <span class="o">=</span> 
+    <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">groupingBy</span><span class="o">(</span><span class="n">Person</span><span class="o">::</span><span class="n">getJob</span><span class="o">,</span> <span class="n">maxBy</span><span class="o">(</span><span class="n">CompaingInt</span><span class="o">(</span><span class="n">Person</span><span class="o">::</span><span class="n">getSalaries</span><span class="o">))));</span>
+<span class="c1">//{FISH=Optional[sally], OTHERS=Optional[ten], MEAT=Optional[hwasa]}
+</span></code></pre></td></tr></table>
+</div>
+</div><p>groupingBy로 max, counting도 사용할 수 있다.</p>
+</li>
+<li>
+<p>분할
+참 또는 거짓을 갖는 두 개의 그룹으로 분류할 수 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Map</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Dish</span><span class="o">&gt;&gt;</span> <span class="n">partitionedMenu</span> <span class="o">=</span> <span class="n">menu</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">partitioningBy</span><span class="o">(</span><span class="n">Dish</span><span class="o">::</span><span class="n">isVegetarian</span><span class="o">));</span> 
+<span class="c1">// {false=[pork, beef, chicken, prawns, salmon], 
+</span><span class="c1">// true=[french fires, rice, season fruit, pizza]}
+</span></code></pre></td></tr></table>
+</div>
+</div><p>스트림 리스트를 유지한다는 장점이 있다.</p>
+<p>collectingAndThen을 사용함으로써 칼로리가 가장 높은 요리도 뽑을 수 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Map</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="o">,</span> <span class="n">Dish</span><span class="o">&gt;</span> <span class="n">mostCaloricPartitionedByVegetarian</span> <span class="o">=</span>
+    <span class="n">menu</span><span class="o">.</span><span class="na">stream</span>
+        <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">partitioningBy</span><span class="o">(</span><span class="n">Dish</span><span class="o">::</span><span class="n">isVegeterian</span><span class="o">,</span> 
+            <span class="n">collectingAndThen</span><span class="o">(</span><span class="n">maxBy</span><span class="o">(</span><span class="n">comparingInt</span><span class="o">(</span><span class="n">Dish</span><span class="o">::</span><span class="n">getCalories</span><span class="o">)),</span> <span class="n">Optional</span><span class="o">::</span><span class="n">get</span><span class="o">))</span>
+        <span class="o">);</span>
+<span class="c1">// {false=pork, true=pizza}
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>소수와 비소수로 분할하기</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isPrime</span><span class="o">(</span><span class="kt">int</span> <span class="n">candidate</span><span class="o">){</span>
+    <span class="k">return</span> <span class="n">IntStream</span><span class="o">.</span><span class="na">range</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="n">candidate</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">noneMatch</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">candidate</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="n">0</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="65-collector-인터페이스">6.5 Collector 인터페이스</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Collector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">,</span> <span class="n">A</span><span class="o">,</span> <span class="n">R</span><span class="o">&gt;</span> <span class="o">{</span>
+  <span class="n">Supplier</span><span class="o">&lt;</span><span class="n">A</span><span class="o">&gt;</span> <span class="nf">supplier</span><span class="o">();</span>
+  <span class="n">BiConsumer</span><span class="o">&lt;</span><span class="n">A</span><span class="o">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="nf">accumulator</span><span class="o">();</span>
+  <span class="n">Function</span><span class="o">&lt;</span><span class="n">A</span><span class="o">,</span> <span class="n">R</span><span class="o">&gt;</span> <span class="nf">finisher</span><span class="o">();</span>
+  <span class="n">BinaryOperator</span><span class="o">&lt;</span><span class="n">A</span><span class="o">&gt;</span> <span class="nf">combiner</span><span class="o">();</span>
+  <span class="n">Set</span><span class="o">&lt;</span><span class="n">Characteristics</span><span class="o">&gt;</span> <span class="nf">characteristics</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>Supplier: 반환
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Supplier</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span> <span class="nf">supplier</span><span class="o">()</span> <span class="o">{</span> 
+    <span class="k">return</span> <span class="n">ArrayList</span><span class="o">::</span><span class="k">new</span><span class="o">;</span> 
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>accumulator: 결과 컨테이너에 요소 추가
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">BiConsumer</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="nf">accumulator</span><span class="o">()</span> <span class="o">{</span> 
+    <span class="k">return</span> <span class="n">List</span><span class="o">::</span><span class="n">add</span><span class="o">;</span> 
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>finisher: 최종 변환값을 결과 컨테이너로 적용
+이미 최종결과일 때 변환 과정 없이 항등 함수를 반환한다.
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span> <span class="nf">finisher</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">Function</span><span class="o">.</span><span class="na">identity</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>combiner 메서드: 두 결과 컨테이너 병합
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">BinaryOperator</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span> <span class="nf">combiner</span><span class="o">()</span> <span class="o">{</span>
+ <span class="k">return</span> <span class="o">(</span><span class="n">list1</span><span class="o">,</span> <span class="n">list2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+     <span class="n">liat</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">list2</span><span class="o">);</span>
+     <span class="k">return</span> <span class="n">list1</span><span class="o">;</span>
+     <span class="o">}</span>
+ <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>characteristics 메서드
+컬렉터의 연산을 정의하는 Characteristics 형식의 불변 집합 반환<br>
+항목으로는 <code>UNORDERED, CONCURRENT, IDENTITY_FINISH</code>가 있다.
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"> <span class="kd">public</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Characteristics</span><span class="o">&gt;</span> <span class="nf">characteristics</span><span class="o">()</span> <span class="o">{</span> 
+     <span class="k">return</span> <span class="n">Collections</span><span class="o">.</span><span class="na">unmodifiableSet</span><span class="o">(</span>
+         <span class="n">EnumSet</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">IDENTITY_FINISH</span><span class="o">,</span> <span class="n">CONCURRENT</span><span class="o">)</span>
+     <span class="o">);</span> 
+ <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>소수로만 나누기
+대상의 제곱보다 큰 소수를 찾으면 검사를 중단하기 위해 takeWhile을 사용할 수 있다. 자바9에 나타난 takeWhile이기 때문에 자바 8에서는 직접 구현해야 한다.
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isPrime</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">primes</span><span class="o">,</span> <span class="kt">int</span> <span class="n">candidate</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="kt">int</span> <span class="n">candidateRoot</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">sqrt</span><span class="o">((</span><span class="kt">double</span><span class="o">)</span><span class="n">candidate</span><span class="o">);</span> 
+    <span class="k">return</span> <span class="n">primes</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span> 
+     <span class="o">.</span><span class="na">takeWhile</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">candidateRoot</span><span class="o">)</span>
+     <span class="o">.</span><span class="na">noneMatch</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">candidate</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="n">0</span><span class="o">);</span> 
+ <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<blockquote>
+<p>6.6 커스텀 컬렉터를 구현해서 성능 개선하기는 다음에 하기</p>
+</blockquote>
+<p>참고로 Stream에서 boxed는 IntStream을 사용한다고 가정할 때 Stream&lt;Integer&gt;로 바꿔준다.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-04-26</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/modern-java-1/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/spring-core1/" class="prev" rel="prev" title="스프링 핵심 원리 복습 일지#1"><i class="fas fa-angle-left fa-fw"></i>스프링 핵심 원리 복습 일지#1</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
