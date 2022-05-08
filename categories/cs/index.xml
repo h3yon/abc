@@ -7,32 +7,32 @@
     <title>멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스</title>
     <link>https://h3yon.github.io/multi-process-mutex-ipc/</link>
     <pubDate>Tue, 03 Aug 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/multi-process-mutex-ipc/</guid>
-    <description><![CDATA[멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스 출처: multi process vs multi thread
-컨텍스트 스위칭 한 task가 끝날 때까지 기다리는 게 아니라 여러 작업을 번갈아가며 동시에 처리한다. 인터럽트 발생 시 프로세스 상태를 PCB에 저장하고 새로운 프로세스 상태를 레지스터에 저장한다. 이때 CPU는 아무런 일을 하지 않기 때문에 잦은 컨텍스트 스위칭은 성능저하를 야기한다.
+    <description><![CDATA[멀티 프로세스 &amp; IPC &amp; 세마포어,뮤텍스 출처: multi process vs multi thread 컨텍스트 스위칭 한 task가 끝날 때까지 기다리는 게 아니라 여러 작업을 번갈아가며 동시에 처리한다. 인터럽트 발생 시 프로세스 상태를 PCB에 저장하고 새로운 프로세스 상태를 레지스터에 저장한다. 이때 CPU는 아무런 일을 하지 않기 때문에 잦은 컨텍스트 스위칭은 성능저하를 야기한다.
 멀티 프로세스  장점  자식 프로세스 중 하나에 문제 발생 시 영향이 확산되지 않는다.   단점  IPC(Inter Process Communication)  각각의 독립된 메모리 영역을 할당받았기 때문에 하나의 프로그램에 속하는 프로세스 사이의 변수를 공유할 수 없다   Context Switching에서의 오버헤드  컨텍스트 스위칭 과정에서 캐쉬 메모리 초기화 등 무거운 작업이 진행되고 많은 시간이 소모되는 오버헤드가 발생하게 된다.]]></description>
-</item><item>
+</item>
+<item>
     <title>멀티스레드</title>
-    <link>https://h3yon.github.io/multi-thread/</link>
+    <link>https://h3yon.github.io/multi-thread-/</link>
     <pubDate>Thu, 22 Jul 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://h3yon.github.io/multi-thread/</guid>
-    <description><![CDATA[출처: [병렬프로그래밍] 프로세스, 스레드 개념 [병렬프로그래밍] 스레드 이해하기
-스레드 리마인드 프로세스는 실행중인 프로그램이며, 하나의 실행 흐름을 스레드라고 한다. 하나의 프로세스 안에 스레드 여러개 있는 것이 멀티 스레드.
+    <author>h3yon</author>
+    <guid>https://h3yon.github.io/multi-thread-/</guid>
+    <description><![CDATA[출처: [병렬프로그래밍] 프로세스, 스레드 개념 [병렬프로그래밍] 스레드 이해하기 스레드 리마인드 프로세스는 실행중인 프로그램이며, 하나의 실행 흐름을 스레드라고 한다. 하나의 프로세스 안에 스레드 여러개 있는 것이 멀티 스레드.
 게임/네트워크 프로그래밍에서 멀티 스레드 많이 사용. (캐릭터를 움직이게 하거나, 데이터를 기다릴 때, 흐름 담당할 때 사용)
 멀티 프로그래밍 여러 개의 프로그램들이 단일 CPU 상에서 실행되는 것. 한 프로그램이 일부 실행되고 다른 프로그램이 일부 실행되는 방식으로, 모든 프로그램이 동시에 수행되는 것처럼 보이게 된다.
 자바 스레드의 생성자 1 2 3 4 5 6 7 8  - Thread() : Thread를 상속받은 고유의 클래스 생성 필요.]]></description>
-</item><item>
+</item>
+<item>
     <title>스레드</title>
     <link>https://h3yon.github.io/thread/</link>
     <pubDate>Thu, 22 Jul 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/thread/</guid>
-    <description><![CDATA[출처: [병렬프로그래밍] 자바 병렬 프로그래밍 소개
-스레드 사용   안전성 위해 요소
+    <description><![CDATA[출처: [병렬프로그래밍] 자바 병렬 프로그래밍 소개 스레드 사용   안전성 위해 요소
 UnsafeSequence는 비표준 어노테이션인 @NotThreadSafe를 사용.(@ThreadSafe와 @Immutable도 존재)
  @Immutable은 해당 클래스가 불변 클래스임을 나타내기 때문에 ThreadSafe  만약 @ThreadSafe라고 표시하면 클래스를 사용하는 사람은 멀티스레드 환경에서 문제가 없다는 점을 명확히 알 수 있고, 스레드 안전성이 계속 보장돼야 한다는 점에 주의할 수 있다.
 스레드는 같은 메모리 주소 공간을 공유하고 동시에 실행되기 때문에 다른 스레드가 사용 중일지도 모르는 변수를 읽거나 수정할 수도 있다.]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

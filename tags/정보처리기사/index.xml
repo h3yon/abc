@@ -7,7 +7,7 @@
     <title>정보처리기사 실기 벼락치기</title>
     <link>https://h3yon.github.io/daily-engineer-information/</link>
     <pubDate>Fri, 02 Jul 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/daily-engineer-information/</guid>
     <description><![CDATA[정보처리기사 실기 벼락치기 시도해보기 요구사항 확인   현행 시스템 파악: 현재 개발하고자 하는 시스템의 개발 범위를 설정하기 위해 구성과 기능, 연계 정보, 소프트웨어, 하드웨어, 네트워크 구성을 파악하는 과정
   현행시스템 파악 절차
@@ -15,5 +15,6 @@
   현행 시스템 기능 파악: 제공 기능 파악, 계층형 표시
   인터페이스 현황 평가: 데이터 종류, 통신 규약, 연계 유형
   아키텍처 구성 파악: 차상위 수준에서 파악]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

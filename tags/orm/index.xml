@@ -7,7 +7,7 @@
     <title>Node.js의 ORM, sequelize</title>
     <link>https://h3yon.github.io/nodejs-sequelize/</link>
     <pubDate>Thu, 12 Aug 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/nodejs-sequelize/</guid>
     <description><![CDATA[title: &ldquo;Node.js의 ORM, sequelize&rdquo; excerpt: &ldquo;Node.js의 ORM, sequeliz&rdquo;
 toc: true toc_sticky: true
@@ -17,5 +17,6 @@ ORM이란?  Object-Relational Mapping으로 객체와 관계형 데이터베이�
  ORM은 객체-관계 매핑의 줄임말이다. 객체 개념을 구현한 class와 RDB(Relational DB)에서 쓰이는 테이블을 자동으로 매핑하는 것이다.
 ORM 프레임워크의 경우,
  JPA/Hibernate JPA(Java Persistence API)는 자바의 ORM 기술 표준으로 인터페이스의 모음이다. 이러한 JPA 표준 명세를 구현한 구현체가 Hibernate Sequelize Sequelize는 Postgres, MySQL, MariaDB, SQLite를 지원하는 Promise에 기반한 비동기로 동작하는 Node.]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

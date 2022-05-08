@@ -7,11 +7,12 @@
     <title>스프링 mvc 1편 정리</title>
     <link>https://h3yon.github.io/springmvc1/</link>
     <pubDate>Thu, 23 Dec 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/springmvc1/</guid>
     <description><![CDATA[스프링 mvc 1편을 듣고 정리한 내용입니다.
 1 Servlet이해하기 서블릿을 자동 등록하는 경우, @ServletComponentScan어노테이션을 사용한다.
 예제를 보면서 이해해보자
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  @WebServlet(name = &#34;helloServlet&#34;, urlPatterns = &#34;/hello&#34;) public class HelloServlet extends HttpServlet { @Override protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { System.out.println(&#34;request = &#34; + request); System.out.println(&#34;response = &#34; + response); String username = request.]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

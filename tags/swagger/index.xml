@@ -7,11 +7,12 @@
     <title>Swagger 적용하기</title>
     <link>https://h3yon.github.io/swagger/</link>
     <pubDate>Sat, 12 Jun 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/swagger/</guid>
     <description><![CDATA[Swagger 적용하기   build.gradle  compileOnly group: &lsquo;io.springfox&rsquo;, name: &lsquo;springfox-swagger2&rsquo;, version: &lsquo;2.9.2&rsquo; compileOnly group: &lsquo;io.springfox&rsquo;, name: &lsquo;springfox-swagger-ui&rsquo;, version: &lsquo;2.9.2&rsquo; 
   swagger 파일
 class 밖에 @Configuration, @EnableSwagger2 class 안에 @Bean
    @Bean @Configuration으로 정의된 클래스는 @Bean으로 정의된 메소드들을 포함      .consume(), .produces(): 각각 Request Content-Type, Response Content-Type에 대한 설정(선택) .apiinfo(): Swagger API 문서에 대한 설명을 표기하는 메소드(선택) .apis(): Swagger API 문서로 만들기 원하는 basePackage 경로**(필수)** .]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

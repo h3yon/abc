@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>이펙티브 자바 1~30 - h3yon blog</title><meta name="Description" content="Welcome to h3yon 개구리 블로그"><meta property="og:title" content="이펙티브 자바 1~30" />
 <meta property="og:description" content="이펙티브 자바 Item1. 생성자 대신 정적 팩토리 메서드를 고려하라 정적 팩토리 메서드(static factory method)는 그 클래스의 인스턴스를 반환하는 단순한 정적 메서드이다.
 1 2 3 4 5  //생성자 Boolean a = Boolean(&#34;true&#34;) //정적 팩토리 메서드 Boolean a= Boolean.valueOf(&#34;true&#34;);   아래와 같은 장점을 가질 수 있다.
@@ -12,17 +11,17 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://h3yon.github.io/effective-java/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-28T01:50:34+09:00" />
-<meta property="article:modified_time" content="2022-03-28T01:50:34+09:00" />
+<meta property="article:modified_time" content="2022-03-28T01:50:34+09:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="이펙티브 자바 1~30"/>
 <meta name="twitter:description" content="이펙티브 자바 Item1. 생성자 대신 정적 팩토리 메서드를 고려하라 정적 팩토리 메서드(static factory method)는 그 클래스의 인스턴스를 반환하는 단순한 정적 메서드이다.
 1 2 3 4 5  //생성자 Boolean a = Boolean(&#34;true&#34;) //정적 팩토리 메서드 Boolean a= Boolean.valueOf(&#34;true&#34;);   아래와 같은 장점을 가질 수 있다.
  생성자와 달리 이름을 가질 수 있다. 호출될 때마다 인스턴스를 새로 생성하지 않아도 된다. 반환 타입의 하위 타입 객체를 반환할 수 있다. Java8 이전에는 인스턴스에 static 메서드를 선언할 수 없어 Companion class를 만들어 거기에 정의를 했어야 했다."/>
-<meta name="application-name" content="h3yon blog">
-<meta name="apple-mobile-web-app-title" content="h3yon blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/effective-java/" /><link rel="prev" href="https://h3yon.github.io/mock-spy-testcode/" /><link rel="next" href="https://h3yon.github.io/spring-core1/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/effective-java/" /><link rel="prev" href="https://h3yon.github.io/mock-spy-testcode/" /><link rel="next" href="https://h3yon.github.io/spring-core1/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -34,22 +33,22 @@
         },"genre": "posts","keywords": "java","wordcount":  1901 ,
         "url": "https:\/\/h3yon.github.io\/effective-java\/","datePublished": "2022-03-28T01:50:34+09:00","dateModified": "2022-03-28T01:50:34+09:00","publisher": {
             "@type": "Organization",
-            "name": "h3yon"},"author": {
+            "name": ""},"author": {
                 "@type": "Person",
                 "name": "h3yon"
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="h3yon blog">h3yon blog</a>
+            <a href="/" title="h3yon blog">My cool site</a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw"></i>
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -58,35 +57,29 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="h3yon blog">h3yon blog</a>
+                <a href="/" title="h3yon blog">My cool site</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
             </div>
         </div>
         <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw"></i>
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
-</header>
-<div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div>
-<main class="main">
+</header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">이펙티브 자바 1~30</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>h3yon</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-28">2022-03-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1901 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;9 minutes&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">이펙티브 자바 1~30</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a>
+</span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>java</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-28">2022-03-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1901 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
@@ -131,12 +124,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">//생성자
-</span><span class="c1"></span><span class="n">Boolean</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Boolean</span><span class="o">(</span><span class="s">&#34;true&#34;</span><span class="o">)</span>
-
-<span class="c1">//정적 팩토리 메서드
-</span><span class="c1"></span><span class="n">Boolean</span> <span class="n">a</span><span class="o">=</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="s">&#34;true&#34;</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//생성자
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Boolean</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Boolean</span><span class="o">(</span><span class="s">&#34;true&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//정적 팩토리 메서드
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Boolean</span> <span class="n">a</span><span class="o">=</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="s">&#34;true&#34;</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>아래와 같은 장점을 가질 수 있다.</p>
 <ol>
@@ -164,8 +157,8 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="n">Date</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="n">instant</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="n">Date</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="n">instant</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -176,8 +169,8 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">alphabets</span> <span class="o">=</span> <span class="n">Set</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">&#34;a&#34;</span><span class="o">,</span> <span class="s">&#34;b&#34;</span><span class="o">,</span> <span class="s">&#34;c&#34;</span><span class="o">);</span> 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">alphabets</span> <span class="o">=</span> <span class="n">Set</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">&#34;a&#34;</span><span class="o">,</span> <span class="s">&#34;b&#34;</span><span class="o">,</span> <span class="s">&#34;c&#34;</span><span class="o">);</span> 
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -187,8 +180,8 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">BigInteger</span> <span class="n">bigInts</span> <span class="o">=</span> <span class="n">BigInteger</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">BigInteger</span> <span class="n">bigInts</span> <span class="o">=</span> <span class="n">BigInteger</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -199,8 +192,8 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Fruit</span> <span class="n">fruit</span> <span class="o">=</span> <span class="n">Fruit</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">inputs</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Fruit</span> <span class="n">fruit</span> <span class="o">=</span> <span class="n">Fruit</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">inputs</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -215,8 +208,8 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">FileStore</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">Files</span><span class="o">.</span><span class="na">getFileStore</span><span class="o">(</span><span class="n">Path</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">FileStore</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">Files</span><span class="o">.</span><span class="na">getFileStore</span><span class="o">(</span><span class="n">Path</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -231,8 +224,8 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">Fruit</span><span class="o">&gt;</span> <span class="n">fruits</span> <span class="o">=</span> <span class="n">Collections</span><span class="o">.</span><span class="na">list</span><span class="o">(</span><span class="n">manyFruits</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">Fruit</span><span class="o">&gt;</span> <span class="n">fruits</span> <span class="o">=</span> <span class="n">Collections</span><span class="o">.</span><span class="na">list</span><span class="o">(</span><span class="n">manyFruits</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -255,12 +248,12 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SingleFruit</span><span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">SingleFruit</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SingleFruit</span><span class="o">();</span>
-    <span class="kd">private</span> <span class="nf">SingleFruit</span><span class="o">(){</span> <span class="o">...</span> <span class="o">}</span>
-    <span class="o">...</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SingleFruit</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">SingleFruit</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SingleFruit</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="nf">SingleFruit</span><span class="o">(){</span> <span class="o">...</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>2)정적 팩토리 메서드를 public static 멤버로 제공하는 방법,</p>
 <div class="highlight"><div class="chroma">
@@ -273,13 +266,13 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SingleFruit</span><span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">SingleFruit</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SingleFruit</span><span class="o">();</span>
-    <span class="kd">private</span> <span class="nf">SingleFruit</span><span class="o">(){</span> <span class="o">...</span> <span class="o">}</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="n">SingleFruit</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">INSTANCE</span><span class="o">;</span> <span class="o">}</span>
-    <span class="o">...</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SingleFruit</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">SingleFruit</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SingleFruit</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="nf">SingleFruit</span><span class="o">(){</span> <span class="o">...</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">SingleFruit</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">INSTANCE</span><span class="o">;</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>3)<strong>원소가 하나인 열거 타입을 선언하는 방법</strong> 3가지가 있다.</p>
 <div class="highlight"><div class="chroma">
@@ -290,11 +283,11 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">enum</span> <span class="n">SingleFruit</span><span class="o">{</span>
-    <span class="n">INSTANCE</span><span class="o">;</span>
-    <span class="o">...</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">enum</span> <span class="n">SingleFruit</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">INSTANCE</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>대부분 3번째 방법이 좋다.</p>
 </li>
@@ -324,14 +317,14 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RightDictionary</span><span class="o">{</span>
-	<span class="kd">private</span> <span class="kd">final</span> <span class="n">StringDictionary</span> <span class="n">dictionary</span><span class="o">;</span>
-	<span class="kd">public</span> <span class="nf">RightDictionary</span><span class="o">(</span><span class="n">StringDictionary</span> <span class="n">Dictionary</span><span class="o">){</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">dictionary</span> <span class="o">=</span> <span class="n">dictionary</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="o">...</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RightDictionary</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="kd">final</span> <span class="n">StringDictionary</span> <span class="n">dictionary</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="nf">RightDictionary</span><span class="o">(</span><span class="n">StringDictionary</span> <span class="n">Dictionary</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">		<span class="k">this</span><span class="o">.</span><span class="na">dictionary</span> <span class="o">=</span> <span class="n">dictionary</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">	<span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="item6-불필요한-객체-생성을-피하라">Item6. 불필요한 객체 생성을 피하라.</h2>
 <div class="highlight"><div class="chroma">
@@ -343,12 +336,12 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">//절대 안 됨 - 문자열 인스턴스 계속 생성
-</span><span class="c1"></span><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">&#34;s&#34;</span><span class="o">);</span>
-
-<span class="c1">//개선 - 같은 문자열을 사용하면 같은 객체 재사용
-</span><span class="c1"></span><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;s&#34;</span><span class="o">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//절대 안 됨 - 문자열 인스턴스 계속 생성
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">&#34;s&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//개선 - 같은 문자열을 사용하면 같은 객체 재사용
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;s&#34;</span><span class="o">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>str.matches도 그렇다.</p>
 <p>성능이 중요한 상황에서 예제1처럼 반복해 사용하기보단 예제2로 사용하는 게 낫다.</p>
@@ -369,20 +362,20 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">//예제1
-</span><span class="c1"></span><span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isStartAbc</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">){</span>
-	<span class="k">return</span> <span class="n">str</span><span class="o">.</span><span class="na">matches</span><span class="o">(</span><span class="s">&#34;^abc*&#34;</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="c1">//예제2
-</span><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Checker</span><span class="o">{</span>
-	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Pattern</span> <span class="n">ABC_PATTERN</span> <span class="o">=</span> <span class="n">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="s">&#34;^abc*&#34;</span><span class="o">);</span>
-	
-	<span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isStartAbc</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">){</span>
-		<span class="k">return</span> <span class="n">ABC_PATTERN</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="n">str</span><span class="o">).</span><span class="na">matches</span><span class="o">();</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//예제1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isStartAbc</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">str</span><span class="o">.</span><span class="na">matches</span><span class="o">(</span><span class="s">&#34;^abc*&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//예제2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Checker</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Pattern</span> <span class="n">ABC_PATTERN</span> <span class="o">=</span> <span class="n">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="s">&#34;^abc*&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isStartAbc</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">ABC_PATTERN</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="n">str</span><span class="o">).</span><span class="na">matches</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="item7-다-쓴-객체-참조를-해제하라">Item7. 다 쓴 객체 참조를 해제하라</h2>
 <p>자바의 경우 가비지 컬렉터 때문에 메모리 관리에 있어 편해진다.</p>
@@ -397,12 +390,12 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Object</span> <span class="nf">pop</span><span class="o">(){</span>
-	<span class="n">Object</span> <span class="n">result</span> <span class="o">=</span> <span class="n">elements</span><span class="o">[--</span><span class="n">size</span><span class="o">];</span>
-	<span class="n">elements</span><span class="o">[</span><span class="n">size</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-	<span class="k">return</span> <span class="n">result</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">Object</span> <span class="nf">pop</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Object</span> <span class="n">result</span> <span class="o">=</span> <span class="n">elements</span><span class="o">[--</span><span class="n">size</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">	<span class="n">elements</span><span class="o">[</span><span class="n">size</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>그럼 매번 이렇게 null로 해줘야 할까? 아니다.<code>null 처리 해주는 것은 예외적인 경우</code>여야 한다.</p>
 <p>스택 클래스는 자기 메모리를 직접 관리하여 메모리 누수에 취약하다. 비활성 영역은 쓰이지 않는다. GC가 보기엔 비활성 영역 객체도 활성 영역과 같이 유효한 객체로 본다.</p>
@@ -435,17 +428,17 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">static</span> <span class="kt">void</span> <span class="nf">copy</span><span class="o">(</span><span class="n">String</span> <span class="n">src</span><span class="o">,</span> <span class="n">String</span> <span class="n">dst</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">{</span>
-	<span class="n">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="n">src</span><span class="o">);</span>
-	<span class="k">try</span><span class="o">{</span>
-		<span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">dst</span><span class="o">);</span>
-		<span class="k">try</span> <span class="o">{</span> 
-				<span class="c1">//...
-</span><span class="c1"></span>				<span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buf</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">n</span><span class="o">)</span>
-		<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span> <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span> <span class="o">}</span>
-	<span class="o">}</span><span class="k">finally</span><span class="o">{</span><span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">static</span> <span class="kt">void</span> <span class="nf">copy</span><span class="o">(</span><span class="n">String</span> <span class="n">src</span><span class="o">,</span> <span class="n">String</span> <span class="n">dst</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="n">src</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">try</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">dst</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">try</span> <span class="o">{</span> 
+</span></span><span class="line"><span class="cl">				<span class="c1">//...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buf</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">n</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span> <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span><span class="k">finally</span><span class="o">{</span><span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>예외는 try, finally 둘다 발생할 수 있어 close 메서드가 실패할 수 있다.</p>
 <p>또 첫번째 예외를 기록하도록 코드 수정하면 코드가 너무 지저분해진다.</p>
@@ -462,14 +455,14 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">static</span> <span class="kt">void</span> <span class="nf">copy</span><span class="o">(</span><span class="n">String</span> <span class="n">src</span><span class="o">,</span> <span class="n">String</span> <span class="n">dst</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">{</span>
-	<span class="k">try</span><span class="o">(</span><span class="n">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="n">src</span><span class="o">);</span>
-		<span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">dst</span><span class="o">);){</span>
-		<span class="c1">//...
-</span><span class="c1"></span>		<span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buf</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">n</span><span class="o">)</span>
-	<span class="o">}</span><span class="k">finally</span><span class="o">{</span><span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">static</span> <span class="kt">void</span> <span class="nf">copy</span><span class="o">(</span><span class="n">String</span> <span class="n">src</span><span class="o">,</span> <span class="n">String</span> <span class="n">dst</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">try</span><span class="o">(</span><span class="n">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="n">src</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">dst</span><span class="o">);){</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">//...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buf</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">n</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span><span class="k">finally</span><span class="o">{</span><span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="item10-equals는-일반-규약을-지켜-재정의하라">Item10. equals는 일반 규약을 지켜 재정의하라</h2>
 <div class="highlight"><div class="chroma">
@@ -481,12 +474,12 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Override</span>
-<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="n">String</span><span class="o">)</span> <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">o</span><span class="o">);</span>
-    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="n">String</span><span class="o">)</span> <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">o</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>“Polish”.equals(”polish”)를 사용하면, false를 리턴할 것이다. 이렇게 대칭성을 위반하는 경우를 볼 수 있다.</p>
 <p>추이성도 있다. 추이성은 1,2번째 객체가 같고, 2,3번째 객체가 같다면, 1,3번째 객체도 같아야 한다는 것이다.</p>
@@ -502,14 +495,14 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Point</span><span class="o">{</span>
-	<span class="o">...</span>
-	<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">){</span>
-		<span class="k">if</span><span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="n">Point</span><span class="o">))</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-		<span class="k">return</span> <span class="n">o</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">o</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Point</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="o">...</span>
+</span></span><span class="line"><span class="cl">	<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="n">Point</span><span class="o">))</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">o</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">o</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>좌표 Point에 색을 입히고 싶어, Point를 상속한 ColorfulPoint가 나타났다.</p>
 <div class="highlight"><div class="chroma">
@@ -523,14 +516,14 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ColorfulPoint</span> <span class="kd">extends</span> <span class="n">Point</span><span class="o">{</span>
-	<span class="o">...</span>
-	<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">){</span>
-		<span class="k">if</span><span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="n">ColorfulPoint</span><span class="o">))</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-		<span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">o</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">o</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ColorfulPoint</span> <span class="kd">extends</span> <span class="n">Point</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="o">...</span>
+</span></span><span class="line"><span class="cl">	<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="n">ColorfulPoint</span><span class="o">))</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">o</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">o</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>아래 두 객체가 있다고 가정하자.</p>
 <div class="highlight"><div class="chroma">
@@ -539,9 +532,9 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Point</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point</span><span class="o">(</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">);</span>
-<span class="n">ColorfulPoint</span> <span class="n">cp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ColorfulPoint</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Point</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point</span><span class="o">(</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">ColorfulPoint</span> <span class="n">cp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ColorfulPoint</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>p.equals(cp)는 true, cp.equals(p)는 p가 ColorfulPoint가 아니기 때문에 false가 나타날 것이다. 그럼 추이성을 깨버린다.</p>
 <p>→ 구체 클래스를 확장해 새로운 값을 추가하면서 equals 규약을 만족시킬 방법은 존재하지 않는다.</p>
@@ -615,11 +608,11 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">//아래 처럼 절대 사용하지 말자. 그냥 ABC;에서 끝내고 타입을 정의만 하자.
-</span><span class="c1"></span><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyConstant</span><span class="o">{</span>
-	<span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">ABC</span> <span class="o">=</span> <span class="n">6</span><span class="o">.</span><span class="na">4323e23</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//아래 처럼 절대 사용하지 말자. 그냥 ABC;에서 끝내고 타입을 정의만 하자.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyConstant</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">ABC</span> <span class="o">=</span> <span class="n">6</span><span class="o">.</span><span class="na">4323e23</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -667,14 +660,14 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Fruit</span><span class="o">{</span>
-	<span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">MARKET</span> <span class="o">=</span> <span class="s">&#34;Fruit Market&#34;</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="kd">class</span> <span class="nc">Furniture</span><span class="o">{</span>
-	<span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">MARKET</span> <span class="o">=</span> <span class="s">&#34;Furniture Market&#34;</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Fruit</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">MARKET</span> <span class="o">=</span> <span class="s">&#34;Fruit Market&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Furniture</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">MARKET</span> <span class="o">=</span> <span class="s">&#34;Furniture Market&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>위처럼 쓰지 말고, 다른 소스 파일로 분리해서 사용하자.</p>
 <p>만약에 다른 java 파일에서 Fruit, Furniture 클래스를 작성하면 컴파일러가 이 상황을 캐치하지 못하고 Fruit.MARKET을 사용할 때마다 다른 값이 나올 수 있다.</p>
@@ -688,9 +681,9 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">final</span> <span class="n">Collection</span> <span class="n">stamps</span> <span class="o">=</span> <span class="o">...;</span>
-<span class="n">stamps</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Coin</span><span class="o">(...));</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span> <span class="kd">final</span> <span class="n">Collection</span> <span class="n">stamps</span> <span class="o">=</span> <span class="o">...;</span>
+</span></span><span class="line"><span class="cl"><span class="n">stamps</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Coin</span><span class="o">(...));</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>타입을 Collection으로 정하면 아무거나 다 넣을 수 있다.
 하지만 위 예제처럼 stamps에서 Coin을 꺼내면 런타임 시 문제가 발생한다.</p>
@@ -701,10 +694,10 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">static</span> <span class="kt">int</span> <span class="nf">FruitCounts</span><span class="o">(</span><span class="n">Set</span><span class="o">&lt;?&gt;</span> <span class="n">s1</span><span class="o">,</span> <span class="n">Set</span><span class="o">&lt;?&gt;</span> <span class="n">s2</span><span class="o">){</span> <span class="o">...</span> <span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">static</span> <span class="kt">int</span> <span class="nf">FruitCounts</span><span class="o">(</span><span class="n">Set</span><span class="o">&lt;?&gt;</span> <span class="n">s1</span><span class="o">,</span> <span class="n">Set</span><span class="o">&lt;?&gt;</span> <span class="n">s2</span><span class="o">){</span> <span class="o">...</span> <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><p><code>비한정적 와일드카드 타입</code>? <strong><code>List&lt;?&gt;</code>, Set&lt;?&gt;</strong></p>
+</div><p><code>비한정적 와일드카드 타입</code>? <strong><code>List&lt;?&gt;</code>, Set<?></strong></p>
 <h3 id="타입">타입</h3>
 <table>
 <thead>
@@ -728,7 +721,7 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </tr>
 <tr>
 <td>비한정적 와일드카드 타입</td>
-<td>List&lt;?&gt;</td>
+<td>List<?></td>
 </tr>
 <tr>
 <td>한정적 와일드카드 타입</td>
@@ -759,9 +752,9 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&#34;unchecked&#34;</span><span class="o">)</span>
-<span class="n">T</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">elements</span><span class="o">,</span> <span class="n">size</span><span class="o">,</span> <span class="n">a</span><span class="o">.</span><span class="na">getClass</span><span class="o">());</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&#34;unchecked&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">T</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">elements</span><span class="o">,</span> <span class="n">size</span><span class="o">,</span> <span class="n">a</span><span class="o">.</span><span class="na">getClass</span><span class="o">());</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="item28-배열보다는-리스트를-사용하라">Item28. 배열보다는 리스트를 사용하라</h2>
 <ol>
@@ -785,11 +778,11 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Fruit</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;{</span>
-	<span class="kd">private</span> <span class="kd">final</span> <span class="n">T</span><span class="o">[]</span> <span class="n">FruitArray</span><span class="o">;</span>
-	<span class="o">...</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Fruit</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="kd">final</span> <span class="n">T</span><span class="o">[]</span> <span class="n">FruitArray</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>클래스, 메서드 모두 제네릭으로 만들 수 있다.</p>
 <p><code>타입 매개변수 목록은 메서드의 제한자와 반환 타입 사이에 온다</code>.</p>
@@ -801,10 +794,10 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="nf">union</span><span class="o">(</span><span class="n">Set</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">s1</span><span class="o">,</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">s2</span><span class="o">){</span>
-	<span class="n">Set</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;(</span><span class="n">s1</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="nf">union</span><span class="o">(</span><span class="n">Set</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">s1</span><span class="o">,</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">s2</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Set</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;(</span><span class="n">s1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>이 메서드는 경고 없이 컴파일되며, 타입 안전하고 쓰기도 쉽다.</p>
 <p>타입, 메서드 모두 형변환 없이 사용할 수 있는 편이 좋으며 그렇게 하려면 제네릭을 사용해야 한다.</p>
@@ -813,40 +806,38 @@ ex) DriverManager.getConnection, Class.forName 때문에</li>
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>Updated on 2022-03-28</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
+            </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
                             <a class="link-to-markdown" href="/effective-java/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://h3yon.github.io/effective-java/" data-title="이펙티브 자바 1~30" data-hashtags="java"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://h3yon.github.io/effective-java/" data-hashtag="java"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://h3yon.github.io/effective-java/" data-title="이펙티브 자바 1~30"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://h3yon.github.io/effective-java/" data-title="이펙티브 자바 1~30"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://h3yon.github.io/effective-java/" data-title="이펙티브 자바 1~30"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/java/">java</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/mock-spy-testcode/" class="prev" rel="prev" title="테스트코드의 Mock, MockBean, Autowired, Spy 이해하기"><i class="fas fa-angle-left fa-fw"></i>테스트코드의 Mock, MockBean, Autowired, Spy 이해하기</a>
-            <a href="/spring-core1/" class="next" rel="next" title="스프링 핵심 원리 복습 일지#1">스프링 핵심 원리 복습 일지#1<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/mock-spy-testcode/" class="prev" rel="prev" title="테스트코드의 Mock, MockBean, Autowired, Spy 이해하기"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>테스트코드의 Mock, MockBean, Autowired, Spy 이해하기</a>
+            <a href="/spring-core1/" class="next" rel="next" title="스프링 핵심 원리 복습 일지#1">스프링 핵심 원리 복습 일지#1<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.98.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw"></i>
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw"></i>
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/plugins/parent-fit/ls.parent-fit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

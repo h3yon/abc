@@ -7,24 +7,25 @@
     <title>SpringFramework Naver Login 구현하기</title>
     <link>https://h3yon.github.io/spring-naver-login/</link>
     <pubDate>Sat, 14 Aug 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/spring-naver-login/</guid>
     <description><![CDATA[스프링부트 Naver Login 구현하기 출처:
- 이동욱 님의 스프링 부트와 AWS로 혼자 구현하는 웹 서비스 스프링 부트와 OAuth2 Naver  사용한 방식 저번에 카카오 로그인을 구현하였을 때는 restTemplate을 사용했었다. 그런데 이번에는 spring-security-oauth2 부분을 알아보고 사용해보고자 했다.
+ 이동욱 님의 스프링 부트와 AWS로 혼자 구현하는 웹 서비스 스프링 부트와 OAuth2 Naver   사용한 방식 저번에 카카오 로그인을 구현하였을 때는 restTemplate을 사용했었다. 그런데 이번에는 spring-security-oauth2 부분을 알아보고 사용해보고자 했다.
 라이브러리 중에 spring-security-auth2-autoconfigure이 있는데, 스프링부트2에서 기존 설정을 그대로 사용할 수 있어 많은 개발자가 이 방식을 사용했다고 한다.
 하지만 책에서는 spring-boot-starter-oauth2-client 라이브러리를 사용했다. 그 이유는 아래와 같다.
  스프링 팀에서 신규 기능은 oauth2 라이브러리에서만 지원하겠다고 선언 스프링부트용 라이브러리가 출시 기존에 사용되던 방식은 확장 포인트가 적절하게 open되어 있지 않아 직접 상속하거나, 오버라이딩 해야하고, 신규 라이브러리의 경우 확장 포인트를 고려해서 설계된 상태  직접 구현할 때 관련 자료를 찾아보면,]]></description>
-</item><item>
+</item>
+<item>
     <title>SpringFramework kakao api 구현하기</title>
     <link>https://h3yon.github.io/spring-kakao-login/</link>
     <pubDate>Fri, 02 Jul 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/spring-kakao-login/</guid>
-    <description><![CDATA[스프링부트로 kakao API 구현해보기 https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api
-일단, 위의 사이트에서 kakao API의 흐름을 살펴보자. 보면 인가코드를 우선 받아야 함을 알 수 있다.
+    <description><![CDATA[스프링부트로 kakao API 구현해보기 https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api 일단, 위의 사이트에서 kakao API의 흐름을 살펴보자. 보면 인가코드를 우선 받아야 함을 알 수 있다.
 일단 그러면 어플리케이션 키를 받아야 한다. 위의 이미지처럼 상단의 &lsquo;내 애플리케이션&rsquo; 버튼을 누른다.
 아무 애플리케이션이나 만들고, 원하는 앱키를 복사해놓는다.
 또 옆에 플랫폼으로 들어가, 원하는 플랫폼에 대한 플랫폼을 등록한다. 위처럼 등록해도 되고, (8080번 localhost를 사용하는 경우) 만약 다 설정하였다면, &lsquo;등록하러 가기&rsquo;를 누른다.
 아래 사용할 callback uri를 위에 사진처럼 넣는다. _ 상태 -&gt; 활성화 필수!]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

@@ -7,11 +7,12 @@
     <title>MySQL User 추가 및 권한 부여하기</title>
     <link>https://h3yon.github.io/mysql-user/</link>
     <pubDate>Sun, 11 Jul 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/mysql-user/</guid>
     <description><![CDATA[MySQL User 추가 및 권한 부여하기  mysql 사용자 추가하기    사용자 추가(비밀번호 X) $ create user 사용자;
   사용자 추가 및 패스워드 설정 $ create user 사용자@localhost identified by 비밀번호;
-  사용자 추가 및 패스워드 설정부터 외부에서의 접근 허용 $ create user 사용자@'%' identified by 비밀번호;
+  사용자 추가 및 패스워드 설정부터 외부에서의 접근 허용 $ create user 사용자@&rsquo;%&rsquo; identified by 비밀번호;
   사용자 삭제1 1  $ drop user 사용자;   사용자 목록 확인 $ select User from user;  사용자에게 데이터베이스 사용권한 부여   DB의 사용자에게 외부 권한 부여하기, 모든 권한 부여 $ GRANT ALL privileges ON DB명.]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

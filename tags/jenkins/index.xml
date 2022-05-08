@@ -7,11 +7,12 @@
     <title>[Jenkins]AWS EC2 Ubuntu에 Jenkins 연동하기</title>
     <link>https://h3yon.github.io/jenkins-ec2/</link>
     <pubDate>Wed, 15 Sep 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/jenkins-ec2/</guid>
     <description><![CDATA[1. AWS EC2 Ubuntu에 Jenkins를 연동해보자 관련 패키지 설치   Jenkins 설치를 위해 Repository key 추가
 1  $ wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -     서버의 sources.list에 Jenkins 패키지 저장소를 추가
 1 2  $ sudo sh -c &#39;echo deb https://pkg.jenkins.io/debian-stable binary/ &gt; \ /etc/apt/sources.list.d/jenkins.list&#39;     패키지 업데이트 및 Jenkins 설치
 1 2  $ sudo apt-get update $ sudo apt-get install jenkins     Java JDK 8 설치]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

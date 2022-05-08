@@ -7,7 +7,7 @@
     <title>[Javascript]자바스크립트 100문제 again2</title>
     <link>https://h3yon.github.io/javascript-jeju-coding-again2/</link>
     <pubDate>Sat, 11 Sep 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/javascript-jeju-coding-again2/</guid>
     <description><![CDATA[title: &ldquo;[Javascript]자바스크립트 Again2&rdquo; excerpt: &ldquo;[Javascript]자바스크립트 Again2&rdquo;
 toc: true toc_sticky: true
@@ -15,11 +15,12 @@ categories:
  Javascript tags: Javascript   자바스크립트 복습2 출처: 제주코딩베이스캠프
  merge sort 병합정렬(merge sort)은 대표적인 정렬 알고리즘 중 하나로 다음과 같이 동작합니다.
   리스트의 길이가 0 또는 1이면 이미 정렬된 것으로 본다. 그렇지 않은 경우에는 정렬되지 않은 리스트를 절반으로 잘라 비슷한 크기의 두 부분 리스트로 나눈다. 각 부분 리스트를 재귀적으로 합병 정렬을 이용해 정렬한다. 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다.]]></description>
-</item><item>
+</item>
+<item>
     <title>[Javascript]자바스크립트 100문제 again</title>
     <link>https://h3yon.github.io/javascript-jeju-coding-again/</link>
     <pubDate>Fri, 10 Sep 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/javascript-jeju-coding-again/</guid>
     <description><![CDATA[자바스크립트 복습 출처: 제주코딩베이스캠프
   중간에 추가하기
@@ -29,5 +30,6 @@ categories:
 1 2  var arr = [100, 200, 300]; console.log(typeof arr);   답: object
   객체의 키 이름 중복
 1 2 3 4 5 6  var d = { &#34;height&#34;: 180, &#34;weight&#34;: 78, &#34;weight&#34;: 84, }; console.]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

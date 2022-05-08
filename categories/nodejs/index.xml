@@ -7,17 +7,18 @@
     <title>[Jenkins]AWS EC2 Ubuntu에 Jenkins 연동하기</title>
     <link>https://h3yon.github.io/jenkins-ec2/</link>
     <pubDate>Wed, 15 Sep 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/jenkins-ec2/</guid>
     <description><![CDATA[1. AWS EC2 Ubuntu에 Jenkins를 연동해보자 관련 패키지 설치   Jenkins 설치를 위해 Repository key 추가
 1  $ wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -     서버의 sources.list에 Jenkins 패키지 저장소를 추가
 1 2  $ sudo sh -c &#39;echo deb https://pkg.jenkins.io/debian-stable binary/ &gt; \ /etc/apt/sources.list.d/jenkins.list&#39;     패키지 업데이트 및 Jenkins 설치
 1 2  $ sudo apt-get update $ sudo apt-get install jenkins     Java JDK 8 설치]]></description>
-</item><item>
+</item>
+<item>
     <title>Node.js의 ORM, sequelize</title>
     <link>https://h3yon.github.io/nodejs-sequelize/</link>
     <pubDate>Thu, 12 Aug 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/nodejs-sequelize/</guid>
     <description><![CDATA[title: &ldquo;Node.js의 ORM, sequelize&rdquo; excerpt: &ldquo;Node.js의 ORM, sequeliz&rdquo;
 toc: true toc_sticky: true
@@ -27,32 +28,34 @@ ORM이란?  Object-Relational Mapping으로 객체와 관계형 데이터베이�
  ORM은 객체-관계 매핑의 줄임말이다. 객체 개념을 구현한 class와 RDB(Relational DB)에서 쓰이는 테이블을 자동으로 매핑하는 것이다.
 ORM 프레임워크의 경우,
  JPA/Hibernate JPA(Java Persistence API)는 자바의 ORM 기술 표준으로 인터페이스의 모음이다. 이러한 JPA 표준 명세를 구현한 구현체가 Hibernate Sequelize Sequelize는 Postgres, MySQL, MariaDB, SQLite를 지원하는 Promise에 기반한 비동기로 동작하는 Node.]]></description>
-</item><item>
+</item>
+<item>
     <title>[Nodejs]요청 처리 관점에서 생각해보는 멀티스레드, 멀티코어프로세스</title>
     <link>https://h3yon.github.io/nodejs-requests/</link>
     <pubDate>Tue, 27 Jul 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/nodejs-requests/</guid>
-    <description><![CDATA[Nodejs에서의 멀티스레드, 멀티코어프로세스 출처: How to run many parallel HTTP requests using Node.js ?
-nodejs는 싱글 스레드로, 10초가 소요되는 요청 A가 포함되는 경우, 다음 요청을 처리 하기 위해 10초를 기다리는 건 X!
+    <description><![CDATA[Nodejs에서의 멀티스레드, 멀티코어프로세스 출처: How to run many parallel HTTP requests using Node.js ? nodejs는 싱글 스레드로, 10초가 소요되는 요청 A가 포함되는 경우, 다음 요청을 처리 하기 위해 10초를 기다리는 건 X!
 NodeJS 이벤트 루프가 단일 스레드일 뿐이기 때문. 여러 클라이언트 요청을 수신하여 EventQueue에 배치.
 이벤트루프 NodeJS는 이벤트 중심 아키텍처의 개념으로 구축되었고, 그 예로는 이벤트 리스너에 콜백함수를 등록하는 것!
 NodeJS에는 요청을 수신하고 처리하는 무한 루프인 자체 eventLoop이 존재.
  EventLoop는 EventQueue의 Listener!]]></description>
-</item><item>
+</item>
+<item>
     <title>[Nodejs]http2 적용과 발생한 에러</title>
     <link>https://h3yon.github.io/http2/</link>
     <pubDate>Wed, 21 Jul 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/http2/</guid>
     <description><![CDATA[[node.js]http2 적용과 발생한 에러 리액트 웹페이지에 적용시킬 백엔드 서버를 구동하는 코드를 원래는 아래처럼 작성해놓았었다.
 1 2 3 4  # index.js ... express().listen(PORT); console.info(`${NODE_ENV}- API Server Start At Port ${PORT}`);   http2의 장점을 알고, 해당 코드를 http2로 변경해주었다.
 1 2 3 4 5 6 7 8 9 10 11 12 13 14  const express = require(&#34;./config/express&#34;); const { readFileSync } = require(&#34;fs&#34;); const http2 = require(&#34;http2&#34;); const { NODE_ENV, PORT, SSL_CERT_PATH, SSL_KEY_PATH } = process.]]></description>
-</item><item>
+</item>
+<item>
     <title>Nodejs 스레드</title>
     <link>https://h3yon.github.io/nodejs-thread/</link>
     <pubDate>Wed, 21 Jul 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/nodejs-thread/</guid>
     <description><![CDATA[Nodejs 스레드 자바스크립트 코드가 실행될 때 보다, IO 이벤트가 발생할 때 까지 기다리는 시간이 훨씬 더 많다.
 node index.js 한 후,
@@ -60,5 +63,6 @@ lsof -i:[사용하는 포트 번호]
 ex) lsof -i:3000 하면 해당 프로세스의 pId를 확인할 수 있다.
 ps -M [pId] -&gt; 스레드의 개수를 확인 가능
 1 2 3 4 5 6 7 8 9 10 11 12  USER PID TT %CPU STAT PRI STIME UTIME COMMAND we 43531 s003 0.0 S 31T 0:00.]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

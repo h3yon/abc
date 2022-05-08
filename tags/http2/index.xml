@@ -7,10 +7,11 @@
     <title>[Nodejs]http2 적용과 발생한 에러</title>
     <link>https://h3yon.github.io/http2/</link>
     <pubDate>Wed, 21 Jul 2021 23:47:34 &#43;0900</pubDate>
-    <author>Author</author>
+    <author>h3yon</author>
     <guid>https://h3yon.github.io/http2/</guid>
     <description><![CDATA[[node.js]http2 적용과 발생한 에러 리액트 웹페이지에 적용시킬 백엔드 서버를 구동하는 코드를 원래는 아래처럼 작성해놓았었다.
 1 2 3 4  # index.js ... express().listen(PORT); console.info(`${NODE_ENV}- API Server Start At Port ${PORT}`);   http2의 장점을 알고, 해당 코드를 http2로 변경해주었다.
 1 2 3 4 5 6 7 8 9 10 11 12 13 14  const express = require(&#34;./config/express&#34;); const { readFileSync } = require(&#34;fs&#34;); const http2 = require(&#34;http2&#34;); const { NODE_ENV, PORT, SSL_CERT_PATH, SSL_KEY_PATH } = process.]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>
