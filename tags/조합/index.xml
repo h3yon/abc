@@ -1,0 +1,20 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>조합 - Tag - h3yon blog</title>
+        <link>https://h3yon.github.io/tags/%EC%A1%B0%ED%95%A9/</link>
+        <description>조합 - Tag - h3yon blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 02 Aug 2022 03:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/tags/%EC%A1%B0%ED%95%A9/" rel="self" type="application/rss+xml" /><item>
+    <title>상속보다는 컴포지션(조합)</title>
+    <link>https://h3yon.github.io/use_composition/</link>
+    <pubDate>Tue, 02 Aug 2022 03:47:34 &#43;0900</pubDate>
+    <author>h3yon</author>
+    <guid>https://h3yon.github.io/use_composition/</guid>
+    <description><![CDATA[상속보다는 컴포지션(조합) Background 코드를 짜면서 상속으로 중복 코드도 줄일 수 있고,
+더 효율적으로 생각되었다.
+근데 언제부턴가 상속보다는 조합을 사용하란 말이 많아졌다.
+예시를 보자.
+1 2 3 4  public class PurchasedProduct { protected List&lt;Integer&gt; productNo; ... }   위의 클래스를 상속 받는 클래스가 있다고 가정하자.
+1 2 3 4  public class Purchased extends PurchasedProduct { private List&lt;Integer&gt; dealNo; ... }   그런데 상위 PurchasedProduct 에서 List 대신 int[] productNo 로 바뀌었다고 가정하면]]></description>
+</item>
+</channel>
+</rss>

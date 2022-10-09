@@ -3,17 +3,100 @@
         <title>All Posts - h3yon blog</title>
         <link>https://h3yon.github.io/posts/</link>
         <description>All Posts | h3yon blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 08 May 2022 20:34:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 04 Sep 2022 14:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>3. Time Complixity - TapeEquilibrium</title>
+    <link>https://h3yon.github.io/3_time_complexity_tapeequilibrium/</link>
+    <pubDate>Sun, 04 Sep 2022 14:47:34 &#43;0900</pubDate>
+    <author>h3yon</author>
+    <guid>https://h3yon.github.io/3_time_complexity_tapeequilibrium/</guid>
+    <description><![CDATA[TapeEquilibrium Link: https://app.codility.com/programmers/lessons/3-time_complexity/tape_equilibrium/
+A non-empty array A consisting of N integers is given. Array A represents numbers on a tape.
+Any integer P, such that 0 &lt; P &lt; N, splits this tape into two non-empty parts: A[0], A[1], &hellip;, A[P − 1] and A[P], A[P + 1], &hellip;, A[N − 1].
+The difference between the two parts is the value of: |(A[0] + A[1] + &hellip; + A[P − 1]) − (A[P] + A[P + 1] + &hellip; + A[N − 1])|]]></description>
+</item>
+<item>
+    <title>3. Time Complexity - FrogJmp</title>
+    <link>https://h3yon.github.io/3_time_complexity_frogjmp.md/</link>
+    <pubDate>Sat, 03 Sep 2022 18:27:34 &#43;0900</pubDate>
+    <author>h3yon</author>
+    <guid>https://h3yon.github.io/3_time_complexity_frogjmp.md/</guid>
+    <description><![CDATA[FrogJmp Link: https://app.codility.com/programmers/lessons/3-time_complexity/frog_jmp/
+A small frog wants to get to the other side of the road. The frog is currently located at position X and wants to get to a position greater than or equal to Y. The small frog always jumps a fixed distance, D.
+Count the minimal number of jumps that the small frog must perform to reach its target.
+Write a function:
+def solution(X, Y, D)
+that, given three integers X, Y and D, returns the minimal number of jumps from position X to a position equal to or greater than Y.]]></description>
+</item>
+<item>
+    <title>2. Array - OddOccurrencesInArray</title>
+    <link>https://h3yon.github.io/2_array_oddoccurrencesinarray/</link>
+    <pubDate>Sat, 03 Sep 2022 17:47:34 &#43;0900</pubDate>
+    <author>h3yon</author>
+    <guid>https://h3yon.github.io/2_array_oddoccurrencesinarray/</guid>
+    <description><![CDATA[OddOccurrencesInArray Link: https://app.codility.com/programmers/lessons/2-arrays/odd_occurrences_in_array/
+A non-empty array A consisting of N integers is given.
+The array contains an odd number of elements, and each element of the array can be paired with another element that has the same value, except for one element that is left unpaired.
+For example, in array A such that:
+A[0] = 9 A[1] = 3 A[2] = 9.
+A[3] = 3 A[4] = 9 A[5] = 7.]]></description>
+</item>
+<item>
+    <title>2. Array - CyclicRotation</title>
+    <link>https://h3yon.github.io/2_array_cyclicrotation/</link>
+    <pubDate>Sat, 03 Sep 2022 16:47:34 &#43;0900</pubDate>
+    <author>h3yon</author>
+    <guid>https://h3yon.github.io/2_array_cyclicrotation/</guid>
+    <description><![CDATA[주제: Arrays CyclicRotation Link: https://app.codility.com/programmers/lessons/2-arrays/cyclic_rotation/
+An array A consisting of N integers is given. Rotation of the array means that each element is shifted right by one index, and the last element of the array is moved to the first place. For example, the rotation of array A = [3, 8, 9, 7, 6] is [6, 3, 8, 9, 7] (elements are shifted right by one index and 6 is moved to the first place).]]></description>
+</item>
+<item>
+    <title>3. Time Complexity - PermMissingElem</title>
+    <link>https://h3yon.github.io/3_time_complexity_permmissingelem/</link>
+    <pubDate>Sat, 03 Sep 2022 16:47:34 &#43;0900</pubDate>
+    <author>h3yon</author>
+    <guid>https://h3yon.github.io/3_time_complexity_permmissingelem/</guid>
+    <description><![CDATA[PermMissingElem Link: https://app.codility.com/programmers/lessons/3-time_complexity/perm_missing_elem/
+An array A consisting of N different integers is given. The array contains integers in the range [1..(N + 1)], which means that exactly one element is missing.
+Your goal is to find that missing element.
+Write a function:
+class Solution { public int solution(int[] A); }
+that, given an array A, returns the value of the missing element.
+For example, given array A such that:
+A[0] = 2]]></description>
+</item>
+<item>
+    <title>Week Preparation Kit</title>
+    <link>https://h3yon.github.io/1_iterations/</link>
+    <pubDate>Sun, 28 Aug 2022 23:47:34 &#43;0900</pubDate>
+    <author>h3yon</author>
+    <guid>https://h3yon.github.io/1_iterations/</guid>
+    <description><![CDATA[주제: 1. Iterations BinaryGap A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of N.
+For example, number 9 has binary representation 1001 and contains a binary gap of length 2. The number 529 has binary representation 1000010001 and contains two binary gaps: one of length 4 and one of length 3. The number 20 has binary representation 10100 and contains one binary gap of length 1.]]></description>
+</item>
+<item>
+    <title>상속보다는 컴포지션(조합)</title>
+    <link>https://h3yon.github.io/use_composition/</link>
+    <pubDate>Tue, 02 Aug 2022 03:47:34 &#43;0900</pubDate>
+    <author>h3yon</author>
+    <guid>https://h3yon.github.io/use_composition/</guid>
+    <description><![CDATA[상속보다는 컴포지션(조합) Background 코드를 짜면서 상속으로 중복 코드도 줄일 수 있고,
+더 효율적으로 생각되었다.
+근데 언제부턴가 상속보다는 조합을 사용하란 말이 많아졌다.
+예시를 보자.
+1 2 3 4  public class PurchasedProduct { protected List&lt;Integer&gt; productNo; ... }   위의 클래스를 상속 받는 클래스가 있다고 가정하자.
+1 2 3 4  public class Purchased extends PurchasedProduct { private List&lt;Integer&gt; dealNo; ... }   그런데 상위 PurchasedProduct 에서 List 대신 int[] productNo 로 바뀌었다고 가정하면]]></description>
+</item>
+<item>
     <title>[Github]git 계정 분리해서 사용하기</title>
     <link>https://h3yon.github.io/separate-account/</link>
     <pubDate>Sun, 08 May 2022 20:34:34 &#43;0900</pubDate>
     <author>h3yon</author>
     <guid>https://h3yon.github.io/separate-account/</guid>
     <description><![CDATA[참고 및 출처:
- 폴더별 github 계정 분리하기  Why .gitconfig [includeIf] does not work?   한 기기 내에서 2개의 git 계정을 사용하고 싶을 때 git계정을 분리하여 사용할 수 있다.
+ 폴더별 github 계정 분리하기 Why .gitconfig [includeIf] does not work?  한 기기 내에서 2개의 git 계정을 사용하고 싶을 때 git계정을 분리하여 사용할 수 있다.
 위 블로그에 너무 잘 작성되어 있어서 정리해보려고 한다. 회사, 개인용 git 계정을 사용한다고 가정하고 아래처럼 따라할 수 있다!
 1. SSH Key 생성 window는 ~가 아니라 c:/{사용자}/{사용자 아이디} 디렉토리
-1 2 3 4 5  $ mkdir ~/.ssh $ cd ~/.]]></description>
+1 2 3 4 5  $ mkdir ~/.ssh $ cd ~/.ssh $ ssh-keygen -t rsa -C &#34;회사용 github 아이디@email.]]></description>
 </item>
 <item>
     <title>모던 자바 인 액션 1~6장 스트림</title>
@@ -40,95 +123,6 @@
  트랜잭션이 좋다. 분산 기술이 좋았다. 엔티티빈(JPA ORM)도 가지고 있었다. 비용이 비싸다. 어렵고 복잡하고 느리다(EJB에 의존적으로 코드를 짜야 한다, 컨테이너 띄우는 게 느리다).  → 순수하게 자바로 돌아가자. (POJO Plain Old Java Object)
 로드존슨이 EJB를 비판하면서 미래 스프링의 기틀을 다져준다. 링킹이 Hibernate 등장. 자바 표준 JPA 구현체로 사용될 수 있다.
  스프링 오픈소스 제안 → EJB란 겨울을 넘어 새로운 시작으로 지음  스프링 역사]]></description>
-</item>
-<item>
-    <title>이펙티브 자바 1~30</title>
-    <link>https://h3yon.github.io/effective-java/</link>
-    <pubDate>Mon, 28 Mar 2022 01:50:34 &#43;0900</pubDate>
-    <author>h3yon</author>
-    <guid>https://h3yon.github.io/effective-java/</guid>
-    <description><![CDATA[이펙티브 자바 Item1. 생성자 대신 정적 팩토리 메서드를 고려하라 정적 팩토리 메서드(static factory method)는 그 클래스의 인스턴스를 반환하는 단순한 정적 메서드이다.
-1 2 3 4 5  //생성자 Boolean a = Boolean(&#34;true&#34;) //정적 팩토리 메서드 Boolean a= Boolean.valueOf(&#34;true&#34;);   아래와 같은 장점을 가질 수 있다.
- 생성자와 달리 이름을 가질 수 있다. 호출될 때마다 인스턴스를 새로 생성하지 않아도 된다. 반환 타입의 하위 타입 객체를 반환할 수 있다. Java8 이전에는 인스턴스에 static 메서드를 선언할 수 없어 Companion class를 만들어 거기에 정의를 했어야 했다.]]></description>
-</item>
-<item>
-    <title>테스트코드의 Mock, MockBean, Autowired, Spy 이해하기</title>
-    <link>https://h3yon.github.io/mock-spy-testcode/</link>
-    <pubDate>Sun, 26 Dec 2021 23:47:34 &#43;0900</pubDate>
-    <author>h3yon</author>
-    <guid>https://h3yon.github.io/mock-spy-testcode/</guid>
-    <description><![CDATA[Test code +mock과 stub의 차이? 행위 검증을 추구한다는 것. mock은 행위검증을 추구하고, stub은 그렇지 않다
-1. MockBean, Mock, Autowired
-target(mock)으로 보면 되겠다! 예를 들어서 controller 생성자에 service가 필요하다고 가정하면, controller(service)이므로 controller에 @InjectMocks, service에 @Mock을 해준다
-아래를 보면 알겠지만,
-MockBean/SpyBean은 Autowired로 기억됨을 알 수 있다
-@MockBean: mock객체를 스프링 컨텍스트에 등록
-@Autowired: @MockBean으로 등록한 mock 객체를 주입 받아서 의존성 해결
-@MockBean의 의존성 주입 Target을 @InjectMocks로 하려고 하면 실패한다
-2. SpyBean
-@SpyBean: spy 객체를 스프링 context에 등록]]></description>
-</item>
-<item>
-    <title>스프링 mvc 1편 정리</title>
-    <link>https://h3yon.github.io/springmvc1/</link>
-    <pubDate>Thu, 23 Dec 2021 23:47:34 &#43;0900</pubDate>
-    <author>h3yon</author>
-    <guid>https://h3yon.github.io/springmvc1/</guid>
-    <description><![CDATA[스프링 mvc 1편을 듣고 정리한 내용입니다.
-1 Servlet이해하기 서블릿을 자동 등록하는 경우, @ServletComponentScan어노테이션을 사용한다.
-예제를 보면서 이해해보자
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  @WebServlet(name = &#34;helloServlet&#34;, urlPatterns = &#34;/hello&#34;) public class HelloServlet extends HttpServlet { @Override protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { System.out.println(&#34;request = &#34; + request); System.out.println(&#34;response = &#34; + response); String username = request.]]></description>
-</item>
-<item>
-    <title>[토비의 스프링] 정리</title>
-    <link>https://h3yon.github.io/toby1/</link>
-    <pubDate>Mon, 01 Nov 2021 23:47:34 &#43;0900</pubDate>
-    <author>h3yon</author>
-    <guid>https://h3yon.github.io/toby1/</guid>
-    <description><![CDATA[토비의 스프링 2차 정리 관심사의 분리? 관심이 같은 것끼리는 하나의 객체 안으로 또는 친한 객체로 모이게 하고
-관심이 다른 것은 가능한 한 따로 덜어져서 서로 영향을 주지 않도록 분리하는 것
-템플릿 메소드 패턴 슈퍼클래스에 기본적인 로직의 흐름을 만들고 기능의 일부를 추상 메소드나 오버라이딩이 가능한 protected 메소드 등으로 만든 뒤
-서브 클래스에서 이런 메소드를 필요로 맞게 구현해서 사용
- 훅메소드? 슈퍼클래스에서 디폴트 기능을 정의해두거나 비워뒀다가 선택적으로 오버라이드할 수 있도록 만들어둔 메소드  팩토리 메소드 패턴 서브클래스에서 구체적인 오브젝트 생성 방법을 결정하게 하는 것]]></description>
-</item>
-<item>
-    <title>[스프링 인 액션5] Chapter4~6 내용 정리</title>
-    <link>https://h3yon.github.io/til-sia2/</link>
-    <pubDate>Tue, 19 Oct 2021 23:47:34 &#43;0900</pubDate>
-    <author>h3yon</author>
-    <guid>https://h3yon.github.io/til-sia2/</guid>
-    <description><![CDATA[Chapter4 스프링 시큐리티 사용 예시로 알아보기
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22  @EnableWebSecurity public class SecurityConfig extends WebSecurityConfigurerAdapter { //HTTP 보안 구성  @Override protected void configure(HttpSecurity http) throws Exception{ http .authorizeRequests()	// ExpressionInterceptUrlRegistry 객체 반환  .antMatchers(&#34;/design&#34;, &#34;/orders&#34;) // 이 부분은  .access(&#34;hasRole(&#39;ROLE_USER&#39;)&#34;) // 인가 과정  .antMatchers(&#34;/&#34;, &#34;/**&#34;).access(&#34;permitAll&#34;) // 이 부분은 누구나 접속 가능  .]]></description>
-</item>
-<item>
-    <title>[스프링 핵심 원리 - 기본편] 복습일지3 (컴포넌트 스캔)</title>
-    <link>https://h3yon.github.io/til-spring-core3/</link>
-    <pubDate>Fri, 15 Oct 2021 23:47:34 &#43;0900</pubDate>
-    <author>h3yon</author>
-    <guid>https://h3yon.github.io/til-spring-core3/</guid>
-    <description><![CDATA[[스프링 핵심 원리 - 기본편] 복습일지3 (컴포넌트 스캔) 컴포넌트 스캔? 컴포넌트 스캔은 스프링이 설정 정보가 없어도
-자동으로 스프링 빈을 등록하는 기능이다
-컴포넌트 스캔을 사용하려면 아래처럼
-@ComponentScan을 설정 정보에 붙여준다.
-아래처럼 제외도 가능하다.
-1 2 3 4 5 6  @Configuration @ComponentScan( excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class) ) public class AutoAppConfig { }   컴포넌트 스캔은 @Component 애노테이션이 붙은 클래스를 스캔 후
-스프링 빈으로 등록한다.
-예시를 한번 봐보자.]]></description>
-</item>
-<item>
-    <title>[스프링 인 액션5]Chapter1~3 내용 정리</title>
-    <link>https://h3yon.github.io/til-sia1/</link>
-    <pubDate>Thu, 14 Oct 2021 23:47:34 &#43;0900</pubDate>
-    <author>h3yon</author>
-    <guid>https://h3yon.github.io/til-sia1/</guid>
-    <description><![CDATA[[스프링 인 액션5] Chapter1~3 내용 정리 스프링 인 액션에 대한 내용을 읽으면서
-중요 내용, 한번 더 짚고 넘어가면 좋을 내용에 대해서 써보려고 한다.
-Chapter1 SpringBootApplication 애플리케이션의 부트스트랩 클래스에,
-SpringBootApplication이 있다는 건 다들 봤을 것이다.
-이 SpringBootApplication이 어떤 어노테이션이 결합한 것인지 보자
-  SpringBootConfiguration 현재 클래스를 구성 클래스로 지정한다.(@Configuration)의 특화된 형태
-  EnableAutoConfiguration 스프링 부트 자동-구성을 활성화한다
-  ComponentScan 컴포넌트 검색을 활성화한다. @Component, @Controller, @Service 등의 애노테이션과 함께 클래스를 선언할 수 있게 한다.]]></description>
 </item>
 </channel>
 </rss>

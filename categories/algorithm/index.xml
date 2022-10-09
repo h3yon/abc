@@ -1,0 +1,77 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>algorithm - Category - h3yon blog</title>
+        <link>https://h3yon.github.io/categories/algorithm/</link>
+        <description>algorithm - Category - h3yon blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 04 Sep 2022 14:47:34 &#43;0900</lastBuildDate><atom:link href="https://h3yon.github.io/categories/algorithm/" rel="self" type="application/rss+xml" /><item>
+    <title>3. Time Complixity - TapeEquilibrium</title>
+    <link>https://h3yon.github.io/3_time_complexity_tapeequilibrium/</link>
+    <pubDate>Sun, 04 Sep 2022 14:47:34 &#43;0900</pubDate>
+    <author>h3yon</author>
+    <guid>https://h3yon.github.io/3_time_complexity_tapeequilibrium/</guid>
+    <description><![CDATA[TapeEquilibrium Link: https://app.codility.com/programmers/lessons/3-time_complexity/tape_equilibrium/
+A non-empty array A consisting of N integers is given. Array A represents numbers on a tape.
+Any integer P, such that 0 &lt; P &lt; N, splits this tape into two non-empty parts: A[0], A[1], &hellip;, A[P − 1] and A[P], A[P + 1], &hellip;, A[N − 1].
+The difference between the two parts is the value of: |(A[0] + A[1] + &hellip; + A[P − 1]) − (A[P] + A[P + 1] + &hellip; + A[N − 1])|]]></description>
+</item>
+<item>
+    <title>3. Time Complexity - FrogJmp</title>
+    <link>https://h3yon.github.io/3_time_complexity_frogjmp.md/</link>
+    <pubDate>Sat, 03 Sep 2022 18:27:34 &#43;0900</pubDate>
+    <author>h3yon</author>
+    <guid>https://h3yon.github.io/3_time_complexity_frogjmp.md/</guid>
+    <description><![CDATA[FrogJmp Link: https://app.codility.com/programmers/lessons/3-time_complexity/frog_jmp/
+A small frog wants to get to the other side of the road. The frog is currently located at position X and wants to get to a position greater than or equal to Y. The small frog always jumps a fixed distance, D.
+Count the minimal number of jumps that the small frog must perform to reach its target.
+Write a function:
+def solution(X, Y, D)
+that, given three integers X, Y and D, returns the minimal number of jumps from position X to a position equal to or greater than Y.]]></description>
+</item>
+<item>
+    <title>2. Array - OddOccurrencesInArray</title>
+    <link>https://h3yon.github.io/2_array_oddoccurrencesinarray/</link>
+    <pubDate>Sat, 03 Sep 2022 17:47:34 &#43;0900</pubDate>
+    <author>h3yon</author>
+    <guid>https://h3yon.github.io/2_array_oddoccurrencesinarray/</guid>
+    <description><![CDATA[OddOccurrencesInArray Link: https://app.codility.com/programmers/lessons/2-arrays/odd_occurrences_in_array/
+A non-empty array A consisting of N integers is given.
+The array contains an odd number of elements, and each element of the array can be paired with another element that has the same value, except for one element that is left unpaired.
+For example, in array A such that:
+A[0] = 9 A[1] = 3 A[2] = 9.
+A[3] = 3 A[4] = 9 A[5] = 7.]]></description>
+</item>
+<item>
+    <title>2. Array - CyclicRotation</title>
+    <link>https://h3yon.github.io/2_array_cyclicrotation/</link>
+    <pubDate>Sat, 03 Sep 2022 16:47:34 &#43;0900</pubDate>
+    <author>h3yon</author>
+    <guid>https://h3yon.github.io/2_array_cyclicrotation/</guid>
+    <description><![CDATA[주제: Arrays CyclicRotation Link: https://app.codility.com/programmers/lessons/2-arrays/cyclic_rotation/
+An array A consisting of N integers is given. Rotation of the array means that each element is shifted right by one index, and the last element of the array is moved to the first place. For example, the rotation of array A = [3, 8, 9, 7, 6] is [6, 3, 8, 9, 7] (elements are shifted right by one index and 6 is moved to the first place).]]></description>
+</item>
+<item>
+    <title>3. Time Complexity - PermMissingElem</title>
+    <link>https://h3yon.github.io/3_time_complexity_permmissingelem/</link>
+    <pubDate>Sat, 03 Sep 2022 16:47:34 &#43;0900</pubDate>
+    <author>h3yon</author>
+    <guid>https://h3yon.github.io/3_time_complexity_permmissingelem/</guid>
+    <description><![CDATA[PermMissingElem Link: https://app.codility.com/programmers/lessons/3-time_complexity/perm_missing_elem/
+An array A consisting of N different integers is given. The array contains integers in the range [1..(N + 1)], which means that exactly one element is missing.
+Your goal is to find that missing element.
+Write a function:
+class Solution { public int solution(int[] A); }
+that, given an array A, returns the value of the missing element.
+For example, given array A such that:
+A[0] = 2]]></description>
+</item>
+<item>
+    <title>Week Preparation Kit</title>
+    <link>https://h3yon.github.io/1_iterations/</link>
+    <pubDate>Sun, 28 Aug 2022 23:47:34 &#43;0900</pubDate>
+    <author>h3yon</author>
+    <guid>https://h3yon.github.io/1_iterations/</guid>
+    <description><![CDATA[주제: 1. Iterations BinaryGap A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of N.
+For example, number 9 has binary representation 1001 and contains a binary gap of length 2. The number 529 has binary representation 1000010001 and contains two binary gaps: one of length 4 and one of length 3. The number 20 has binary representation 10100 and contains one binary gap of length 1.]]></description>
+</item>
+</channel>
+</rss>

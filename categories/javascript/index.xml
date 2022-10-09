@@ -52,7 +52,7 @@ categories:
     <pubDate>Wed, 21 Jul 2021 23:47:34 &#43;0900</pubDate>
     <author>h3yon</author>
     <guid>https://h3yon.github.io/javascript-map-filter-reduce/</guid>
-    <description><![CDATA[Javascript - forEach, map, filter, reduce 총정리 참고 자료:  ES6의 map, filter, reduce 정리  reduce  참고 링크    forEach 가장 기본적인 Loop 메소드
+    <description><![CDATA[Javascript - forEach, map, filter, reduce 총정리 참고 자료:  ES6의 map, filter, reduce 정리 reduce 참고 링크   forEach 가장 기본적인 Loop 메소드
 1 2 3 4 5 6  const arr = [&#34;a&#34;, &#34;bb&#34;, &#34;ccc&#34;, &#34;ddddd&#34;]; var arr2 = []; arr.forEach(function (str) { arr2.push(str.length); }); console.log(arr2); // [1, 2, 3, 5]]   forEach문과 아래 map() 기능이 완전 똑같음을 알 수 있다. 그럼 map과의 차이점이 대체 뭘까?]]></description>
 </item>
 <item>
@@ -61,7 +61,8 @@ categories:
     <pubDate>Tue, 20 Jul 2021 23:47:34 &#43;0900</pubDate>
     <author>h3yon</author>
     <guid>https://h3yon.github.io/javascript-variable/</guid>
-    <description><![CDATA[출처 자바스크립트 변수 선언 방식 차이: var/let/const TDZ(Temporal Dead Zone)이란? Hoisting and TDZ Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone) 오늘은 기초적인 var, let, const에 대한 차이를 알아보았다 일단 변수 선언의 3단계는 선언 -&gt; 초기화 -&gt; 할당 과정으로 이루어져 있다.
+    <description><![CDATA[출처 자바스크립트 변수 선언 방식 차이: var/let/const TDZ(Temporal Dead Zone)이란? Hoisting and TDZ
+Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone) 오늘은 기초적인 var, let, const에 대한 차이를 알아보았다 일단 변수 선언의 3단계는 선언 -&gt; 초기화 -&gt; 할당 과정으로 이루어져 있다.
  선언: 변수를 실행 context의 변수 객체에 등록하는 단계. 해당 변수 객체는 scope가 참조하는 대상이 됨 \n 초기화: 선언 단계의 변수를 위한 메모리를 만드는 단계. 할당된 메모리에는 undefined로 초기화 \n 할당: undefined로 초기화된 메모리의 다른 값을 할당 \n]]></description>
 </item>
 <item>
@@ -70,7 +71,8 @@ categories:
     <pubDate>Sun, 18 Jul 2021 23:47:34 &#43;0900</pubDate>
     <author>h3yon</author>
     <guid>https://h3yon.github.io/javascript-basic/</guid>
-    <description><![CDATA[출처: https://velog.io/@dongha1992/javascript-%EB%82%B4%EB%B6%80%ED%95%A8%EC%88%98-%EC%99%B8%EB%B6%80%ED%95%A8%EC%88%98 자바스크립트 기초 지식 쌓기 아래의 코드가 있다고 가정하자.
+    <description><![CDATA[출처: https://velog.io/@dongha1992/javascript-%EB%82%B4%EB%B6%80%ED%95%A8%EC%88%98-%EC%99%B8%EB%B6%80%ED%95%A8%EC%88%98
+자바스크립트 기초 지식 쌓기 아래의 코드가 있다고 가정하자.
  -- 1 2 3 4 5 6 7 8 9  function out(){ const name = &#34;aaa&#34; return function(){ console.log(name); } } const in = out() in()    함수 안에 함수가 있을 때 응집성이 높아진다. 위의 코드를 보면 out()은 외부함수, in()은 내부함수를 말한다. in()함수에서 name에 대한 로그를 찍는데, name은 out()에만 있기 대문에 외부 함수에서 변수를 찾는다. 이를 closure라고 한다.]]></description>
 </item>
 <item>

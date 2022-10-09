@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>2. Array - CyclicRotation - h3yon blog</title><meta name="Description" content="Welcome to h3yon 개구리 블로그"><meta property="og:title" content="2. Array - CyclicRotation" />
+<meta property="og:description" content="주제: Arrays CyclicRotation Link: https://app.codility.com/programmers/lessons/2-arrays/cyclic_rotation/
+An array A consisting of N integers is given. Rotation of the array means that each element is shifted right by one index, and the last element of the array is moved to the first place. For example, the rotation of array A = [3, 8, 9, 7, 6] is [6, 3, 8, 9, 7] (elements are shifted right by one index and 6 is moved to the first place)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://h3yon.github.io/2_array_cyclicrotation/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-03T16:47:34+09:00" />
+<meta property="article:modified_time" content="2022-09-03T16:47:34+09:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="2. Array - CyclicRotation"/>
+<meta name="twitter:description" content="주제: Arrays CyclicRotation Link: https://app.codility.com/programmers/lessons/2-arrays/cyclic_rotation/
+An array A consisting of N integers is given. Rotation of the array means that each element is shifted right by one index, and the last element of the array is moved to the first place. For example, the rotation of array A = [3, 8, 9, 7, 6] is [6, 3, 8, 9, 7] (elements are shifted right by one index and 6 is moved to the first place)."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/2_array_cyclicrotation/" /><link rel="prev" href="https://h3yon.github.io/3_time_complexity_permmissingelem/" /><link rel="next" href="https://h3yon.github.io/2_array_oddoccurrencesinarray/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "2. Array - CyclicRotation",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/h3yon.github.io\/2_array_cyclicrotation\/"
+        },"genre": "posts","keywords": "algorithm","wordcount":  539 ,
+        "url": "https:\/\/h3yon.github.io\/2_array_cyclicrotation\/","datePublished": "2022-09-03T16:47:34+09:00","dateModified": "2022-09-03T16:47:34+09:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "h3yon"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="h3yon blog">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="h3yon blog">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">2. Array - CyclicRotation</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-category">included in <a href="/categories/algorithm/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>algorithm</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-03">2022-09-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;539 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#cyclicrotation">CyclicRotation</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#회고">회고</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="주제-arrays">주제: Arrays</h1>
+<h2 id="cyclicrotation">CyclicRotation</h2>
+<p>Link: <a href="https://app.codility.com/programmers/lessons/2-arrays/cyclic_rotation/" target="_blank" rel="noopener noreffer ">https://app.codility.com/programmers/lessons/2-arrays/cyclic_rotation/</a></p>
+<p>An array A consisting of N integers is given. Rotation of the array means that each element is shifted right by one index, and the last element of the array is moved to the first place. For example, the rotation of array A = [3, 8, 9, 7, 6] is [6, 3, 8, 9, 7] (elements are shifted right by one index and 6 is moved to the first place).</p>
+<p>The goal is to rotate array A K times; that is, each element of A will be shifted to the right K times.</p>
+<p>Write a function:</p>
+<p>class Solution { public int[] solution(int[] A, int K); }</p>
+<p>that, given an array A consisting of N integers and an integer K, returns the array A rotated K times.</p>
+<p>For example, given</p>
+<pre><code>A = [3, 8, 9, 7, 6]
+K = 3
+</code></pre>
+<p>the function should return [9, 7, 6, 3, 8]. Three rotations were made:</p>
+<pre><code>[3, 8, 9, 7, 6] -&gt; [6, 3, 8, 9, 7]
+[6, 3, 8, 9, 7] -&gt; [7, 6, 3, 8, 9]
+[7, 6, 3, 8, 9] -&gt; [9, 7, 6, 3, 8]
+</code></pre>
+<p>For another example, given</p>
+<pre><code>A = [0, 0, 0]
+K = 1
+</code></pre>
+<p>the function should return [0, 0, 0]</p>
+<p>Given</p>
+<pre><code>A = [1, 2, 3, 4]
+K = 4
+</code></pre>
+<p>the function should return [1, 2, 3, 4]</p>
+<p>Assume that:</p>
+<p>N and K are integers within the range [0..100];
+each element of array A is an integer within the range [−1,000..1,000].
+In your solution, focus on correctness. The performance of your solution will not be the focus of the assessment.</p>
+<h1 id="tried">Tried</h1>
+<p>문제를 보았을 때 2가지 풀이방식이 생각났었다.</p>
+<p>첫번째 방법은 아래와 같다.<br>
+일단 for문을 돌면서 맨끝껄 빼고<br>
+뺀 부분을 맨 앞에, 남아 있는 부분은 뒤에 두는 방법을 생각했다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tmp</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tmp</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">+</span> <span class="n">A</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>근데 50%만 맞추어서 2번째 방법을 생각했다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dq</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dq</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">dq</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>라이브러리만 사용하는 꼴이어서 괜찮을까 하고 일단 풀어봤는데,<br>
+100%로 맞추었다.</p>
+<p>세번째 방법으로는 A[K-1:] 로 인덱싱하는 방법도 있었다.<br>
+그런데 그 부분에서 생각을 좀 해야될 것으로 보여서 패스했다!</p>
+<h2 id="회고">회고</h2>
+<p>50% 맞추었던 부분을 다시 보았다.<br>
+배열이 비어있는데 K만큼 pop(-1)하면 당연히 에러가 날 것이다.<br>
+이 부분을 수정해주자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#A가 없을 경우 </span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">K</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">A</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tmp</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tmp</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">+</span> <span class="n">A</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>여기에서 50점 -&gt; 75점이 되었다.</p>
+<p>상황을 정리해보자.</p>
+<ul>
+<li>K &gt;= N, got [1, 1, 2, 3, 5] expected [3, 5, 1, 1, 2]</li>
+<li>maximal N and K, WRONG ANSWER, got [710, 807, 568, 560, ..] expected [155, 710, 807, 568,..]</li>
+</ul>
+<p>일단 K&gt;=N인 경우를 내가 잘 고려하지 않았음을 알았다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># A배열이 비어있는데 K만큼 pop하면 exception 떨어지니까 예외처리</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># K&gt;=N인 경우 나머지로 바꿔준다.</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">K</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">K</span> <span class="o">%=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tmp</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">tmp</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">+</span> <span class="n">A</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">A</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>이렇게 100점을 만들었다.<br>
+다양한 경우를 고려해야 함을 느꼈다.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-09-03</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2_array_cyclicrotation/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://h3yon.github.io/2_array_cyclicrotation/" data-title="2. Array - CyclicRotation" data-hashtags="algorithm"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://h3yon.github.io/2_array_cyclicrotation/" data-hashtag="algorithm"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://h3yon.github.io/2_array_cyclicrotation/" data-title="2. Array - CyclicRotation"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://h3yon.github.io/2_array_cyclicrotation/" data-title="2. Array - CyclicRotation"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://h3yon.github.io/2_array_cyclicrotation/" data-title="2. Array - CyclicRotation"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/algorithm/">algorithm</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/3_time_complexity_permmissingelem/" class="prev" rel="prev" title="3. Time Complexity - PermMissingElem"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>3. Time Complexity - PermMissingElem</a>
+            <a href="/2_array_oddoccurrencesinarray/" class="next" rel="next" title="2. Array - OddOccurrencesInArray">2. Array - OddOccurrencesInArray<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.98.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

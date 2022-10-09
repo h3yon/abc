@@ -1,37 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B59ZZ06V75"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-B59ZZ06V75', { 'anonymize_ip': true });
-}
-</script>
-
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone) - h3yon blog</title><meta name="Description" content="Welcome to h3yon 개구리 블로그"><meta property="og:title" content="Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone)" />
-<meta property="og:description" content="출처 자바스크립트 변수 선언 방식 차이: var/let/const TDZ(Temporal Dead Zone)이란? Hoisting and TDZ Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone) 오늘은 기초적인 var, let, const에 대한 차이를 알아보았다 일단 변수 선언의 3단계는 선언 -&gt; 초기화 -&gt; 할당 과정으로 이루어져 있다.
+<meta property="og:description" content="출처 자바스크립트 변수 선언 방식 차이: var/let/const TDZ(Temporal Dead Zone)이란? Hoisting and TDZ
+Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone) 오늘은 기초적인 var, let, const에 대한 차이를 알아보았다 일단 변수 선언의 3단계는 선언 -&gt; 초기화 -&gt; 할당 과정으로 이루어져 있다.
  선언: 변수를 실행 context의 변수 객체에 등록하는 단계. 해당 변수 객체는 scope가 참조하는 대상이 됨 \n 초기화: 선언 단계의 변수를 위한 메모리를 만드는 단계. 할당된 메모리에는 undefined로 초기화 \n 할당: undefined로 초기화된 메모리의 다른 값을 할당 \n" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://h3yon.github.io/javascript-variable/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-07-20T23:47:34+09:00" />
-<meta property="article:modified_time" content="2021-07-20T23:47:34+09:00" /><meta property="og:site_name" content="h3yon site" />
+<meta property="article:modified_time" content="2021-07-20T23:47:34+09:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone)"/>
-<meta name="twitter:description" content="출처 자바스크립트 변수 선언 방식 차이: var/let/const TDZ(Temporal Dead Zone)이란? Hoisting and TDZ Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone) 오늘은 기초적인 var, let, const에 대한 차이를 알아보았다 일단 변수 선언의 3단계는 선언 -&gt; 초기화 -&gt; 할당 과정으로 이루어져 있다.
+<meta name="twitter:description" content="출처 자바스크립트 변수 선언 방식 차이: var/let/const TDZ(Temporal Dead Zone)이란? Hoisting and TDZ
+Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone) 오늘은 기초적인 var, let, const에 대한 차이를 알아보았다 일단 변수 선언의 3단계는 선언 -&gt; 초기화 -&gt; 할당 과정으로 이루어져 있다.
  선언: 변수를 실행 context의 변수 객체에 등록하는 단계. 해당 변수 객체는 scope가 참조하는 대상이 됨 \n 초기화: 선언 단계의 변수를 위한 메모리를 만드는 단계. 할당된 메모리에는 undefined로 초기화 \n 할당: undefined로 초기화된 메모리의 다른 값을 할당 \n"/>
-<meta name="application-name" content="h3yon site">
-<meta name="apple-mobile-web-app-title" content="h3yon site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/javascript-variable/" /><link rel="prev" href="https://h3yon.github.io/javascript-basic/" /><link rel="next" href="https://h3yon.github.io/nodejs-thread/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/javascript-variable/" /><link rel="prev" href="https://h3yon.github.io/javascript-basic/" /><link rel="next" href="https://h3yon.github.io/nodejs-thread/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -54,20 +46,19 @@ if (!doNotTrack) {
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="h3yon blog">h3yon site</a>
+            <a href="/" title="h3yon blog">My cool site</a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-                </a>
-            </div>
+                </a></div>
         </div>
     </div>
 </header><header class="mobile" id="header-mobile">
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="h3yon blog">h3yon site</a>
+                <a href="/" title="h3yon blog">My cool site</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -81,9 +72,8 @@ if (!doNotTrack) {
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone)</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a>
-</span>&nbsp;<span class="post-category">included in <a href="/categories/javascript/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>javascript</a></span></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Javascript 변수 var, let, const & TDZ(Temporal Dead Zone)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-category">included in <a href="/categories/javascript/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>javascript</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2021-07-20">2021-07-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;586 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -104,12 +94,9 @@ if (!doNotTrack) {
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h3 id="출처">출처</h3>
-<p><a href="https://curryyou.tistory.com/192" target="_blank" rel="noopener noreffer">자바스크립트 변수 선언 방식 차이: var/let/const</a>
-
-<a href="https://noogoonaa.tistory.com/78" target="_blank" rel="noopener noreffer">TDZ(Temporal Dead Zone)이란?</a>
-
-<a href="https://velog.io/@open_h/Hoisting-and-TDZ" target="_blank" rel="noopener noreffer">Hoisting and TDZ</a>
-</p>
+<p><a href="https://curryyou.tistory.com/192" target="_blank" rel="noopener noreffer ">자바스크립트 변수 선언 방식 차이: var/let/const</a>
+<a href="https://noogoonaa.tistory.com/78" target="_blank" rel="noopener noreffer ">TDZ(Temporal Dead Zone)이란?</a>
+<a href="https://velog.io/@open_h/Hoisting-and-TDZ" target="_blank" rel="noopener noreffer ">Hoisting and TDZ</a></p>
 <h3 id="javascript-변수-var-let-const--tdztemporal-dead-zone">Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone)</h3>
 <p>오늘은 기초적인 var, let, const에 대한 차이를 알아보았다
 일단 변수 선언의 3단계는 선언 -&gt; 초기화 -&gt; 할당 과정으로 이루어져 있다.</p>
@@ -323,7 +310,7 @@ TDZ 구간에 의해 메모리 할당이 되지 않아 참조 에러가 발생�
                             <a class="link-to-markdown" href="/javascript-variable/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://h3yon.github.io/javascript-variable/" data-title="Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone)" data-hashtags="variable,javascript"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://h3yon.github.io/javascript-variable/" data-hashtag="variable"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://h3yon.github.io/javascript-variable/" data-title="Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone)"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://h3yon.github.io/javascript-variable/" data-title="Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://h3yon.github.io/javascript-variable/" data-title="Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone)"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://h3yon.github.io/javascript-variable/" data-title="Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone)" data-hashtags="variable,javascript"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://h3yon.github.io/javascript-variable/" data-hashtag="variable"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://h3yon.github.io/javascript-variable/" data-title="Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone)"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://h3yon.github.io/javascript-variable/" data-title="Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://h3yon.github.io/javascript-variable/" data-title="Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone)"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -340,7 +327,7 @@ TDZ 구간에 의해 메모리 할당이 되지 않아 참조 에러가 발생�
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.98.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.98.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
@@ -350,5 +337,5 @@ TDZ 구간에 의해 메모리 할당이 되지 않아 참조 에러가 발생�
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/plugins/parent-fit/ls.parent-fit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

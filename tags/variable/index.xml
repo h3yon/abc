@@ -9,7 +9,8 @@
     <pubDate>Tue, 20 Jul 2021 23:47:34 &#43;0900</pubDate>
     <author>h3yon</author>
     <guid>https://h3yon.github.io/javascript-variable/</guid>
-    <description><![CDATA[출처 자바스크립트 변수 선언 방식 차이: var/let/const TDZ(Temporal Dead Zone)이란? Hoisting and TDZ Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone) 오늘은 기초적인 var, let, const에 대한 차이를 알아보았다 일단 변수 선언의 3단계는 선언 -&gt; 초기화 -&gt; 할당 과정으로 이루어져 있다.
+    <description><![CDATA[출처 자바스크립트 변수 선언 방식 차이: var/let/const TDZ(Temporal Dead Zone)이란? Hoisting and TDZ
+Javascript 변수 var, let, const &amp; TDZ(Temporal Dead Zone) 오늘은 기초적인 var, let, const에 대한 차이를 알아보았다 일단 변수 선언의 3단계는 선언 -&gt; 초기화 -&gt; 할당 과정으로 이루어져 있다.
  선언: 변수를 실행 context의 변수 객체에 등록하는 단계. 해당 변수 객체는 scope가 참조하는 대상이 됨 \n 초기화: 선언 단계의 변수를 위한 메모리를 만드는 단계. 할당된 메모리에는 undefined로 초기화 \n 할당: undefined로 초기화된 메모리의 다른 값을 할당 \n]]></description>
 </item>
 </channel>

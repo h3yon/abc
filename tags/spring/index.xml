@@ -131,7 +131,8 @@ memberService -&gt; memberRepository -&gt; MemoryMemberRepository
     <guid>https://h3yon.github.io/til-spring-basic/</guid>
     <description><![CDATA[[TIL] 스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술 (주의) 주관적으로 정리하고 싶은 부분만 정리했습니다!
 요약본을 보고 싶으신 분은 다른 게시글을 보시는 걸 추천합니다~!
-본 강의: 인프런 - 스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술   객체를 계속 생성하는 것보다는
+본 강의: 인프런 - 스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술
+  객체를 계속 생성하는 것보다는
 의존성 주입으로 재활용할 부분은 재활용하기
 1 2 3 4 5  private final MemberRepository memberRepository; public MemberService(MemberRepository memberRepository) { this.memberRepository = memberRepository; }     스프링 컨테이너]]></description>
 </item>
