@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우2 - h3yon blog</title><meta name="Description" content="Welcome to h3yon 개구리 블로그"><meta property="og:title" content="[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우2" />
+<meta property="og:description" content="Elasticsearch 운영 노하우: 버전, 샤드배치 1. Elasticsearch Head, 모니터링 툴 첨부된 사진처럼 크롬 익스텐션 으로 설치하거나, 깃허브 로 설치할 수 있다. 원래는 크롬 익스텐션을 애용하였는데, 2022년 6월 기준으로 익스텐션이 Multi Elasticsearch Head 로 변경된 것으로 보인다.
+2. 버전 업그레이드 종류   Full Cluster Restart
+전체 노드를 재시작하는 방식, 다운타임 발생하지만 빠르게 버전 업그레이드 가능
+  Rolling Restart
+노드는 순차적으로 한대씩 재시작하는 방식, 다운타임은 없지만 노드 개수에 따라 소요 시간이 길어질 수 있다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://h3yon.github.io/elasticsearch2/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-09T19:00:34+09:00" />
+<meta property="article:modified_time" content="2022-10-09T19:00:34+09:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우2"/>
+<meta name="twitter:description" content="Elasticsearch 운영 노하우: 버전, 샤드배치 1. Elasticsearch Head, 모니터링 툴 첨부된 사진처럼 크롬 익스텐션 으로 설치하거나, 깃허브 로 설치할 수 있다. 원래는 크롬 익스텐션을 애용하였는데, 2022년 6월 기준으로 익스텐션이 Multi Elasticsearch Head 로 변경된 것으로 보인다.
+2. 버전 업그레이드 종류   Full Cluster Restart
+전체 노드를 재시작하는 방식, 다운타임 발생하지만 빠르게 버전 업그레이드 가능
+  Rolling Restart
+노드는 순차적으로 한대씩 재시작하는 방식, 다운타임은 없지만 노드 개수에 따라 소요 시간이 길어질 수 있다."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/elasticsearch2/" /><link rel="prev" href="https://h3yon.github.io/elasticsearch1/" /><link rel="next" href="https://h3yon.github.io/spring-cloud-openfeign/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우2",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/h3yon.github.io\/elasticsearch2\/"
+        },"genre": "posts","keywords": "elasticsearch","wordcount":  785 ,
+        "url": "https:\/\/h3yon.github.io\/elasticsearch2\/","datePublished": "2022-10-09T19:00:34+09:00","dateModified": "2022-10-09T19:00:34+09:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "h3yon"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="h3yon blog">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="h3yon blog">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우2</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-category">included in <a href="/categories/elasticsearch/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>elasticsearch</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-09">2022-10-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;785 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-elasticsearch-head-모니터링-툴">1. Elasticsearch Head, 모니터링 툴</a></li>
+    <li><a href="#2-버전-업그레이드-종류">2. 버전 업그레이드 종류</a>
+      <ul>
+        <li><a href="#rolling-upgrade-순서">Rolling Upgrade 순서</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-샤드-배치-방식">3. 샤드 배치 방식</a>
+      <ul>
+        <li><a href="#1-reroute-방법">1) Reroute 방법</a></li>
+        <li><a href="#2-allocation-방식">2) Allocation 방식</a></li>
+        <li><a href="#3-rebalance-방식">3) Rebalance 방식</a></li>
+        <li><a href="#4-filtering-방식">4) Filtering 방식</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-클러스터-설정">4. 클러스터 설정</a></li>
+    <li><a href="#5-임계치-설정">5. 임계치 설정</a></li>
+    <li><a href="#6-설정-우선순위">6. 설정 우선순위</a></li>
+    <li><a href="#7-index-api">7. Index API</a>
+      <ul>
+        <li><a href="#1-openclose-api">1) open/close API</a></li>
+        <li><a href="#2-aliases-api">2) aliases API</a></li>
+        <li><a href="#3-rollover-api">3) rollover API</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="elasticsearch-운영-노하우-버전-샤드배치">Elasticsearch 운영 노하우: 버전, 샤드배치</h1>
+<h2 id="1-elasticsearch-head-모니터링-툴">1. Elasticsearch Head, 모니터링 툴</h2>
+<img width="999" alt="image" src="https://user-images.githubusercontent.com/46602874/194743304-5b56c46f-1f1d-41cd-9ce7-3aef5b71c532.png">
+<p>첨부된 사진처럼 <a href="https://chrome.google.com/webstore/detail/multi-elasticsearch-head/cpmmilfkofbeimbmgiclohpodggeheim?hl=ko" target="_blank" rel="noopener noreffer ">크롬 익스텐션</a> 으로 설치하거나, <a href="https://github.com/mobz/elasticsearch-head" target="_blank" rel="noopener noreffer ">깃허브</a> 로 설치할 수 있다. 원래는 크롬 익스텐션을 애용하였는데, 2022년 6월 기준으로 익스텐션이 <code>Multi Elasticsearch Head</code> 로 변경된 것으로 보인다.</p>
+<h2 id="2-버전-업그레이드-종류">2. 버전 업그레이드 종류</h2>
+<ul>
+<li>
+<p>Full Cluster Restart</p>
+<p>전체 노드를 재시작하는 방식, 다운타임 발생하지만 빠르게 버전 업그레이드 가능</p>
+</li>
+<li>
+<p>Rolling Restart</p>
+<p>노드는 순차적으로 한대씩 재시작하는 방식, 다운타임은 없지만 노드 개수에 따라 소요 시간이 길어질 수 있다.</p>
+</li>
+</ul>
+<h3 id="rolling-upgrade-순서">Rolling Upgrade 순서</h3>
+<ol>
+<li>
+<p>클러스터 내 샤드 할당 기능 비활성화</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PUT _cluster/settings
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;persistent&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;cluster.routing.allocation.enable&#34;: &#34;none&#34;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}&#39;
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>프라이머리 샤드와 레플리카 샤드 데이터 동기화</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">POST _flush/synced
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>노드 1대 버전 업그레이드 이후 클러스터 합류 확인</p>
+</li>
+<li>
+<p>클러스터 내 샤드 할당 기능 활성화</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PUT _cluster/settings
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;persistent&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;cluster.routing.allocation.enable&#34;: &#34;all&#34;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}&#39;
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>클러스터 Green 상태 확인</p>
+</li>
+</ol>
+<h2 id="3-샤드-배치-방식">3. 샤드 배치 방식</h2>
+<p>ES는 대부분 자동으로 샤드를 배치하지만, 수동으로 배치해야할 때가 있다.<br>
+샤드 배치 방식을 변경하는 방법은 아래와 같다.</p>
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reroute</td>
+<td>샤드 하나하나를 특정 노드에 배치할 때 사용</td>
+</tr>
+<tr>
+<td>allocation</td>
+<td>클러스터 전체에 해당하는 샤드 배치 방식 변경 시 사용</td>
+</tr>
+<tr>
+<td>rebalance</td>
+<td>클러스터 전체에 샤드 재분배 방식을 변경할 때 사용</td>
+</tr>
+<tr>
+<td>filtering</td>
+<td>특정 조건에 해당하는 샤드들을 특정 노드에 배치할 때 사용</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-reroute-방법">1) Reroute 방법</h3>
+<p>샤드 하나하나를 개별적으로 특정 노드에 배치할 때 사용하는 방법으로, 제어할 수 있는 동작의 예시는 아래와 같다.<br>
+ex) 샤드 이동, 샤드 이동 취소, 레클리카 샤드의 특정 노드 할당</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PUT _cluster/rereoute
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;commands&#34;: [
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;move&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;index&#34;: &#34;user&#34;,
+</span></span><span class="line"><span class="cl">        &#34;shard&#34;: 1,
+</span></span><span class="line"><span class="cl">        &#34;from_node&#34;: &#34;data-1.es.com&#34;,
+</span></span><span class="line"><span class="cl">        &#34;to_node:&#34;: &#34;data-2.es.com&#34;
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  ]
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-allocation-방식">2) Allocation 방식</h3>
+<p>클러스터 전체에 적용되는 재배치 방식</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PUT _cluster/settings
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;persistent&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;cluster.routing.allocation.enable&#34;: &#34;none&#34;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}&#39;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>cluster.routing.allocation.enable</code> 방식은 아래와 같다.</p>
+<ul>
+<li>all - (default) 모든 종류의 샤드 Allocation 허용</li>
+<li>primaries - 프라이머리 샤드에게만 Allocation 허용</li>
+<li>new_primaries - 새로운 인덱스에 한해 프라이머리 샤드만 Allocation 허용</li>
+<li>none - 모든 샤드의 Allocation 작업 비활성화</li>
+</ul>
+<h3 id="3-rebalance-방식">3) Rebalance 방식</h3>
+<p>클러스터 내의 샤드가 배치된 후에 특정 노드에 샤드가 많다거나 배치가 고르지 않을 때 동작과 관련된 설정</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PUT _cluster/settings
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;persistent&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;cluster.routing.rebalance.enable&#34;: &#34;replicas&#34;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>cluster.routing.rebalance.enable</code> 방식은 아래와 같다.</p>
+<ul>
+<li>all - (default) 모든 종류의 샤드 rebalancing 허용</li>
+<li>primaries - 프라이머리 샤드만 rebalancing 허용</li>
+<li>replicas - 레플리카 샤드만 rebalancing 허용</li>
+<li>none - 모든 샤드의 rebalancing 비활성화</li>
+</ul>
+<h3 id="4-filtering-방식">4) Filtering 방식</h3>
+<ul>
+<li><code>cluster.routing.allocation.include.{attribute}</code>
+(Dynamic) {attribute}에 comma로 구분된 값이 하나라도 포함하는 노드에 샤드 allocate 가능</li>
+<li><code>cluster.routing.allocation.require.{attribute}</code>
+(Dynamic) {attribute}에 comma로 구분된 값이 모두 있는 노드에만 샤드 allocate 가능</li>
+<li><code>cluster.routing.allocation.exclude.{attribute}</code>
+(Dynamic) {attribute}에 comma로 구분된 값이 하나라도 있는 경우 샤드 allocate X</li>
+</ul>
+<p><strong>Attribute 예시</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PUT _cluster/settings
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;persistent&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;cluster.routing.allocation.exclude._ip&#34;: &#34;192.168.2.*&#34;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>_name: 노드명과 매치되는 노드</li>
+<li>_host_ip: Host IP 주소와 매치되는 노드</li>
+<li>_pulish_ip: 공인 IP 주소와 매치되는 노드</li>
+<li>_ip: _host_ip 또는 _publish_ip와 매치되는 노드</li>
+<li>_host: hostname과 매치되는 노드</li>
+<li>_id: 노드 id와 매치되는 노드</li>
+<li>_tier: 노드의 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html" target="_blank" rel="noopener noreffer ">data tier</a> 역할과 매치되는 노드</li>
+</ul>
+<h2 id="4-클러스터-설정">4. 클러스터 설정</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET _cluster/settings
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;persistent&#34;: {},
+</span></span><span class="line"><span class="cl">  &#34;transient&#34;: {}
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>persistent, transient 모두 값이 설정되어 있지 않을 경우 기본값으로 자동 설정된다.</p>
+<ul>
+<li>persistent
+<ul>
+<li>영구히 적용되는 설정들</li>
+<li>클러스터 재시작해도 유지됨</li>
+</ul>
+</li>
+<li>transient
+<ul>
+<li>클러스터가 운영중인 동안에만 적용</li>
+<li>클러스터 재시작하면 초기화</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-임계치-설정">5. 임계치 설정</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PUT _cluster/settings
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;persistent&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;cluster.routing.allocation.disk.watermark.low&#34;: &#34;75%&#34;,
+</span></span><span class="line"><span class="cl">    &#34;cluster.routing.allocation.disk.watermark.high&#34;: &#34;85%&#34;,
+</span></span><span class="line"><span class="cl">    &#34;cluster.routing.allocation.disk.watermark.flood_stage&#34;: &#34;90%&#34;,
+</span></span><span class="line"><span class="cl">    &#34;cluster.info.upate.interval&#34;: &#34;1m&#34;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>cluster.routing.allocation.disk.threshold_enabled<br>
+(Dynamic) Default = true. 디스크 할당 결정자를 비활성화하려면 false로 설정한다.</li>
+<li>cluster.routing.allocation.disk.watermark.low logo cloud<br>
+(Dynamic) defaults to 85%. 이 수치 넘어가면 더이상 할당 X. 새롭게 생성된 인덱스에 대해서는 적용되지 않는다.</li>
+<li>cluster.routing.allocation.disk.watermark.high logo cloud<br>
+(Dynamic) defaults to 90%. 임계치 넘어선 노드 대상으로 즉시 샤드 재할당. 새롭게 생성된 인덱스에 대해서도 적용된다.</li>
+<li>cluster.routing.allocation.disk.watermark.flood_stage logo cloud<br>
+(Dynamic) defaults to 95%.전체 노드가 임계치를 넘으면 인덱스를 Read Only로 변경한다.</li>
+</ul>
+<h2 id="6-설정-우선순위">6. 설정 우선순위</h2>
+<ol>
+<li>transient
+: 자주 변경되는 설정</li>
+<li>persistent: 자주 변경되지는 않지만 간헐적으로 변경이 필요한 설정</li>
+<li>elasticsearch.yml: 노드별로 잘 변경되지 않는 설정</li>
+</ol>
+<h2 id="7-index-api">7. Index API</h2>
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>open/close</td>
+<td>인덱스의 사용 가능 결정하는 API</td>
+</tr>
+<tr>
+<td>aliases</td>
+<td>인덱스에 별칭을 부여하는 API</td>
+</tr>
+<tr>
+<td>rollover</td>
+<td>인덱스를 새로운 인덱스로 분기시키는 API</td>
+</tr>
+<tr>
+<td>refresh</td>
+<td>문서를 세그먼트로 내리는 주기를 설정하는 API</td>
+</tr>
+<tr>
+<td>forcemerge</td>
+<td>샤드 내 세그먼트를 병합시키는 API</td>
+</tr>
+<tr>
+<td>reindex</td>
+<td>인덱스를 복제하는 API</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-openclose-api">1) open/close API</h3>
+<p>인덱스를 사용 가능/불가능 상태로 만드는 API</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">POST user/_close
+</span></span><span class="line"><span class="cl">POST user/_open
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-aliases-api">2) aliases API</h3>
+<p>인덱스에 별칭 부여 가능</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">POST _aliases/_close
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;actions&#34;:[
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;add&#34;:{
+</span></span><span class="line"><span class="cl">        &#34;index&#34;: &#34;test*&#34;,
+</span></span><span class="line"><span class="cl">        &#34;alias&#34;: &#34;alias1&#34;
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  ]
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>index에 특정 인덱스명을 넣어도 되고 위처럼 &ldquo;test&quot;로 시작하는 모든 인덱스를 별칭 지정할 수 있다. 근데 그러면 alias1으로 묶은 형태의 인덱스는 색인은 안 되고 검색만 된다. alias1 내 close된 인덱스가 있으면 검색 요청이 불가능하다.</li>
+</ul>
+<h3 id="3-rollover-api">3) rollover API</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PUT logs-000001?pretty
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;aliases&#34;: { &#34;logs_write&#34;: {} }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">POST logs_write/_rollover
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;conditions&#34;: { 
+</span></span><span class="line"><span class="cl">  	&#34;max_age&#34;: &#34;7d&#34;,
+</span></span><span class="line"><span class="cl">  	&#34;max_docs&#34;: 2,
+</span></span><span class="line"><span class="cl">  	&#34;max_size&#34;: &#34;5gb&#34;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-09</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/elasticsearch2/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://h3yon.github.io/elasticsearch2/" data-title="[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우2" data-hashtags="elasticsearch"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://h3yon.github.io/elasticsearch2/" data-hashtag="elasticsearch"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://h3yon.github.io/elasticsearch2/" data-title="[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우2"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://h3yon.github.io/elasticsearch2/" data-title="[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우2"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://h3yon.github.io/elasticsearch2/" data-title="[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우2"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/elasticsearch/">elasticsearch</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/elasticsearch1/" class="prev" rel="prev" title="[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우1"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우1</a>
+            <a href="/spring-cloud-openfeign/" class="next" rel="next" title="스프링 클라우드 openfeign 파악하기">스프링 클라우드 openfeign 파악하기<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.98.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -66,6 +66,39 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" width="210" height="210" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/https://github.com/h3yon" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="https://linkedin.com/in/xxxx" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="mailto:khykhy1006@gmail.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/til-spring-core3/">[스프링 핵심 원리 - 기본편] 복습일지3 (컴포넌트 스캔)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-10-15">2021-10-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>spring</a></span></div><div class="content">[스프링 핵심 원리 - 기본편] 복습일지3 (컴포넌트 스캔) 컴포넌트 스캔? 컴포넌트 스캔은 스프링이 설정 정보가 없어도
+자동으로 스프링 빈을 등록하는 기능이다
+컴포넌트 스캔을 사용하려면 아래처럼
+@ComponentScan을 설정 정보에 붙여준다.
+아래처럼 제외도 가능하다.
+1 2 3 4 5 6  @Configuration @ComponentScan( excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class) ) public class AutoAppConfig { }   컴포넌트 스캔은 @Component 애노테이션이 붙은 클래스를 스캔 후
+스프링 빈으로 등록한다.
+예시를 한번 봐보자.</div><div class="post-footer">
+        <a href="/til-spring-core3/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/til/">TIL</a>,&nbsp;<a href="/tags/spring/">spring</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/til-sia1/">[스프링 인 액션5]Chapter1~3 내용 정리</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-10-14">2021-10-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>spring</a></span></div><div class="content">[스프링 인 액션5] Chapter1~3 내용 정리 스프링 인 액션에 대한 내용을 읽으면서
+중요 내용, 한번 더 짚고 넘어가면 좋을 내용에 대해서 써보려고 한다.
+Chapter1 SpringBootApplication 애플리케이션의 부트스트랩 클래스에,
+SpringBootApplication이 있다는 건 다들 봤을 것이다.
+이 SpringBootApplication이 어떤 어노테이션이 결합한 것인지 보자
+  SpringBootConfiguration 현재 클래스를 구성 클래스로 지정한다.(@Configuration)의 특화된 형태
+  EnableAutoConfiguration 스프링 부트 자동-구성을 활성화한다
+  ComponentScan 컴포넌트 검색을 활성화한다. @Component, @Controller, @Service 등의 애노테이션과 함께 클래스를 선언할 수 있게 한다.</div><div class="post-footer">
+        <a href="/til-sia1/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/spring-in-action/">spring in action</a>,&nbsp;<a href="/tags/spring/">spring</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/til-spring-core2/">[스프링 핵심 원리 - 기본편] 복습 일지2 (싱글톤)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-10-14">2021-10-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>spring</a></span></div><div class="content">[스프링 핵심 원리 - 기본편] 복습일지2 (싱글톤) 싱글톤 패턴 클래스의 인스턴스가 딱 1개만 생성되는 것을 보장하는 디자인패턴!
+1 2 3 4 5  public class SingleService { private static final SingleService instance = new SingleService(); private SingleService() {} public static SingleService getInstance(){ return instance; } }   이 상태로 single.getInstance를 2번 사용했을 때
+같은 객체가 나옴을 알 수 있다.
+근데 싱글톤 패턴의 문제점도 꽤 많다는 걸 알게 되어서
+나중에 한번 더 복습할 때 정리해야겠다.</div><div class="post-footer">
+        <a href="/til-spring-core2/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/til/">TIL</a>,&nbsp;<a href="/tags/spring/">spring</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/til-spring-core1/">[스프링 핵심 원리 - 기본편] 복습 일지1 (빈)</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-10-13">2021-10-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>spring</a></span></div><div class="content">[스프링 핵심 원리 - 기본편] 복습일지1 (빈) 원래 설정 파일 즉, AppConfig에서
 memberService -&gt; memberRepository -&gt; MemoryMemberRepository
@@ -101,36 +134,6 @@ Chapter 1: Into Programming   Input
 1 2  let age = prompt(&#34;나이를 입력해주세요&#34;); console.log(age);     Converting Between Types</div><div class="post-footer">
         <a href="/you-dont-know-js/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/javascript/">javascript</a>,&nbsp;<a href="/tags/you-dont-know-js/">you dont know js</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/jenkins-ec2/">[Jenkins]AWS EC2 Ubuntu에 Jenkins 연동하기</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-15">2021-09-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nodejs/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>nodejs</a></span></div><div class="content">1. AWS EC2 Ubuntu에 Jenkins를 연동해보자 관련 패키지 설치   Jenkins 설치를 위해 Repository key 추가
-1  $ wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -     서버의 sources.list에 Jenkins 패키지 저장소를 추가
-1 2  $ sudo sh -c &#39;echo deb https://pkg.jenkins.io/debian-stable binary/ &gt; \ /etc/apt/sources.list.d/jenkins.list&#39;     패키지 업데이트 및 Jenkins 설치
-1 2  $ sudo apt-get update $ sudo apt-get install jenkins     Java JDK 8 설치</div><div class="post-footer">
-        <a href="/jenkins-ec2/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/nodejs/">nodejs</a>,&nbsp;<a href="/tags/jenkins/">jenkins</a>,&nbsp;<a href="/tags/aws/">aws</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/javascript-jeju-coding-again2/">[Javascript]자바스크립트 100문제 again2</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-11">2021-09-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/javascript/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>javascript</a></span></div><div class="content">title: &ldquo;[Javascript]자바스크립트 Again2&rdquo; excerpt: &ldquo;[Javascript]자바스크립트 Again2&rdquo;
-toc: true toc_sticky: true
-categories:
- Javascript tags: Javascript   자바스크립트 복습2 출처: 제주코딩베이스캠프
- merge sort 병합정렬(merge sort)은 대표적인 정렬 알고리즘 중 하나로 다음과 같이 동작합니다.
-  리스트의 길이가 0 또는 1이면 이미 정렬된 것으로 본다. 그렇지 않은 경우에는 정렬되지 않은 리스트를 절반으로 잘라 비슷한 크기의 두 부분 리스트로 나눈다. 각 부분 리스트를 재귀적으로 합병 정렬을 이용해 정렬한다. 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다.</div><div class="post-footer">
-        <a href="/javascript-jeju-coding-again2/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/javascript/">javascript</a>,&nbsp;<a href="/tags/jeju-coding/">jeju coding</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/javascript-jeju-coding-again/">[Javascript]자바스크립트 100문제 again</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-10">2021-09-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/javascript/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>javascript</a></span></div><div class="content">자바스크립트 복습 출처: 제주코딩베이스캠프
-  중간에 추가하기
-아래처럼 만드려면?
-1 2  var arr = [200, 100, 300]; [200, 100, 10000, 300];   답: arr.splice(2,0,10000);
-  다음 출력 값으로 올바른 것은?
-1 2  var arr = [100, 200, 300]; console.log(typeof arr);   답: object
-  객체의 키 이름 중복
-1 2 3 4 5 6  var d = { &#34;height&#34;: 180, &#34;weight&#34;: 78, &#34;weight&#34;: 84, }; console.</div><div class="post-footer">
-        <a href="/javascript-jeju-coding-again/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/javascript/">javascript</a>,&nbsp;<a href="/tags/jeju-coding/">jeju coding</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -159,12 +162,12 @@ categories:
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/9/">9</a>
+                        <a href="/page/10/">10</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.98.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

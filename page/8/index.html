@@ -66,6 +66,34 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" width="210" height="210" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/https://github.com/h3yon" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="https://linkedin.com/in/xxxx" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="mailto:khykhy1006@gmail.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/mysql-user/">MySQL User 추가 및 권한 부여하기</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-11">2021-07-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>MySQL</a></span></div><div class="content">MySQL User 추가 및 권한 부여하기  mysql 사용자 추가하기    사용자 추가(비밀번호 X) $ create user 사용자;
+  사용자 추가 및 패스워드 설정 $ create user 사용자@localhost identified by 비밀번호;
+  사용자 추가 및 패스워드 설정부터 외부에서의 접근 허용 $ create user 사용자@&rsquo;%&rsquo; identified by 비밀번호;
+  사용자 삭제1 1  $ drop user 사용자;   사용자 목록 확인 $ select User from user;  사용자에게 데이터베이스 사용권한 부여   DB의 사용자에게 외부 권한 부여하기, 모든 권한 부여 $ GRANT ALL privileges ON DB명.</div><div class="post-footer">
+        <a href="/mysql-user/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">mysql</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/spring-kakao-login/">SpringFramework kakao api 구현하기</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-02">2021-07-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>spring</a></span></div><div class="content">스프링부트로 kakao API 구현해보기 https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api
+일단, 위의 사이트에서 kakao API의 흐름을 살펴보자. 보면 인가코드를 우선 받아야 함을 알 수 있다.
+일단 그러면 어플리케이션 키를 받아야 한다. 위의 이미지처럼 상단의 &lsquo;내 애플리케이션&rsquo; 버튼을 누른다.
+아무 애플리케이션이나 만들고, 원하는 앱키를 복사해놓는다.
+또 옆에 플랫폼으로 들어가, 원하는 플랫폼에 대한 플랫폼을 등록한다. 위처럼 등록해도 되고, (8080번 localhost를 사용하는 경우) 만약 다 설정하였다면, &lsquo;등록하러 가기&rsquo;를 누른다.
+아래 사용할 callback uri를 위에 사진처럼 넣는다. _ 상태 -&gt; 활성화 필수!</div><div class="post-footer">
+        <a href="/spring-kakao-login/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/spring/">spring</a>,&nbsp;<a href="/tags/oauth/">oauth</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/daily-engineer-information/">정보처리기사 실기 벼락치기</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-02">2021-07-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/diary/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>diary</a></span></div><div class="content">정보처리기사 실기 벼락치기 시도해보기 요구사항 확인   현행 시스템 파악: 현재 개발하고자 하는 시스템의 개발 범위를 설정하기 위해 구성과 기능, 연계 정보, 소프트웨어, 하드웨어, 네트워크 구성을 파악하는 과정
+  현행시스템 파악 절차
+  현행 시스템 구성 파악: 기간 업무, 지원 업무
+  현행 시스템 기능 파악: 제공 기능 파악, 계층형 표시
+  인터페이스 현황 평가: 데이터 종류, 통신 규약, 연계 유형
+  아키텍처 구성 파악: 차상위 수준에서 파악</div><div class="post-footer">
+        <a href="/daily-engineer-information/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/diary/">diary</a>,&nbsp;<a href="/tags/%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EA%B8%B0%EC%82%AC/">정보처리기사</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/swagger/">Swagger 적용하기</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-12">2021-06-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>spring</a></span></div><div class="content">Swagger 적용하기   build.gradle  compileOnly group: &lsquo;io.springfox&rsquo;, name: &lsquo;springfox-swagger2&rsquo;, version: &lsquo;2.9.2&rsquo; compileOnly group: &lsquo;io.springfox&rsquo;, name: &lsquo;springfox-swagger-ui&rsquo;, version: &lsquo;2.9.2&rsquo; 
   swagger 파일
@@ -87,34 +115,6 @@ https://gmlwjd9405.github.io/2019/01/04/logging-with-slf4j.html
 → SLF4J Bridging Modules: 다른 로깅 API로의 로거 호출을 SLF4J 인터페이스로 연결(redirect)하여 SLF4J API가 대신 처리할 수 있도록 하는 일종의 어댑터 역할을 하는 라이브러리 → SLF4J API: 로깅에 대한 추상 레이어를 제공, 사용자가 이 인터페이스를 통해 logging 코드를 작성 → SLF4J 특징: 배포시 Logging Framework 선택 가능, 빠른 속도로 작동, 널리 사용되는 Logging Framework를 위한 바인딩 제공(log4j, java.util.logging, 단순 로깅 및 NOP 지원), Bridging legacy logging API(리디렉션하는 여러 Bridging Modules 제공), Migrate your source code(소스 마이그레이션 가능), 매개 변수화된 로그 메시지 지원</div><div class="post-footer">
         <a href="/annotation/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/hash/"></a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="0001-01-01">0001-01-01</time></span></div><div class="content">이제 다시 공부를 시작해야겠다 해서 해시 부분을 다시 풀어보았다.
-1. 완주하지 못한 선수(Level 1) 링크: https://school.programmers.co.kr/learn/courses/30/lessons/42576
-문제 설명 수많은 마라톤 선수들이 마라톤에 참여하였습니다. 단 한 명의 선수를 제외하고는 모든 선수가 마라톤을 완주하였습니다. 마라톤에 참여한 선수들의 이름이 담긴 배열 participant와 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때,
-완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요.
-제한사항  마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이하입니다. completion의 길이는 participant의 길이보다 1 작습니다.</div><div class="post-footer">
-        <a href="/hash/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/2021-10-03-til-deep-spring1/">[TIL] Spring 심화반 1주차 복습일지</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>java</a></span></div><div class="content">[TIL] Spring 심화반 1주차 복습일지 1주차때 배운 내용을 복습해보려고 한다~! 간단한 목차는 아래와 같다!
-세팅 관련  preference에서 auto import 입력  Insert imports on paste: Always Add unambiguous imports on the fly: v로 바꾸기    의존성 주입 생성자 주입 방식으로 의존성 주입하는 부분임을 알 수 있다.
-1 2 3 4 5 6 7 8 9 10  @Controller public class MyController{ private final MyService myService; @Autowired public MyController(MyService myService){ this.</div><div class="post-footer">
-        <a href="/2021-10-03-til-deep-spring1/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/2021-10-03-til-deep-spring2/">[TIL] Spring 심화반 2주차 복습일지</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>java</a></span></div><div class="content">[TIL] Spring 심화반 2주차 복습일지 2주차때 배운 내용을 복습해보려고 한다~!
-간단한 목차는 아래와 같다!
-* 인증과 인가! 인증은 신원 확인!
-인가는 사용자 권한을 확인한다는 의미
-* 스프링 시큐리티? 인증 및 인가를 위해 많은 기능 제공!
-1  implementation &#39;org.springframework.boot:spring-boot-starter-security&#39;   ** 스프링 시큐리티 과정 살펴보기 아래처럼 UserDetails 관련해서 뭔가 작용하는 구조임을 알 수 있다!
-아래 2개 구현을 해준다.
-  UserDetailsService 인터페이스 → UserDetailsServiceImpl 클래스
-UserDetailsServiceImpl에서는 해당하는 유저 이름을 리턴해주도록 구현한다.</div><div class="post-footer">
-        <a href="/2021-10-03-til-deep-spring2/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -137,10 +137,14 @@ UserDetailsServiceImpl에서는 해당하는 유저 이름을 리턴해주도록
                     <span class="page-link">
                         <a href="/page/9/">9</a>
                     </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/10/">10</a>
+                    </span>
                 </li></ul></div></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.98.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

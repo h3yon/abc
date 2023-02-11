@@ -66,6 +66,36 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" width="210" height="210" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/https://github.com/h3yon" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="https://linkedin.com/in/xxxx" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="mailto:khykhy1006@gmail.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/jenkins-ec2/">[Jenkins]AWS EC2 Ubuntu에 Jenkins 연동하기</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-15">2021-09-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nodejs/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>nodejs</a></span></div><div class="content">1. AWS EC2 Ubuntu에 Jenkins를 연동해보자 관련 패키지 설치   Jenkins 설치를 위해 Repository key 추가
+1  $ wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -     서버의 sources.list에 Jenkins 패키지 저장소를 추가
+1 2  $ sudo sh -c &#39;echo deb https://pkg.jenkins.io/debian-stable binary/ &gt; \ /etc/apt/sources.list.d/jenkins.list&#39;     패키지 업데이트 및 Jenkins 설치
+1 2  $ sudo apt-get update $ sudo apt-get install jenkins     Java JDK 8 설치</div><div class="post-footer">
+        <a href="/jenkins-ec2/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/nodejs/">nodejs</a>,&nbsp;<a href="/tags/jenkins/">jenkins</a>,&nbsp;<a href="/tags/aws/">aws</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/javascript-jeju-coding-again2/">[Javascript]자바스크립트 100문제 again2</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-11">2021-09-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/javascript/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>javascript</a></span></div><div class="content">title: &ldquo;[Javascript]자바스크립트 Again2&rdquo; excerpt: &ldquo;[Javascript]자바스크립트 Again2&rdquo;
+toc: true toc_sticky: true
+categories:
+ Javascript tags: Javascript   자바스크립트 복습2 출처: 제주코딩베이스캠프
+ merge sort 병합정렬(merge sort)은 대표적인 정렬 알고리즘 중 하나로 다음과 같이 동작합니다.
+  리스트의 길이가 0 또는 1이면 이미 정렬된 것으로 본다. 그렇지 않은 경우에는 정렬되지 않은 리스트를 절반으로 잘라 비슷한 크기의 두 부분 리스트로 나눈다. 각 부분 리스트를 재귀적으로 합병 정렬을 이용해 정렬한다. 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다.</div><div class="post-footer">
+        <a href="/javascript-jeju-coding-again2/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/javascript/">javascript</a>,&nbsp;<a href="/tags/jeju-coding/">jeju coding</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/javascript-jeju-coding-again/">[Javascript]자바스크립트 100문제 again</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-10">2021-09-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/javascript/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>javascript</a></span></div><div class="content">자바스크립트 복습 출처: 제주코딩베이스캠프
+  중간에 추가하기
+아래처럼 만드려면?
+1 2  var arr = [200, 100, 300]; [200, 100, 10000, 300];   답: arr.splice(2,0,10000);
+  다음 출력 값으로 올바른 것은?
+1 2  var arr = [100, 200, 300]; console.log(typeof arr);   답: object
+  객체의 키 이름 중복
+1 2 3 4 5 6  var d = { &#34;height&#34;: 180, &#34;weight&#34;: 78, &#34;weight&#34;: 84, }; console.</div><div class="post-footer">
+        <a href="/javascript-jeju-coding-again/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/javascript/">javascript</a>,&nbsp;<a href="/tags/jeju-coding/">jeju coding</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/delete-file/">[Github]올라간 파일/디렉토리 삭제하기</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-08-26">2021-08-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/github/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>github</a></span></div><div class="content">올라간 파일/디렉토리 삭제하기 .gitignore에 안 올릴 파일을 명시하고 올렸어야 했는데,
 까먹고 그냥 올려버렸다.
@@ -91,36 +121,6 @@ ch2 변수   명명규칙
  대소문자 구분. 길이에 제한 X 예약어 사용해선 X 예약어란? 자바에서 자체적으로 사용하는 단어 - true는 예약어. 하지만 True는 가능 숫자로 시작해선 X 특수문자는 &lsquo;_&lsquo;와 &lsquo;%&rsquo; 허용 클래스 첫글자 대문자 여러 단어 첫글자는 대문자 ex) lastIndexOf 상수 이름은 대문자. 단어는 &lsquo;_&lsquo;로 구분    변수, 상수, 리터럴</div><div class="post-footer">
         <a href="/hurry-java/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/h2-error/">h2 database 에러 해결하기</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-08-19">2021-08-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/database/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>database</a></span></div><div class="content">h2 database 에러 해결하기 오늘 아래의 에러가 계속 괴롭혀서 해결 방법을 써보고자 한다
-1  h2 Database not found, either pre-create it or allow remote database creation (not recommended in secure environments)   jdbc:h2:tcp://localhost/~/test를 아래처럼 계속 눌렀는데,
-이 에러가 계속 나타났다.
-1  h2 Database not found, either pre-create it or allow remote database creation (not recommended in secure environments)   시도했던 방법은 아래와 같은데,
-하나같이 다 안 됐다.</div><div class="post-footer">
-        <a href="/h2-error/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/database/">database</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/spring-naver-login/">SpringFramework Naver Login 구현하기</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-08-14">2021-08-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>spring</a></span></div><div class="content">스프링부트 Naver Login 구현하기 출처:
- 이동욱 님의 스프링 부트와 AWS로 혼자 구현하는 웹 서비스 스프링 부트와 OAuth2 Naver  사용한 방식 저번에 카카오 로그인을 구현하였을 때는 restTemplate을 사용했었다. 그런데 이번에는 spring-security-oauth2 부분을 알아보고 사용해보고자 했다.
-라이브러리 중에 spring-security-auth2-autoconfigure이 있는데, 스프링부트2에서 기존 설정을 그대로 사용할 수 있어 많은 개발자가 이 방식을 사용했다고 한다.
-하지만 책에서는 spring-boot-starter-oauth2-client 라이브러리를 사용했다. 그 이유는 아래와 같다.
- 스프링 팀에서 신규 기능은 oauth2 라이브러리에서만 지원하겠다고 선언 스프링부트용 라이브러리가 출시 기존에 사용되던 방식은 확장 포인트가 적절하게 open되어 있지 않아 직접 상속하거나, 오버라이딩 해야하고, 신규 라이브러리의 경우 확장 포인트를 고려해서 설계된 상태  직접 구현할 때 관련 자료를 찾아보면,</div><div class="post-footer">
-        <a href="/spring-naver-login/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/spring/">spring</a>,&nbsp;<a href="/tags/oauth/">oauth</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/nodejs-sequelize/">Node.js의 ORM, sequelize</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-08-12">2021-08-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nodejs/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>nodejs</a></span></div><div class="content">title: &ldquo;Node.js의 ORM, sequelize&rdquo; excerpt: &ldquo;Node.js의 ORM, sequeliz&rdquo;
-toc: true toc_sticky: true
-categories:
- Javascript tags: Javascript   Node.js의 ORM, sequelize 다들 ORM에 대해서 들어봤을 것 같다.
-ORM이란?  Object-Relational Mapping으로 객체와 관계형 데이터베이스의 데이터를 매핑(연결)시켜주는 것
- ORM은 객체-관계 매핑의 줄임말이다. 객체 개념을 구현한 class와 RDB(Relational DB)에서 쓰이는 테이블을 자동으로 매핑하는 것이다.
-ORM 프레임워크의 경우,
- JPA/Hibernate JPA(Java Persistence API)는 자바의 ORM 기술 표준으로 인터페이스의 모음이다. 이러한 JPA 표준 명세를 구현한 구현체가 Hibernate Sequelize Sequelize는 Postgres, MySQL, MariaDB, SQLite를 지원하는 Promise에 기반한 비동기로 동작하는 Node.</div><div class="post-footer">
-        <a href="/nodejs-sequelize/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/nodejs/">nodejs</a>,&nbsp;<a href="/tags/orm/">orm</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -151,12 +151,12 @@ ORM 프레임워크의 경우,
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/9/">9</a>
+                        <a href="/page/10/">10</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.98.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

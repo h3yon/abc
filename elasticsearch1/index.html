@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우1 - h3yon blog</title><meta name="Description" content="Welcome to h3yon 개구리 블로그"><meta property="og:title" content="[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우1" />
+<meta property="og:description" content="Elasticsearch 개요와 쿼리 1. NoSQL이란?  빅데이터 환경에서 데이터가 기하급수적으로 늘어남에 따라 RDB 저장 및 관리 기술 만으로 감당하기 힘들어서 등장한 Database Elasticsearch는 Document 기반의 Data 저장소     RDB NoSQL     Column과 Row 형태 JSON, Key-Value 형태   SQL로 질의 REST API, 명령어로 질의   스키마 필수 스키마리스   부하분산 어려움 분산형 구조    2. Elasticsearch란? 루씬 기반의 오픈소스 검색 엔진으로," />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://h3yon.github.io/elasticsearch1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-09T15:00:34+09:00" />
+<meta property="article:modified_time" content="2022-10-09T15:00:34+09:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우1"/>
+<meta name="twitter:description" content="Elasticsearch 개요와 쿼리 1. NoSQL이란?  빅데이터 환경에서 데이터가 기하급수적으로 늘어남에 따라 RDB 저장 및 관리 기술 만으로 감당하기 힘들어서 등장한 Database Elasticsearch는 Document 기반의 Data 저장소     RDB NoSQL     Column과 Row 형태 JSON, Key-Value 형태   SQL로 질의 REST API, 명령어로 질의   스키마 필수 스키마리스   부하분산 어려움 분산형 구조    2. Elasticsearch란? 루씬 기반의 오픈소스 검색 엔진으로,"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://h3yon.github.io/elasticsearch1/" /><link rel="prev" href="https://h3yon.github.io/3_time_complexity_tapeequilibrium/" /><link rel="next" href="https://h3yon.github.io/elasticsearch2/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우1",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/h3yon.github.io\/elasticsearch1\/"
+        },"genre": "posts","keywords": "elasticsearch","wordcount":  893 ,
+        "url": "https:\/\/h3yon.github.io\/elasticsearch1\/","datePublished": "2022-10-09T15:00:34+09:00","dateModified": "2022-10-09T15:00:34+09:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "h3yon"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="h3yon blog">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="h3yon blog">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우1</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/h3yon" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>h3yon</a></span>&nbsp;<span class="post-category">included in <a href="/categories/elasticsearch/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>elasticsearch</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-09">2022-10-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;893 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-nosql이란">1. NoSQL이란?</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-elasticsearch란">2. Elasticsearch란?</a>
+      <ul>
+        <li><a href="#1-메서드">1) 메서드</a></li>
+        <li><a href="#2-간단한-명령어">2) 간단한 명령어</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-클러스터와-노드">3. 클러스터와 노드</a></li>
+    <li><a href="#4-샤드와-세그먼트">4. 샤드와 세그먼트</a>
+      <ul>
+        <li><a href="#-세그먼트는-불변이다">+ 세그먼트는 불변이다</a></li>
+        <li><a href="#-프라이머리-샤드와-레플리카-샤드">+ 프라이머리 샤드와 레플리카 샤드</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-매핑-타입">5. 매핑 타입</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="elasticsearch-개요와-쿼리">Elasticsearch 개요와 쿼리</h1>
+<h3 id="1-nosql이란">1. NoSQL이란?</h3>
+<ul>
+<li>빅데이터 환경에서 데이터가 기하급수적으로 늘어남에 따라 RDB 저장 및 관리 기술 만으로 감당하기 힘들어서 등장한 Database</li>
+<li>Elasticsearch는 Document 기반의 Data 저장소</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>RDB</th>
+<th>NoSQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Column과 Row 형태</td>
+<td>JSON, Key-Value 형태</td>
+</tr>
+<tr>
+<td>SQL로 질의</td>
+<td>REST API, 명령어로 질의</td>
+</tr>
+<tr>
+<td>스키마 필수</td>
+<td>스키마리스</td>
+</tr>
+<tr>
+<td>부하분산 어려움</td>
+<td>분산형 구조</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-elasticsearch란">2. Elasticsearch란?</h2>
+<p>루씬 기반의 오픈소스 검색 엔진으로,<br>
+JSON 기반의 문서 저장, 검색이 가능하며 분석 작업이 가능</p>
+<ul>
+<li>준실시간 검색 엔진</li>
+<li>클러스터 구성<br>
+: 부하 분산 가능하며, 높은 수준의 안정성 이룰 수 있다.</li>
+<li>스키마리스<br>
+: 입력될 데이터에 대해 미리 정의하지 않아도, 동적으로 스키마 생성 가능</li>
+<li>REST API<br>
+: REST API 쉬운 인터페이스를 제공하여 비교적 진입 장벽이 낮다.</li>
+</ul>
+<h3 id="1-메서드">1) 메서드</h3>
+<table>
+<thead>
+<tr>
+<th>HTTP 메서드</th>
+<th>특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>조회</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>생성</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>업데이트,조회</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>삭제</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-간단한-명령어">2) 간단한 명령어</h3>
+<ol>
+<li>
+<p>색인</p>
+<p>(간단한 색인) PUT으로 문서 색인 가능</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  PUT user/_doc/1
+</span></span><span class="line"><span class="cl">  {
+</span></span><span class="line"><span class="cl">    &#34;username&#34;: &#34;name1&#34;
+</span></span><span class="line"><span class="cl">  }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>만약, 스키마 정의 이후 다른 타입의 데이터를 넣어본다면, 스키마 충돌로 인해 문서가 저장되지 않는다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PUT user/_doc/1
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;username&#34;: &#34;name1&#34;,
+</span></span><span class="line"><span class="cl">  “age”: “11”
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://wikidocs.net/images/page/164889/2.1.png"
+        data-srcset="https://wikidocs.net/images/page/164889/2.1.png, https://wikidocs.net/images/page/164889/2.1.png 1.5x, https://wikidocs.net/images/page/164889/2.1.png 2x"
+        data-sizes="auto"
+        alt="https://wikidocs.net/images/page/164889/2.1.png"
+        title="img1" /></p>
+<p>자세한 색인 과정은 위의 그림을 참고하자<br>
+<a href="https://wikidocs.net/164889" target="_blank" rel="noopener noreffer ">출처1</a></p>
+<p>(대량 색인) 대량의 데이터 넣기</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">curl -X POST &#34;localhost:9200/accounts/_doc/_bulk?pretty&amp;refresh&#34; \
+</span></span><span class="line"><span class="cl">-H &#39;Content-Type: application/json&#39; \
+</span></span><span class="line"><span class="cl">--data-binary &#34;@accounts.json&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>조회</p>
+<p>문서조회는 아래와 같다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">curl -X GET &#34;localhost:9200/user/_doc/1?pretty&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>인덱스 목록 조회는 아래와 같다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET _cat/indices
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>스키마 정보 확인</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET user/_mappings
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>문서 검색</p>
+<ul>
+<li>queryString 사용하기
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET accounts/_search?q=*
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>QueryDSL 사용하기
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET accounts/_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;query&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;match&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;city&#34;: &#34;Veguita&#34;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>범위로 검색하기 &amp; 메타데이터 확인하기</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET accounts/_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;query&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;bool&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;must&#34;: {&#34;match_all&#34;: {}},
+</span></span><span class="line"><span class="cl">      &#34;filter&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;range&#34;: {
+</span></span><span class="line"><span class="cl">          &#34;age&#34;: {
+</span></span><span class="line"><span class="cl">            &#34;gte&#34;: 20
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>메타데이터 결과 중 아래는 설명을 참고하자</p>
+<ul>
+<li>took: 검색에 소요된 시간</li>
+<li>_shard.total: 검색에 참여한 사드 개수</li>
+<li>hits.total: 검색 결과 갯수</li>
+</ul>
+</li>
+<li>
+<p>문서 분석하기</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET books/_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;size&#34;: 0,
+</span></span><span class="line"><span class="cl">  &#34;aggs&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;group_by_state&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;terms&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;field&#34;: &#34;topics.keyword&#34;
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>분석 작업은 <code>aggregation</code>이라고 부르고, searchAPI 기준으로 진행된다.<br>
+위의 쿼리는 아래와 유사하다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SELECT state, COUNT(*) FROM bank GROUP BY topic ORDER BY COUNT(*) DESC
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>결과 예시</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;took&#34;: 1,
+</span></span><span class="line"><span class="cl">  &#34;timed_out&#34;: false,
+</span></span><span class="line"><span class="cl">  &#34;_shards&#34;:{
+</span></span><span class="line"><span class="cl">    &#34;total&#34;:2,
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  &#34;hits&#34;:{
+</span></span><span class="line"><span class="cl">    &#34;total&#34;: 10,
+</span></span><span class="line"><span class="cl">    &#34;max_score&#34;: 0.0,
+</span></span><span class="line"><span class="cl">    &#34;hits&#34;:[ ]
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  &#34;aggregations&#34;:{
+</span></span><span class="line"><span class="cl">    &#34;group_by_state&#34;:{
+</span></span><span class="line"><span class="cl">      &#34;buckets&#34;: [
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">          &#34;key&#34;: &#34;CS&#34;,
+</span></span><span class="line"><span class="cl">          &#34;doc_count&#34;:3
+</span></span><span class="line"><span class="cl">        },
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">          &#34;key&#34;: &#34;ES&#34;,
+</span></span><span class="line"><span class="cl">          &#34;doc_count: 2
+</span></span><span class="line"><span class="cl">        },
+</span></span><span class="line"><span class="cl">        ...
+</span></span><span class="line"><span class="cl">      ]
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>topic 별로 몇개의 document가 있는지로 이해하면 될 것으로 보인다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET books/_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;size&#34;: 0,
+</span></span><span class="line"><span class="cl">  &#34;aggs&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;group_by_state&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;terms&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;field&#34;: &#34;topics.keyword&#34;
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">      &#34;aggs&#34;:{
+</span></span><span class="line"><span class="cl">        &#34;average_reviews&#34;:{
+</span></span><span class="line"><span class="cl">          &#34;avg&#34;:{
+</span></span><span class="line"><span class="cl">            &#34;field&#34;:&#34;reviews&#34;
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>토픽 별로 평균 몇개의 리뷰가 생성되어 있는지 볼 수 있다.</p>
+<p>결과 예시</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;took&#34;: 100,
+</span></span><span class="line"><span class="cl">  &#34;timed_out&#34;: false,
+</span></span><span class="line"><span class="cl">  &#34;_shards&#34;:{
+</span></span><span class="line"><span class="cl">    &#34;total&#34;:2,
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  &#34;hits&#34;:{
+</span></span><span class="line"><span class="cl">    &#34;total&#34;: 10,
+</span></span><span class="line"><span class="cl">    &#34;max_score&#34;: 0.0,
+</span></span><span class="line"><span class="cl">    &#34;hits&#34;:[ ]
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  &#34;aggregations&#34;:{
+</span></span><span class="line"><span class="cl">    &#34;group_by_state&#34;:{
+</span></span><span class="line"><span class="cl">      &#34;buckets&#34;: [
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">          &#34;key&#34;: &#34;CS&#34;,
+</span></span><span class="line"><span class="cl">          &#34;doc_count&#34;:3,
+</span></span><span class="line"><span class="cl">          &#34;average_reviews&#34;:{
+</span></span><span class="line"><span class="cl">            &#34;value: 8.55555
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">        },
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">          &#34;key&#34;: &#34;ES&#34;,
+</span></span><span class="line"><span class="cl">          &#34;doc_count: 2,
+</span></span><span class="line"><span class="cl">          &#34;average_reviews&#34;:{
+</span></span><span class="line"><span class="cl">            &#34;value&#34;: 13.0
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">        },
+</span></span><span class="line"><span class="cl">        ...
+</span></span><span class="line"><span class="cl">      ]
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="3-클러스터와-노드">3. 클러스터와 노드</h2>
+<ul>
+<li>클러스터란?
+컴퓨터 혹은 구성 요소를 논리적으로 결합하여 전체를 하나의 컴퓨터 혹은 하나의 구성요소처럼 사용할 수 있게 해주는 기술</li>
+<li>노드의 종류 
+<table>
+<thead>
+<tr>
+<th>노드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>마스터노드</td>
+<td>중심 노드로 클러스터 상태 등 메타데이터 관리(인덱스 생성, 삭제 등. 하나의 노드만 마스터노드로 선출)</td>
+</tr>
+<tr>
+<td>데이터노드</td>
+<td>문서를 실제로 저장되며, 샤드가 배치되는 노드. 색인 작업은 리소스를 많이 소모한다.</td>
+</tr>
+<tr>
+<td>인제스트노드</td>
+<td>문서 저장 전 사전처리, 데이터 전처리 위한 노드, 포맷 변경 위해 전처리 파이프라인 구성 및 실행 가능</td>
+</tr>
+<tr>
+<td>코디네이터노드</td>
+<td>요청을 데이터 노드로 전달하고 데이터 노드로부터 결과를 취합하는 노드. 요청을 분산시켜주는 노드(라운드로빈 방식)</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h2 id="4-샤드와-세그먼트">4. 샤드와 세그먼트</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://miro.medium.com/proxy/1*3xcgM8oZUTSV5ZVEjCRnNA.png"
+        data-srcset="https://miro.medium.com/proxy/1*3xcgM8oZUTSV5ZVEjCRnNA.png, https://miro.medium.com/proxy/1*3xcgM8oZUTSV5ZVEjCRnNA.png 1.5x, https://miro.medium.com/proxy/1*3xcgM8oZUTSV5ZVEjCRnNA.png 2x"
+        data-sizes="auto"
+        alt="https://miro.medium.com/proxy/1*3xcgM8oZUTSV5ZVEjCRnNA.png"
+        title="img" />
+<a href="https://www.google.com/url?sa=i&amp;url=https%3A%2F%2Fjaemunbro.medium.com%2Felastic-search-%25EC%2583%25A4%25EB%2593%259C-%25EC%25B5%259C%25EC%25A0%2581%25ED%2599%2594-68062271fb64&amp;psig=AOvVaw1n6JG44dTxiklBRDTFiBcu&amp;ust=1665382408729000&amp;source=images&amp;cd=vfe&amp;ved=0CA0QjhxqFwoTCPCE1Yq_0voCFQAAAAAdAAAAABAD" target="_blank" rel="noopener noreffer ">이미지 출처</a></p>
+<ul>
+<li><strong>샤드</strong>는 인덱스에 색인되는 문서들이 저장되는공간</li>
+<li><strong>세그먼트</strong>는 샤드의 데이터들을 가지고 있는 물리적인 파일이며, 불변이다.</li>
+<li>문서들이 인덱스 내에 샤드별로 저장된다는 개념을 정확하게 이해하면 장애가 발생했을 때 장애의 규모를 정확하게 파악 가능</li>
+<li>세그먼트 저장 전에 색인된 문서는 먼저 <code>시스템 메모리 버퍼 캐시</code>에 저장되고, 이 단계에서는 해당 문서가 검색되지 않음. 이후 ES의 <code>refresh</code> 과정을 거쳐야 디스크에 세그먼트 단위로 문서가 저장되고 해당 문서의 검색이 가능해짐</li>
+</ul>
+<h3 id="-세그먼트는-불변이다">+ 세그먼트는 불변이다</h3>
+<ul>
+<li>같은 id로 PUT할 경우 응답 중에 _version이 증가한다.</li>
+<li>ES에서 데이터를 업데이트 또는 delete하려고 시도하면 새로운 세그먼트에 업데이트할 내용을 새롭게 쓰고, 기존 데이터는 불용 처리한다.</li>
+<li>ES 세그먼트는 불변이기 때문에 시간이 지나면 작은 크기의 세그먼트가 점점 늘어나서 크기가 점점 커지는 단점이 있다. 이를 해결하기 위해 ES는 백그라운드에서 세그먼트 병합을 진행한다.</li>
+<li>ES 백그라운드에서는 여러 작은 세그먼트들을 하나의 큰 세그먼트로 합치는 작업이 무수히 일어난다.</li>
+<li>병합 시점에 실제 불용 처리한 데이터들을 실제로 삭제</li>
+</ul>
+<h3 id="-프라이머리-샤드와-레플리카-샤드">+ 프라이머리 샤드와 레플리카 샤드</h3>
+<ul>
+<li>샤드는 프라이머리 샤드와 레플리카 샤드(for 안정성)로 구성</li>
+<li>프라이머리 샤드는 최초 인덱스를 생성할 때 개수를 결정. 이후 변경 불가능.</li>
+<li>프라이머리 샤드 만드는 알고리즘?
+샤드 번호 = Hash(Document ID) % 프라이머리 샤드 개수</li>
+<li>ES에서 샤드의 상태를 정상적으로 유지하고 장애 상황에서도 유실되지 않도록 하는 게 ES 클러스터 서비스의 연속성 유지하기 위해 꼭 필요한 작업</li>
+<li>레플리카 샤드는 사용자의 검색 요청에도 응답할 수 있음</li>
+<li>프라이머리 샤드가 사용불가 상태가 되면 레플리카 샤드가 프라이머리로 승격되고 레플리카 샤드가 다시 생김</li>
+</ul>
+<h2 id="5-매핑-타입">5. 매핑 타입</h2>
+<table>
+<thead>
+<tr>
+<th>노드</th>
+<th>종류</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>String</td>
+<td>text,keyword</td>
+</tr>
+<tr>
+<td>Numeric</td>
+<td>long, integer, short, byte, double, float, half float, scaled float</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>date</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>Binary</td>
+<td>binary</td>
+</tr>
+<tr>
+<td>Range</td>
+<td>integer_range, float_range, long_range, double_range, date_range</td>
+</tr>
+</tbody>
+</table>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-09</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/elasticsearch1/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://h3yon.github.io/elasticsearch1/" data-title="[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우1" data-hashtags="elasticsearch"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://h3yon.github.io/elasticsearch1/" data-hashtag="elasticsearch"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://h3yon.github.io/elasticsearch1/" data-title="[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우1"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://h3yon.github.io/elasticsearch1/" data-title="[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우1"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://h3yon.github.io/elasticsearch1/" data-title="[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우1"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/elasticsearch/">elasticsearch</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/3_time_complexity_tapeequilibrium/" class="prev" rel="prev" title="3. Time Complixity - TapeEquilibrium"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>3. Time Complixity - TapeEquilibrium</a>
+            <a href="/elasticsearch2/" class="next" rel="next" title="[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우2">[Elasticsearch] 기초부터 다지는 ElasticSearch 운영 노하우2<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.98.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/h3yon" target="_blank">h3yon</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
