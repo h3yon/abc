@@ -2,13 +2,13 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://h3yon.github.io/categories/</loc><lastmod>2023-02-11T11:50:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://h3yon.github.io/</loc><lastmod>2023-02-11T11:50:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://h3yon.github.io/tags/java/</loc><lastmod>2023-02-11T11:50:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://h3yon.github.io/categories/java/</loc><lastmod>2023-02-11T11:50:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://h3yon.github.io/posts/</loc><lastmod>2023-02-11T11:50:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://h3yon.github.io/tags/</loc><lastmod>2023-02-11T11:50:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://h3yon.github.io/spring-cloud-openfeign/</loc><lastmod>2023-02-11T11:50:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://h3yon.github.io/categories/</loc><lastmod>2023-02-11T11:50:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://h3yon.github.io/</loc><lastmod>2023-02-11T11:50:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://h3yon.github.io/tags/java/</loc><lastmod>2023-02-11T11:50:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://h3yon.github.io/categories/java/</loc><lastmod>2023-02-11T11:50:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://h3yon.github.io/posts/</loc><lastmod>2023-02-11T11:50:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://h3yon.github.io/tags/</loc><lastmod>2023-02-11T11:50:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://h3yon.github.io/spring-cloud-openfeign/</loc><lastmod>2023-02-11T11:50:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>https://h3yon.github.io/elasticsearch2/</loc><lastmod>2022-10-09T19:00:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://h3yon.github.io/tags/elasticsearch/</loc><lastmod>2022-10-09T19:00:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://h3yon.github.io/categories/elasticsearch/</loc><lastmod>2022-10-09T19:00:34&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
